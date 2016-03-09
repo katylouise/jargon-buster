@@ -59,7 +59,7 @@ function ParlJargonBuster()
 
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
-        var textToReplace = new RegExp("(" + jargonItem.phrase + ")", 'gi');
+        var textToReplace = new RegExp("\\b(" + jargonItem.phrase + ")\\b", 'gi');
         var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
         $(element).html(replacedContent);
     }
