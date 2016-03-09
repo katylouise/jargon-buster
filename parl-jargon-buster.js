@@ -11,7 +11,6 @@ function ParlJargonBuster()
  		_contentSelector = contentSelector;
  		var content = $(_contentSelector).text();
 
-
         var phrases = getPhrases(content);
 
         $(phrases.jargonItems).each(applyPopoverAnchors);
@@ -19,20 +18,20 @@ function ParlJargonBuster()
 
     function getPhrases(content)
     {
-    	//TODO 
+    	//TODO
     	return {
     		"jargonItems":[
     			{
-    				"phrase":"Test", 
-    				"definition":"Test", 
+    				"phrase":"Test",
+    				"definition":"Test",
     				"alternate":["Test1","Test2"]
     			},
     			{
-    				"phrase":"jargon", 
-    				"definition":"jargon test", 
+    				"phrase":"jargon",
+    				"definition":"jargon test",
     				"alternate":["rubbish"]
     			}
-			]} 
+			]}
     }
 
     function applyPopoverAnchors(index, jargonItem)
@@ -47,18 +46,25 @@ function ParlJargonBuster()
     	// TODO - Do not apply jargon busters to links or headers
     	// TODO (optional) - Possible override of header?
 
-    	var phrasedElements = $(":last-child:contains('" + jargonItem.phrase + "')");
+    	var phrasedElements = getNodesThatContain(jargonItem.phrase);
 
     	phrasedElements.each(function(phrasedElementIndex, phrasedElementItem) {
     		applyPopoverAnchor(jargonItem, phrasedElementItem);
     	});
-    	
     }
 
+    function getNodesThatContain(text) {
+        var textNodes = $(document).find(":not(iframe, script, a, h1)").contents().filter(
+            function() {
+                return this.nodeType == 3 && this.textContent.indexOf(text) > -1;
+            });
+        return textNodes.parent();
+    };
+
     function applyPopoverAnchor(jargonItem, element) {
-    	var elementContent = element.innerHTML;
-    	elementContent.replace(jargonItem.phrase, buildPopoverAnchor(jargonItem));
-    	$(element).html(elementContent);
+    	var elementContent = $(element).html();
+        var replaced = elementContent.replace(jargonItem.phrase, buildPopoverAnchor(jargonItem));
+        $(element).html(replaced);
     }
 
     function buildPopoverAnchor(jargonItem) {
@@ -72,7 +78,7 @@ function ParlJargonBuster()
 
 
 
-// // 
+// //
 // {
 // 	JargonItems[]
 // 	{
