@@ -35,15 +35,18 @@ function ParlJargonBuster()
                     "phrase":"jargon buster",
                     "definition":"jargon buster test",
                     "alternate":["rubbish buster"]
+                },
+                {
+                    "phrase":"Jargon Banana",
+                    "definition":"yellow jargon",
+                    "alternate":["jargon fruit"]
                 }
 			]}
     }
 
     function applyPopoverAnchors(index, jargonItem)
     {
-
-    	var phrasedElements = getNodesThatContain(jargonItem.phrase);
-
+    	var phrasedElements = getNodesThatContain(jargonItem.phrase.toLowerCase());
     	phrasedElements.each(function(phrasedElementIndex, phrasedElementItem) {
     		applyPopoverAnchor(jargonItem, phrasedElementItem);
     	});
@@ -65,27 +68,13 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a href='#' data-popup='" + jargonItem.definition + "' data-alternate='" + jargonItem.alternate + "'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-popup='" + jargonItem.definition + "' data-alternate='" + jargonItem.alternate + "'>" + textToReplace + "</a>";
     }
 
 	this.Build = build;
 }
 
-
-
-
         // TODO - Content length checking to not put a new jargon buster too close
         // TODO - Phrase containing another smaller phrase
         // TODO - Do not apply jargon busters to links or headers
         // TODO (optional) - Possible override of header?
-
-
-// //
-// {
-// 	JargonItems[]
-// 	{
-// 		Phrase
-// 		Definition
-// 		Alternate[]
-// 	}
-// }
