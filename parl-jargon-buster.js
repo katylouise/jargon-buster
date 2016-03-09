@@ -1,7 +1,14 @@
 $(document).ready(function() {
 	var jargonBuster = new ParlJargonBuster();
-	jargonBuster.Build(".main-content");
+
+    jargonBuster.Build(".main-content");
+    initPopovers();
 });
+
+function initPopovers() {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover();
+}
 
 function ParlJargonBuster()
 {
@@ -12,7 +19,6 @@ function ParlJargonBuster()
  		var content = $(_contentSelector).text();
 
         var phrases = getPhrases(content);
-
         $(phrases.jargonItems).each(applyPopoverAnchors);
  	}
 
@@ -21,16 +27,6 @@ function ParlJargonBuster()
     	//TODO
     	return {
     		"jargonItems":[
-    			{
-    				"phrase":"Test",
-    				"definition":"Test",
-    				"alternate":["Test1","Test2"]
-    			},
-    			{
-    				"phrase":"jargon",
-    				"definition":"jargon test",
-    				"alternate":["rubbish"]
-    			},
                 {
                     "phrase":"jargon buster",
                     "definition":"jargon buster test",
@@ -40,7 +36,17 @@ function ParlJargonBuster()
                     "phrase":"Jargon Banana",
                     "definition":"yellow jargon",
                     "alternate":["jargon fruit"]
-                }
+                },
+    			{
+    				"phrase":"Test",
+    				"definition":"Test",
+    				"alternate":["Test1","Test2"]
+    			},
+    			{
+    				"phrase":"jargon",
+    				"definition":"jargon test",
+    				"alternate":["rubbish"]
+    			}
 			]}
     }
 
@@ -53,7 +59,7 @@ function ParlJargonBuster()
     }
 
     function getNodesThatContain(text) {
-        var textNodes = $(document).find(":not(title, iframe, script, a, h1)").contents().filter(
+        var textNodes = $(document).find(":not(title, iframe, script, a, :header)").contents().filter(
             function() {
                 return this.nodeType == 3 && this.textContent.toLowerCase().indexOf(text) > -1;
             });
@@ -68,7 +74,7 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-popup='" + jargonItem.definition + "' data-alternate='" + jargonItem.alternate + "'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-html='true' data-trigger='hover' data-content='<div><b>" + textToReplace + "</b>: </div><div>" + jargonItem.definition + " (Alternate word(s) - " + jargonItem.alternate + ")</div>'>" + textToReplace + "</a>";
     }
 
 	this.Build = build;

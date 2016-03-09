@@ -1,3 +1,12 @@
+body {
+  padding: 20px;
+}
+
 .definition {
   color: green;
+  cursor: help;
+}
+
+.definition div {
+  display: inline-block;
 }
