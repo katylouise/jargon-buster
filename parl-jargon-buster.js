@@ -30,7 +30,12 @@ function ParlJargonBuster()
     				"phrase":"jargon",
     				"definition":"jargon test",
     				"alternate":["rubbish"]
-    			}
+    			},
+                {
+                    "phrase":"jargon buster",
+                    "definition":"jargon buster test",
+                    "alternate":["rubbish buster"]
+                }
 			]}
     }
 
@@ -56,14 +61,14 @@ function ParlJargonBuster()
     function getNodesThatContain(text) {
         var textNodes = $(document).find(":not(iframe, script, a, h1)").contents().filter(
             function() {
-                return this.nodeType == 3 && this.textContent.indexOf(text) > -1;
+                return this.nodeType == 3 && this.textContent.toLowerCase().indexOf(text) > -1;
             });
         return textNodes.parent();
     };
 
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
-        var replaced = elementContent.replace(jargonItem.phrase, buildPopoverAnchor(jargonItem));
+        var replaced = elementContent.replace(new RegExp(jargonItem.phrase, 'g'), buildPopoverAnchor(jargonItem));
         $(element).html(replaced);
     }
 
