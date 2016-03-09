@@ -41,15 +41,6 @@ function ParlJargonBuster()
 
     function applyPopoverAnchors(index, jargonItem)
     {
-    	// var indexOfItem = $(_contentSelector)[0].innerText.indexOf(item.phrase);
-    	// if (indexOfItem == -1) return;
-
-    	// TODO - contains selector - find the element with the text directly in the element
-
-    	// TODO - Content length checking to not put a new jargon buster too close
-    	// TODO - Phrase containing another smaller phrase
-    	// TODO - Do not apply jargon busters to links or headers
-    	// TODO (optional) - Possible override of header?
 
     	var phrasedElements = getNodesThatContain(jargonItem.phrase);
 
@@ -59,7 +50,7 @@ function ParlJargonBuster()
     }
 
     function getNodesThatContain(text) {
-        var textNodes = $(document).find(":not(iframe, script, a, h1)").contents().filter(
+        var textNodes = $(document).find(":not(title, iframe, script, a, h1)").contents().filter(
             function() {
                 return this.nodeType == 3 && this.textContent.toLowerCase().indexOf(text) > -1;
             });
@@ -68,12 +59,13 @@ function ParlJargonBuster()
 
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
-        var replaced = elementContent.replace(new RegExp(jargonItem.phrase, 'g'), buildPopoverAnchor(jargonItem));
-        $(element).html(replaced);
+        var textToReplace = new RegExp("(" + jargonItem.phrase + ")", 'gi');
+        var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
+        $(element).html(replacedContent);
     }
 
-    function buildPopoverAnchor(jargonItem) {
-    	return "<a href='#' data-popup='" + jargonItem.definition + "' data-alternate='" + jargonItem.alternate + "'>" + jargonItem.phrase + "</a>";
+    function buildPopoverAnchor(jargonItem, textToReplace) {
+    	return "<a href='#' data-popup='" + jargonItem.definition + "' data-alternate='" + jargonItem.alternate + "'>" + textToReplace + "</a>";
     }
 
 	this.Build = build;
@@ -81,6 +73,11 @@ function ParlJargonBuster()
 
 
 
+
+        // TODO - Content length checking to not put a new jargon buster too close
+        // TODO - Phrase containing another smaller phrase
+        // TODO - Do not apply jargon busters to links or headers
+        // TODO (optional) - Possible override of header?
 
 
 // //
