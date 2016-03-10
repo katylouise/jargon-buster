@@ -7,11 +7,11 @@ namespace Parliament.JargonBuster.Core.Services
 {
     public class DefinitionsService : IDefinitionsService
     {
-        public IQueryable<DefinitionItem> GetDefinitions(params string[] phrases)
+        public IQueryable<DefinitionItem> GetDefinitions()
         {
             using (var context = new JargonBusterDbContext())
             {
-                return context.Definitions.Where(x => phrases.Contains(x.Word));
+                return context.Definitions;
             }
         }
     }
