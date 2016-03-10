@@ -74,7 +74,7 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-toggle='popover' data-html='true' data-trigger='hover' data-placement='auto bottom' data-content='<div><b>Definition: </b>" + jargonItem.definition + "</div><div>Alternative: " + jargonItem.alternate + "</div>'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-html='true' data-trigger='hover' data-content='<div><b>" + textToReplace + "</b>: </div><div>" + jargonItem.definition + " (Alternate word(s) - " + jargonItem.alternate + ")</div>'>" + textToReplace + "</a>";
     }
 
 	this.Build = build;
@@ -84,4 +84,4 @@ function ParlJargonBuster()
         // TODO - Phrase containing another smaller phrase
         // TODO - Do not apply jargon busters to links or headers
         // TODO (optional) - Possible override of header?
->>>>>>> d9f831010810854e8231b91a5660c49db6feccce
+
