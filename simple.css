@@ -5,6 +5,11 @@ body {
 .definition {
   color: green;
   cursor: help;
+  border-bottom: 1px dotted green;
+}
+
+.definition:hover {
+  text-decoration: none;
 }
 
 .definition div {
