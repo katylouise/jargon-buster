@@ -6,8 +6,22 @@ $(document).ready(function() {
 });
 
 function initPopovers() {
+    var options = {
+        placement: optimalPopoverPlacement,
+        html: "true",
+        trigger: "hover" //and for mobile?
+    }
+
     $('[data-toggle="tooltip"]').tooltip();
-    $('[data-toggle="popover"]').popover();
+    $('[data-toggle="popover"]').popover(options);
+}
+
+function optimalPopoverPlacement(context, source) {
+        var position = $(source).position();
+        if ((window.innerHeight - position.top) < 100) {
+            return "top";
+        }
+        return "bottom";
 }
 
 function ParlJargonBuster()
@@ -69,12 +83,14 @@ function ParlJargonBuster()
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
         var textToReplace = new RegExp("\\b(" + jargonItem.phrase + ")\\b", 'gi');
+        //remove global flag to only highlight first instance?
+
         var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
         $(element).html(replacedContent);
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-toggle='popover' data-html='true' data-trigger='hover' data-content='<div><b>" + textToReplace + "</b>: </div><div>" + jargonItem.definition + " (Alternate word(s) - " + jargonItem.alternate + ")</div>'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.definition + "</div><div>Alternative: " + jargonItem.alternate + "</div>'>" + textToReplace + "</a>";
     }
 
 	this.Build = build;
