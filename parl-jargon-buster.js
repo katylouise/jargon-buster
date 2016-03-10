@@ -84,3 +84,4 @@ function ParlJargonBuster()
         // TODO - Phrase containing another smaller phrase
         // TODO - Do not apply jargon busters to links or headers
         // TODO (optional) - Possible override of header?
+>>>>>>> d9f831010810854e8231b91a5660c49db6feccce
