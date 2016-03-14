@@ -11,6 +11,7 @@
     <AssemblyName>Parliament.JargonBuster.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +53,8 @@
     <Compile Include="Domain\AlternateDefinitionItem.cs" />
     <Compile Include="Domain\Context\JargonBusterDbContext.cs" />
     <Compile Include="Domain\DefinitionItem.cs" />
+    <Compile Include="Engine\DefinitionsEngine.cs" />
+    <Compile Include="Engine\IDefinitionsEngine.cs" />
     <Compile Include="Migrations\201603091644242_AlternateDefinitionToDefinition.cs" />
     <Compile Include="Migrations\201603091644242_AlternateDefinitionToDefinition.Designer.cs">
       <DependentUpon>201603091644242_AlternateDefinitionToDefinition.cs</DependentUpon>
@@ -72,6 +75,12 @@
     <EmbeddedResource Include="Migrations\201603091644242_AlternateDefinitionToDefinition.resx">
       <DependentUpon>201603091644242_AlternateDefinitionToDefinition.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Parliament.Common\Parliament.Common.csproj">
+      <Project>{A43982C3-100B-43D1-A547-99F4D38DCFBE}</Project>
+      <Name>Parliament.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
