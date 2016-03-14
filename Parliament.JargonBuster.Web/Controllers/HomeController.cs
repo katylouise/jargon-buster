@@ -14,5 +14,10 @@ namespace Parliament.JargonBuster.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult EUReferendum_Demo()
+        {
+            return View();
+        }
     }
 }

@@ -1,10 +1,3 @@
-$(document).ready(function() {
-	var jargonBuster = new ParlJargonBuster();
-
-    jargonBuster.Build(".main-content");
-});
-
-
 function ParlJargonBuster()
 {
 	var _contentSelector;
