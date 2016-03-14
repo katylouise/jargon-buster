@@ -49,7 +49,7 @@ function ParlJargonBuster()
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (phrases) {
-                $(phrases.jargonItems).each(applyPopoverAnchors);
+                $(phrases).each(applyPopoverAnchors);
                 initPopovers();
             },
             error: function(result) {
@@ -60,7 +60,7 @@ function ParlJargonBuster()
 
     function applyPopoverAnchors(index, jargonItem)
     {
-    	var phrasedElements = getNodesThatContain(jargonItem.phrase.toLowerCase());
+    	var phrasedElements = getNodesThatContain(jargonItem.Phrase);
     	phrasedElements.each(function(phrasedElementIndex, phrasedElementItem) {
     		applyPopoverAnchor(jargonItem, phrasedElementItem);
     	});
@@ -76,7 +76,7 @@ function ParlJargonBuster()
 
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
-        var textToReplace = new RegExp("\\b(" + jargonItem.phrase + ")\\b", 'gi');
+    	var textToReplace = new RegExp("\\b(" + jargonItem.Phrase + ")\\b", 'gi');
         //remove global flag to only highlight first instance?
 
         var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
@@ -84,7 +84,7 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.definition + "</div><div>Alternative: " + jargonItem.alternate + "</div>'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div><div>Alternative(s): " + jargonItem.Alternate + "</div>'>" + textToReplace + "</a>";
     }
 
     this.Build = build;

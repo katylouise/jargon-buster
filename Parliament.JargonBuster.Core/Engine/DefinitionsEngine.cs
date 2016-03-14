@@ -36,15 +36,15 @@ namespace Parliament.JargonBuster.Core.Engine
         private IList<DefinitionItem> GetDefinitionsUncached(string pageContent)
         {
             var definitions = _service.GetDefinitions()
-                                      .OrderByDescending(x => Regex.Matches(x.Word, @"/w").Count)
+                                      .OrderByDescending(x => Regex.Matches(x.Phrase, @"/w").Count)
                                       .ToList();
 
             var sbPageContent = new StringBuilder(pageContent);
     
             return definitions.WhereToList(x =>
             {
-                if (!pageContent.Contains(x.Word)) return false;
-                sbPageContent.Replace(x.Word, string.Empty);
+                if (!pageContent.Contains(x.Phrase)) return false;
+                sbPageContent.Replace(x.Phrase, string.Empty);
                 return true;
             });       
         }
