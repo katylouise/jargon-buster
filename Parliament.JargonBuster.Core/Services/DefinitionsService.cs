@@ -11,7 +11,9 @@ namespace Parliament.JargonBuster.Core.Services
         {
             using (var context = new JargonBusterDbContext())
             {
-                return context.Definitions.ToList();
+                return context.Definitions
+                              .Include("Alternates")
+                              .ToList();
             }
         }
     }
