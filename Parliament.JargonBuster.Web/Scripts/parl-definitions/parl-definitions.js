@@ -69,7 +69,7 @@ function ParlJargonBuster()
 
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
-    	var textToReplace = new RegExp("\\b(" + jargonItem.Phrase + ")\\b", 'gi');
+    	var textToReplace = new RegExp("\\b(" + jargonItem.Phrase + ")\\b", 'i');
         //remove global flag to only highlight first instance?
 
         var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
@@ -77,7 +77,11 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div><div>Alternative(s): " + jargonItem.Alternates + "</div>'>" + textToReplace + "</a>";
+        var alternates = "";
+        if (jargonItem.DisplayAlternates) {
+            alternates = "<div>Alternative(s): " + jargonItem.Alternates + "</div>";
+        }
+    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div>" + alternates + "'>" + textToReplace + "</a>";
     }
 
     this.Build = build;

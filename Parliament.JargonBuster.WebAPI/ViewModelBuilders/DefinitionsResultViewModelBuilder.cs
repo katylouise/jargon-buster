@@ -28,7 +28,8 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
             {
                 Definition = definition.Definition,
                 Phrase = definition.Phrase,
-                Alternates = definition.Alternates?.SelectToList(d => d.AlternateDefinition).FlattenToString(", ")
+                Alternates = definition.Alternates?.SelectToList(d => d.AlternateDefinition).FlattenToString(", "),
+                DisplayAlternates = definition.Alternates != null && definition.Alternates.Any()
             };
         }
     }
