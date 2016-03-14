@@ -1,0 +1,17 @@
+body {
+  padding: 20px;
+}
+
+.definition {
+  color: green;
+  cursor: help;
+  border-bottom: 1px dotted green;
+}
+
+.definition:hover {
+  text-decoration: none;
+}
+
+.definition div {
+  display: inline-block;
+}

@@ -2,6 +2,7 @@
 using Parliament.Common.ContentReader;
 using Parliament.Common.Interfaces;
 using Parliament.Common.Versioning;
+using StructureMap;
 using StructureMap.Configuration.DSL;
 
 namespace Parliament.Common.IoC

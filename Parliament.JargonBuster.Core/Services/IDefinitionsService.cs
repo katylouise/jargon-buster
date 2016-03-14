@@ -6,6 +6,6 @@ namespace Parliament.JargonBuster.Core.Services
 {
     public interface IDefinitionsService
     {
-        IQueryable<DefinitionItem> GetDefinitions();
+        IList<DefinitionItem> GetDefinitions();
     }
 }

@@ -74,9 +74,16 @@ namespace Parliament.Common.Configuration
 
         protected void GetValueFromConfiguration<T>(T item, PropertyInfo propertyInfo, string prefix = null)
         {
-            var value = TypeDescriptor.GetConverter(propertyInfo.PropertyType)
-                                      .ConvertFromString(ConfigurationManager.AppSettings[prefix + propertyInfo.Name]);
-            propertyInfo.SetValue(item, value, null);
+            try
+            {
+                var value = TypeDescriptor.GetConverter(propertyInfo.PropertyType)
+                                          .ConvertFromString(ConfigurationManager.AppSettings[prefix + propertyInfo.Name]);
+                propertyInfo.SetValue(item, value, null);
+            }
+            catch (Exception)
+            {
+                throw new Exception("The following property was not found / not correct in app.config: {1}{0}".FormatString(propertyInfo.Name, prefix));
+            }
         }
 
 

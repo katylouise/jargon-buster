@@ -36,7 +36,6 @@ namespace Parliament.JargonBuster.Core.Engine
         private IList<DefinitionItem> GetDefinitionsUncached(string pageContent)
         {
             var definitions = _service.GetDefinitions()
-                                      .ToList()
                                       .OrderByDescending(x => Regex.Matches(x.Word, @"/w").Count)
                                       .ToList();
 
