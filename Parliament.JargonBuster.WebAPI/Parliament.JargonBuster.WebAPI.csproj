@@ -210,8 +210,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DefinitionsModel.cs" />
+    <Compile Include="Models\DefinitionsRequestModel.cs" />
+    <Compile Include="Models\DefinitionsResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModelBuilders\DefinitionsResultViewModelBuilder.cs" />
+    <Compile Include="ViewModelBuilders\IDefinitionsResultViewModelBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

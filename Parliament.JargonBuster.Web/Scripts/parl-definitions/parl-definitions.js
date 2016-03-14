@@ -84,7 +84,7 @@ function ParlJargonBuster()
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
-    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div><div>Alternative(s): " + jargonItem.Alternate + "</div>'>" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div><div>Alternative(s): " + jargonItem.Alternates + "</div>'>" + textToReplace + "</a>";
     }
 
     this.Build = build;

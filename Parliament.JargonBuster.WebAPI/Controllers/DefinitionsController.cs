@@ -3,8 +3,8 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Parliament.Common.IoC;
 using Parliament.JargonBuster.Core.Domain;
-using Parliament.JargonBuster.Core.Engine;
 using Parliament.JargonBuster.WebAPI.Models;
+using Parliament.JargonBuster.WebAPI.ViewModelBuilders;
 
 namespace Parliament.JargonBuster.WebAPI.Controllers
 {
@@ -12,18 +12,18 @@ namespace Parliament.JargonBuster.WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DefinitionsController : ApiController
     {
-        private readonly IDefinitionsEngine _engine;
+        private readonly IDefinitionsResultViewModelBuilder _definitionsResultViewModelBuilder;
 
-        public DefinitionsController(IDefinitionsEngine engine)
+        public DefinitionsController(IDefinitionsResultViewModelBuilder definitionsResultViewModelBuilder)
         {
-            _engine = engine;
+            _definitionsResultViewModelBuilder = definitionsResultViewModelBuilder;
         }
 
         [AcceptVerbs("GET", "POST")]
         [Route("api/definitions")]
-        public IEnumerable<DefinitionItem> Items([FromBody]DefinitionsModel model)
+        public IEnumerable<DefinitionsResultModel> Items([FromBody]DefinitionsRequestModel model)
         {
-            return _engine.GetDefinitions(model.PageContent, model.PageUrl);
+            return _definitionsResultViewModelBuilder.Build(model);
         }
     }
 }
