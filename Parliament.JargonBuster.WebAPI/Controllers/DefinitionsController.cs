@@ -23,7 +23,7 @@ namespace Parliament.JargonBuster.WebAPI.Controllers
 
         [AcceptVerbs("POST")]
         [Route("api/definitions")]
-        public IEnumerable<DefinitionsResultModel> Items([FromBody]DefinitionsRequestModel model)
+        public DefinitionsResultModel Items([FromBody]DefinitionsRequestModel model)
         {
             _logger.Debug("POST - Page Content: {0}, Page Url: {1}".FormatString(model.PageContent, model.PageUrl));
             return _definitionsResultViewModelBuilder.Build(model);
