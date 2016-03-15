@@ -23,9 +23,9 @@ function ParlJargonBuster(options) {
 
  	function initPopovers() {
  	    var options = {
- 	        placement: optimalPopoverPlacement,
+ 	        placement: "bottom",
  	        type: "html",
- 	        trigger: "hover" //and for mobile?
+ 	        trigger: "click" //and for mobile?
  	    }
 
  	    $('[data-toggle="popover"]').webuiPopover(options);
