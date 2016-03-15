@@ -7,7 +7,8 @@ function ParlJargonBuster(options) {
 	        {
 	            wordFrequency: 3,
 	            contentSelectors: [],
-                enabled: true
+	            enabled: true,
+	            definitionToggleSelector: ".parl-definitions"
 	        }
 	    }
 	    var content = "";
@@ -51,9 +52,10 @@ function ParlJargonBuster(options) {
             }),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            success: function (phrases) {
-                $(phrases).each(applyPopoverAnchors);
+            success: function (result) {
+                $(result.Phrases).each(applyPopoverAnchors);
                 initPopovers();
+                bindToggleDefinitions(result.ToggleDefinitionHtml);
             },
             error: function(result) {
                 alert("an error occurred");
@@ -107,6 +109,16 @@ function ParlJargonBuster(options) {
         } else {
             disablePopovers();
         }
+    }
+
+    function bindToggleDefinitions(html) {
+        var options = {
+            placement: optimalPopoverPlacement,
+            type: "html",
+            trigger: "hover"
+        }
+        $(_options.definitionToggleSelector).attr("data-content", html);
+        $(_options.definitionToggleSelector).webuiPopover(options);
     }
 
     this.Build = build;

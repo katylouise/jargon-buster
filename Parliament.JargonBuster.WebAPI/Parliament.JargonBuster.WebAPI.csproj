@@ -219,8 +219,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DefinitionsRequestModel.cs" />
-    <Compile Include="Models\DefinitionsResultModel.cs" />
+    <Compile Include="Models\DefinitionsResultItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\DefinitionsResultModel.cs" />
     <Compile Include="ViewModelBuilders\DefinitionsResultViewModelBuilder.cs" />
     <Compile Include="ViewModelBuilders\IDefinitionsResultViewModelBuilder.cs" />
   </ItemGroup>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Parliament.Common.Extensions;
 using Parliament.JargonBuster.Core.Domain;
 using Parliament.JargonBuster.Core.Engine;
@@ -16,15 +15,19 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
             _engine = engine;
         }
 
-        public List<DefinitionsResultModel> Build(DefinitionsRequestModel requestModel)
-        {
-            var definitions = _engine.GetDefinitions(requestModel.PageContent, requestModel.PageUrl);
-            return definitions.SelectToList(BuildModel);
-        }
-
-        private DefinitionsResultModel BuildModel(DefinitionItem definition)
+        public DefinitionsResultModel Build(DefinitionsRequestModel requestModel)
         {
             return new DefinitionsResultModel
+            {  
+                Phrases = _engine.GetDefinitions(requestModel.PageContent, requestModel.PageUrl)
+                                 .SelectToList(BuildItemModel),
+                ToggleDefinitionHtml = "<div class=\"parl-toggle-html\">Test!</div>"
+            };
+        }
+
+        private DefinitionsResultItemModel BuildItemModel(DefinitionItem definition)
+        {
+            return new DefinitionsResultItemModel
             {
                 Definition = definition.Definition,
                 Phrase = definition.Phrase,
