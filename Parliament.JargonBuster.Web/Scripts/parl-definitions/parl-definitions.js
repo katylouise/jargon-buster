@@ -60,7 +60,7 @@ function ParlJargonBuster(options) {
 
     function applyPopoverAnchors(index, jargonItem)
     {
-    	var phrasedElements = getNodesThatContain(jargonItem.Phrase);
+    	var phrasedElements = getNodesThatContain(jargonItem);
     	phrasedElements.each(function (phrasedElementIndex, phrasedElementItem) {
             if (phrasedElementIndex % _options.wordFrequency === 0) {
                 applyPopoverAnchor(jargonItem, phrasedElementItem);
@@ -68,10 +68,14 @@ function ParlJargonBuster(options) {
     	});
     }
 
-    function getNodesThatContain(text) {
+    function isTextNode(nodeType) {
+        return nodeType === 3;
+    }
+
+    function getNodesThatContain(jargonItem) {
         var textNodes = $(document).find(":not(title, iframe, script, a, :header)").contents().filter(
             function() {
-                return this.nodeType == 3 && this.textContent.toLowerCase().indexOf(text) > -1;
+                return isTextNode(this.nodeType) && (this.textContent.toLowerCase().indexOf(jargonItem.Phrase) > -1);
             });
         return textNodes.parent();
     };
@@ -89,7 +93,7 @@ function ParlJargonBuster(options) {
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
             alternativeTitle = "<b>Alternative(s): </b>";
-            alternates = jargonItem.Alternates;
+            alternates = jargonItem.AlternatesContent;
         }
 
         var content = "'<div class=&quot;definition-content-titles&quot;><b>Definition: </b>" + alternativeTitle + "</div><div class=&quot;definition-actual-content&quot;><p>" + jargonItem.Definition + "</p><p>" + alternates + "</p></div>'";

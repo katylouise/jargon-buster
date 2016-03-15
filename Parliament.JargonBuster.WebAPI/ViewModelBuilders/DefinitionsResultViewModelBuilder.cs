@@ -39,7 +39,8 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
             {
                 Definition = definition.Definition,
                 Phrase = definition.Phrase,
-                Alternates = definition.Alternates?.SelectToList(d => d.AlternateDefinition).FlattenToString(", "),
+                AlternatesContent = definition.Alternates?.SelectToList(d => d.AlternateDefinition).FlattenToString(", "),
+                Alternates = definition.Alternates.SelectToList(x => x.AlternateDefinition),
                 DisplayAlternates = definition.Alternates != null && definition.Alternates.Any()
             };
         }

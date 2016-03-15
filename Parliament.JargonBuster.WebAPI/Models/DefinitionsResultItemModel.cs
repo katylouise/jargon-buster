@@ -9,7 +9,8 @@ namespace Parliament.JargonBuster.WebAPI.Models
     {
         public string Definition { get; set; }
         public string Phrase { get; set; }
-        public string Alternates { get; set; }
+        public List<string> Alternates { get; set; }
         public bool DisplayAlternates { get; set; }
+        public string AlternatesContent { get; set; }
     }
 }
