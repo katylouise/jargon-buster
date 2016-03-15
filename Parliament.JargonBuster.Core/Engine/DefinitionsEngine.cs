@@ -2,11 +2,13 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using NLog;
 using Parliament.Common.Caching;
 using Parliament.Common.Extensions;
 using Parliament.Common.Interfaces;
 using Parliament.JargonBuster.Core.Domain;
 using Parliament.JargonBuster.Core.Services;
+
 
 namespace Parliament.JargonBuster.Core.Engine
 {

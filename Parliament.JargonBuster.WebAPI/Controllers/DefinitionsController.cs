@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using Parliament.Common.IoC;
-using Parliament.JargonBuster.Core.Domain;
+using NLog;
+using Parliament.Common.Extensions;
 using Parliament.JargonBuster.WebAPI.Models;
 using Parliament.JargonBuster.WebAPI.ViewModelBuilders;
+
 
 namespace Parliament.JargonBuster.WebAPI.Controllers
 {
@@ -12,6 +13,7 @@ namespace Parliament.JargonBuster.WebAPI.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DefinitionsController : ApiController
     {
+        private readonly ILogger _logger = LogManager.GetCurrentClassLogger();
         private readonly IDefinitionsResultViewModelBuilder _definitionsResultViewModelBuilder;
 
         public DefinitionsController(IDefinitionsResultViewModelBuilder definitionsResultViewModelBuilder)
@@ -19,10 +21,11 @@ namespace Parliament.JargonBuster.WebAPI.Controllers
             _definitionsResultViewModelBuilder = definitionsResultViewModelBuilder;
         }
 
-        [AcceptVerbs("GET", "POST")]
+        [AcceptVerbs("POST")]
         [Route("api/definitions")]
         public IEnumerable<DefinitionsResultModel> Items([FromBody]DefinitionsRequestModel model)
         {
+            _logger.Debug("POST - Page Content: {0}, Page Url: {1}".FormatString(model.PageContent, model.PageUrl));
             return _definitionsResultViewModelBuilder.Build(model);
         }
     }
