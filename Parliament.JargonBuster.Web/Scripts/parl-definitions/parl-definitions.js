@@ -24,17 +24,19 @@ function ParlJargonBuster(options) {
 
  	function initPopovers() {
  	    var options = {
- 	        placement: "bottom",
+ 	        placement: optimalPopoverPlacement,
  	        type: "html",
- 	        trigger: "click" //and for mobile?
+ 	        trigger: "click", //and for mobile?
+ 	        width: 500
  	    }
 
  	    $('[data-toggle="popover"]').webuiPopover(options);
  	}
 
- 	function optimalPopoverPlacement(context, source) {
- 	    var position = $(source).position();
- 	    if ((window.innerHeight - position.top) < 100) {
+ 	function optimalPopoverPlacement() {
+	    var popover = this.$element;
+ 	    var position = $(popover).position().top - $(window).scrollTop();
+ 	    if ((window.innerHeight - position) < 100) {
  	        return "top";
  	    }
  	    return "bottom";

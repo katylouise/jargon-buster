@@ -8,17 +8,13 @@
   text-decoration: none;
 }
 
-.webui-popover {
-    max-width: 500px;
-}
-
 .webui-popover-inner {
   background-color: #f7fefb;
 }
 
 /*This sorts out the arrow border */
 
-.webui-popover.bottom {
+.webui-popover.bottom, .webui-popover.top {
     border-top: 2px solid #087b49;
     border-left: 2px solid #087b49;
     border-right: 2px solid #087b49;
@@ -31,6 +27,12 @@
     margin-top:-1px;
 }
 
+.webui-popover.top > .arrow {
+    margin-left:-1px;
+    border-top-color: #087b49;
+    margin-bottom:-1px;
+}
+
 .webui-popover > .arrow {
     border-width: 10px;
 }
@@ -38,6 +40,11 @@
 .webui-popover.bottom > .arrow:after {
     top:2px;
     border-bottom-color: #f7fefb;
+}
+
+.webui-popover.top > .arrow:after {
+    bottom: 2px;
+    border-top-color: #f7fefb;
 }
 
 /* --------------- */
