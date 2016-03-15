@@ -1,16 +1,16 @@
 function ParlJargonBuster(options) {
     var _options = options;
+    var _defaultOptions =
+    {
+        wordFrequency: 3,
+        contentSelectors: [],
+        enabled: true,
+        definitionToggleSelector: ".parl-definitions"
+    };
 
 	function build() {
-	    if (typeof (_options) === "undefined") {
-	        _options =
-	        {
-	            wordFrequency: 3,
-	            contentSelectors: [],
-	            enabled: true,
-	            definitionToggleSelector: ".parl-definitions"
-	        }
-	    }
+	    _options = $.extend({}, _defaultOptions, _options);
+
 	    var content = "";
 	    $(_options.contentSelectors).each(function (contentSelectorIndex, contentSelector) {
 	        var $contentSelector = $(contentSelector);
@@ -113,9 +113,9 @@ function ParlJargonBuster(options) {
 
     function bindToggleDefinitions(html) {
         var options = {
-            placement: optimalPopoverPlacement,
+            placement: "bottom",
             type: "html",
-            trigger: "hover"
+            trigger: "click"
         }
         $(_options.definitionToggleSelector).attr("data-content", html);
         $(_options.definitionToggleSelector).webuiPopover(options);
