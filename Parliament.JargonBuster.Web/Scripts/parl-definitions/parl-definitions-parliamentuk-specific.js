@@ -11,7 +11,7 @@
     }
 
     function addDefinitionsToggleLink() {
-        $("#navigation #level-1").append("<li class='parl-definitions'>Definitions</li>");
+        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions'>Definitions</a></li>");
     }
 
     this.Build = build;
