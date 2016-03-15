@@ -26,7 +26,7 @@ namespace Parliament.JargonBuster.Web
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/popover").Include(
-                      "~/Content/popover/jquery.webui-popover.css"));
+                      "~/Content/popover/jquery.webui-popover.css", "~/Content/popover/custom-popover.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

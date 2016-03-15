@@ -1,0 +1,43 @@
+.definition {
+  color: #087b49;
+  cursor: help;
+  border-bottom: 1px dotted #099458;
+}
+
+.definition:hover {
+  text-decoration: none;
+}
+
+.webui-popover {
+    max-width: 500px;
+}
+
+.webui-popover-inner {
+  background-color: #f7fefb;
+}
+
+/*This sorts out the arrow border */
+
+.webui-popover.bottom {
+    border-top: 2px solid #087b49;
+    border-left: 2px solid #087b49;
+    border-right: 2px solid #087b49;
+    border-bottom: 2px solid #087b49;
+}
+
+.webui-popover.bottom > .arrow {
+    margin-left:-1px;
+    border-bottom-color: #087b49;
+    margin-top:-1px;
+}
+
+.webui-popover > .arrow {
+    border-width: 10px;
+}
+
+.webui-popover.bottom > .arrow:after {
+    top:2px;
+    border-bottom-color: #f7fefb;
+}
+
+/* --------------- */
