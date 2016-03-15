@@ -24,7 +24,7 @@ function ParlJargonBuster(options) {
 
  	function initPopovers() {
  	    var options = {
- 	        placement: optimalPopoverPlacement,
+ 	        placement: "vertical",
  	        type: "html",
  	        trigger: "click", //and for mobile?
  	        width: 500
@@ -33,14 +33,6 @@ function ParlJargonBuster(options) {
  	    $('[data-toggle="popover"]').webuiPopover(options);
  	}
 
- 	function optimalPopoverPlacement() {
-	    var popover = this.$element;
- 	    var position = $(popover).position().top - $(window).scrollTop();
- 	    if ((window.innerHeight - position) < 100) {
- 	        return "top";
- 	    }
- 	    return "bottom";
- 	}
 
     function getPhrases(content)
  	{
