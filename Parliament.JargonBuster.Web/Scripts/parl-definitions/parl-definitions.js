@@ -23,12 +23,11 @@ function ParlJargonBuster(options) {
  	function initPopovers() {
  	    var options = {
  	        placement: optimalPopoverPlacement,
- 	        html: "true",
+ 	        type: "html",
  	        trigger: "hover" //and for mobile?
  	    }
 
- 	    $('[data-toggle="tooltip"]').tooltip();
- 	    $('[data-toggle="popover"]').popover(options);
+ 	    $('[data-toggle="popover"]').webuiPopover(options);
  	}
 
  	function optimalPopoverPlacement(context, source) {
