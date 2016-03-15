@@ -31,6 +31,7 @@ function ParlJargonBuster(options) {
  	    }
 
  	    $('[data-toggle="popover"]').webuiPopover(options);
+ 	    $('[data-toggle="popover"]').removeClass("disabled");
  	}
 
 
@@ -97,10 +98,16 @@ function ParlJargonBuster(options) {
 
     function disablePopovers() {
         $('[data-toggle="popover"]').webuiPopover("destroy");
+        $('[data-toggle="popover"]').addClass("disabled");
     }
 
     function toggleDefinitions() {
-        _options.enabled = !_options.enabled;
+
+        var result = $(this).attr("data-value") === "true";
+        $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
+        $(this).addClass("enabled");
+
+        _options.enabled = result;
 
         if (_options.enabled) {
             initPopovers();
@@ -111,12 +118,22 @@ function ParlJargonBuster(options) {
 
     function bindToggleDefinitions(html) {
         var options = {
-            placement: "bottom",
+            placement: "vertical",
             type: "html",
-            trigger: "click"
+            trigger: "click",
+            onShow: bindEnableDisable,
+            onHide: unbindEnableDisable
         }
         $(_options.definitionToggleSelector).attr("data-content", html);
         $(_options.definitionToggleSelector).webuiPopover(options);
+    }
+
+    function bindEnableDisable() {
+        $(".parl-toggle-definitions-button").click(toggleDefinitions);
+    }
+
+    function unbindEnableDisable() {
+        $(".parl-toggle-definitions-button").unbind("click");
     }
 
     this.Build = build;

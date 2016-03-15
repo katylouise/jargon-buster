@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Mvc;
+using System.Web.Routing;
 using NLog;
 using Parliament.Common.Extensions;
 using Parliament.JargonBuster.WebAPI.Models;
@@ -21,12 +25,14 @@ namespace Parliament.JargonBuster.WebAPI.Controllers
             _definitionsResultViewModelBuilder = definitionsResultViewModelBuilder;
         }
 
-        [AcceptVerbs("POST")]
-        [Route("api/definitions")]
+        [System.Web.Http.AcceptVerbs("POST")]
+        [System.Web.Http.Route("api/definitions")]
         public DefinitionsResultModel Items([FromBody]DefinitionsRequestModel model)
         {
             _logger.Debug("POST - Page Content: {0}, Page Url: {1}".FormatString(model.PageContent, model.PageUrl));
             return _definitionsResultViewModelBuilder.Build(model);
         }
+
+       
     }
 }
