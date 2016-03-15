@@ -45,13 +45,13 @@
 }
 
 .webui-popover.bottom-right > .arrow {
-    margin-left:-8px;
+    margin-left:-1px;
     border-bottom-color: #087b49;
     margin-top:-1px;
 }
 
 .webui-popover.bottom-left > .arrow {
-    margin-left:-1px;
+    margin-left:-20px;
     border-bottom-color: #087b49;
     margin-top:-1px;
 }
@@ -69,7 +69,7 @@
 }
 
 .webui-popover.top-left > .arrow {
-    margin-left:-1px;
+    margin-left:-20px;
     border-top-color: #087b49;
     margin-bottom:-1px;
 }
@@ -99,12 +99,12 @@
 }
 
 .webui-popover.top-right > .arrow:after {
-    top: 3px;
+    top: -13px;
     border-bottom-color: #f7fefb;
 }
 
 .webui-popover.top-left > .arrow:after {
-    top: 3px;
+    top: -13px;
     border-bottom-color: #f7fefb;
 }
 
