@@ -93,10 +93,14 @@ function ParlJargonBuster(options) {
 
     function buildPopoverAnchor(jargonItem, textToReplace) {
         var alternates = "";
+        var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
-            alternates = "<div>Alternative(s): " + jargonItem.Alternates + "</div>";
+            alternativeTitle = "<b>Alternative(s): </b>";
+            alternates = jargonItem.Alternates;
         }
-    	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div>" + alternates + "'>" + textToReplace + "</a>";
+
+        var content = "'<div class=&quot;definition-content-titles&quot;><b>Definition: </b>" + alternativeTitle + "</div><div class=&quot;definition-actual-content&quot;><p>" + jargonItem.Definition + "</p><p>" + alternates + "</p></div>'";
+    	return "<a class='definition' href='#' data-toggle='popover' data-content=" + content + ">" + textToReplace + "</a>";
     }
 
     function disablePopovers() {

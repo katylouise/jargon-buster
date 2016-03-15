@@ -8,6 +8,18 @@
   text-decoration: none;
 }
 
+.definition-content-titles {
+    float: left;
+    width: 20%;
+    overflow: hidden;
+}
+
+.definition-actual-content {
+    float: left;
+    width: 80%;
+    overflow: hidden;
+} 
+
 .webui-popover-inner {
   background-color: #f7fefb;
 }
