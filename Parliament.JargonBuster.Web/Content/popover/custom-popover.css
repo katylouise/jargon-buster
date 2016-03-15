@@ -6,6 +6,11 @@
 
 .definition:hover {
   text-decoration: none;
+  color: #087b49;
+}
+
+.definition:visited {
+  color: #087b49;
 }
 
 .definition-content-titles {
@@ -26,7 +31,7 @@
 
 /*This sorts out the arrow border */
 
-.webui-popover.bottom, .webui-popover.top {
+.webui-popover {
     border-top: 2px solid #087b49;
     border-left: 2px solid #087b49;
     border-right: 2px solid #087b49;
@@ -39,7 +44,31 @@
     margin-top:-1px;
 }
 
+.webui-popover.bottom-right > .arrow {
+    margin-left:-8px;
+    border-bottom-color: #087b49;
+    margin-top:-1px;
+}
+
+.webui-popover.bottom-left > .arrow {
+    margin-left:-1px;
+    border-bottom-color: #087b49;
+    margin-top:-1px;
+}
+
 .webui-popover.top > .arrow {
+    margin-left:-1px;
+    border-top-color: #087b49;
+    margin-bottom:-1px;
+}
+
+.webui-popover.top-right > .arrow {
+    margin-left:-1px;
+    border-top-color: #087b49;
+    margin-bottom:-1px;
+}
+
+.webui-popover.top-left > .arrow {
     margin-left:-1px;
     border-top-color: #087b49;
     margin-bottom:-1px;
@@ -50,13 +79,33 @@
 }
 
 .webui-popover.bottom > .arrow:after {
-    top:2px;
+    top: 3px;
+    border-bottom-color: #f7fefb;
+}
+
+.webui-popover.bottom-right > .arrow:after {
+    top: 3px;
+    border-bottom-color: #f7fefb;
+}
+
+.webui-popover.bottom-left > .arrow:after {
+    top: 3px;
     border-bottom-color: #f7fefb;
 }
 
 .webui-popover.top > .arrow:after {
-    bottom: 2px;
+    bottom: 3px;
     border-top-color: #f7fefb;
+}
+
+.webui-popover.top-right > .arrow:after {
+    top: 3px;
+    border-bottom-color: #f7fefb;
+}
+
+.webui-popover.top-left > .arrow:after {
+    top: 3px;
+    border-bottom-color: #f7fefb;
 }
 
 /* --------------- */
