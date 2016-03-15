@@ -4,13 +4,14 @@
   border-bottom: 1px dotted #099458;
 }
 
-.definition:hover {
+.definition:hover, .definition:focus {
   text-decoration: none;
   color: #087b49;
 }
 
 .definition:visited {
-  color: #087b49;
+    text-decoration: none;
+    color: #087b49;
 }
 
 .definition-content-titles {
