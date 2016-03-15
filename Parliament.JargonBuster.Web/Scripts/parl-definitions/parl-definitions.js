@@ -6,7 +6,8 @@ function ParlJargonBuster(options) {
 	        _options =
 	        {
 	            wordFrequency: 3,
-                contentSelectors: []
+	            contentSelectors: [],
+                enabled: true
 	        }
 	    }
 	    var content = "";
@@ -94,8 +95,23 @@ function ParlJargonBuster(options) {
     	return "<a class='definition' href='#' data-toggle='popover' data-content='<div><b>Definition:</b> " + jargonItem.Definition + "</div>" + alternates + "'>" + textToReplace + "</a>";
     }
 
+    function disablePopovers() {
+        $('[data-toggle="popover"]').webuiPopover("destroy");
+    }
+
+    function toggleDefinitions() {
+        _options.enabled = !_options.enabled;
+
+        if (_options.enabled) {
+            initPopovers();
+        } else {
+            disablePopovers();
+        }
+    }
+
     this.Build = build;
     this.InitPopovers = initPopovers;
+    this.ToggleDefinitions = toggleDefinitions;
 }
 
         // TODO - Content length checking to not put a new jargon buster too close
