@@ -1,10 +1,21 @@
-function ParlJargonBuster()
-{
-	var _contentSelector;
+function ParlJargonBuster(options) {
+    var _options = options;
 
- 	function build(contentSelector) {
- 		_contentSelector = contentSelector;
- 		var content = $(_contentSelector).text();
+	function build() {
+	    if (typeof (_options) === "undefined") {
+	        _options =
+	        {
+	            wordFrequency: 3,
+                contentSelectors: []
+	        }
+	    }
+	    var content = "";
+	    $(_options.contentSelectors).each(function (contentSelectorIndex, contentSelector) {
+	        var $contentSelector = $(contentSelector);
+            if ($contentSelector.length !== 0) {
+                content += $contentSelector.text();
+            }   
+        });
 
         getPhrases(content);
 	 }
@@ -27,7 +38,6 @@ function ParlJargonBuster()
  	    }
  	    return "bottom";
  	}
-
 
     function getPhrases(content)
  	{
@@ -54,8 +64,10 @@ function ParlJargonBuster()
     function applyPopoverAnchors(index, jargonItem)
     {
     	var phrasedElements = getNodesThatContain(jargonItem.Phrase);
-    	phrasedElements.each(function(phrasedElementIndex, phrasedElementItem) {
-    		applyPopoverAnchor(jargonItem, phrasedElementItem);
+    	phrasedElements.each(function (phrasedElementIndex, phrasedElementItem) {
+            if (phrasedElementIndex % _options.wordFrequency === 0) {
+                applyPopoverAnchor(jargonItem, phrasedElementItem);
+            }
     	});
     }
 
@@ -70,9 +82,8 @@ function ParlJargonBuster()
     function applyPopoverAnchor(jargonItem, element) {
     	var elementContent = $(element).html();
     	var textToReplace = new RegExp("\\b(" + jargonItem.Phrase + ")\\b", 'i');
-        //remove global flag to only highlight first instance?
+    	var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
 
-        var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
         $(element).html(replacedContent);
     }
 

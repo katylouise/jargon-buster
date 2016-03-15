@@ -3,10 +3,14 @@
 }
 
 <script type="text/javascript" language="javascript">
-    $(document).ready(function() {
-        var jargonBuster = new ParlJargonBuster();
+    $(document).ready(function () {
+        var options = {
+            wordFrequency: 3,
+            contentSelectors: [".main-content"]
+        }
+        var jargonBuster = new ParlJargonBuster(options);
 
-        jargonBuster.Build(".main-content");
+        jargonBuster.Build();
     });
 </script>
 

@@ -1,8 +1,12 @@
 ﻿<script type="text/javascript" language="javascript">
     $(document).ready(function () {
-        var jargonBuster = new ParlJargonBuster();
+        var options = {
+            wordFrequency: 3,
+            contentSelectors: ["#content"]
+        }
+        var jargonBuster = new ParlJargonBuster(options);
 
-        jargonBuster.Build("#content");
+        jargonBuster.Build();
     });
 </script>
 
