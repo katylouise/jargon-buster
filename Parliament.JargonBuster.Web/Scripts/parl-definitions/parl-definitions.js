@@ -62,8 +62,13 @@ function ParlJargonBuster(options) {
     {
     	var phrasedElements = getNodesThatContain(jargonItem);
     	phrasedElements.each(function (phrasedElementIndex, phrasedElementItem) {
-            if (phrasedElementIndex % _options.wordFrequency === 0) {
-                applyPopoverAnchor(jargonItem, phrasedElementItem);
+    	    var phrases = jargonItem.Alternates.slice(0);
+	        phrases.push(jargonItem.Phrase);
+    	    if (phrasedElementIndex % _options.wordFrequency === 0) {
+	            $(phrases).each(function(phraseIndex, phraseItem) {
+	                applyPopoverAnchor(jargonItem, phraseItem, phrasedElementItem);
+	            });
+                
             }
     	});
     }
@@ -72,17 +77,35 @@ function ParlJargonBuster(options) {
         return nodeType === 3;
     }
 
+    function isPhraseInText(text, phrases) {
+        text = text.trim();
+        var phraseInText = false;
+        var index = 0;
+        if (text === "") return false;
+
+        while (phraseInText === false && index < phrases.length) {
+            if (text.indexOf(phrases[index].toLowerCase()) > -1) {
+                phraseInText = true;
+            }
+            index += 1;
+        }
+        return phraseInText;
+    }
+
     function getNodesThatContain(jargonItem) {
+        var phrasesToLookFor = jargonItem.Alternates.slice(0);
+        phrasesToLookFor.push(jargonItem.Phrase);
         var textNodes = $(document).find(":not(title, iframe, script, a, :header)").contents().filter(
-            function() {
-                return isTextNode(this.nodeType) && (this.textContent.toLowerCase().indexOf(jargonItem.Phrase) > -1);
+            function () {
+                return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
+                //return isTextNode(this.nodeType) && ((this.textContent.toLowerCase().indexOf(jargonItem.Phrase) > -1) || (this.textContent.toLowerCase().indexOf(jargonItem.AlternateContent) > -1));
             });
         return textNodes.parent();
     };
 
-    function applyPopoverAnchor(jargonItem, element) {
-    	var elementContent = $(element).html();
-    	var textToReplace = new RegExp("\\b(" + jargonItem.Phrase + ")\\b", 'i');
+    function applyPopoverAnchor(jargonItem, phraseItem, element) {
+        var elementContent = $(element).html();
+    	var textToReplace = new RegExp("\\b(" + phraseItem + ")\\b", 'i');
     	var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
 
         $(element).html(replacedContent);
