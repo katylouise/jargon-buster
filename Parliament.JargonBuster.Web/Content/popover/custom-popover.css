@@ -1,17 +1,17 @@
 .definition {
-  color: #087b49;
+  color: #512d6d;
   cursor: help;
-  border-bottom: 1px dotted #099458;
+  border-bottom: 1px dotted #512d6d;
 }
 
 .definition:hover, .definition:focus {
   text-decoration: none;
-  color: #087b49;
+  color: #512d6d;
 }
 
 .definition:visited {
     text-decoration: none;
-    color: #087b49;
+    color: #512d6d;
 }
 
 .definition-content-titles {
@@ -28,7 +28,6 @@
 
 .webui-popover-inner {
     padding: 15px 10px;
-    background-color: #fbf7ff;
 }
 
 /*This sorts out the arrow border */
@@ -38,6 +37,7 @@
     border-left: 2px solid #512d6d;
     border-right: 2px solid #512d6d;
     border-bottom: 2px solid #512d6d;
+    background-color: #fbf7ff;
 }
 
 .webui-popover.bottom > .arrow {
@@ -102,12 +102,12 @@
 
 .webui-popover.top-right > .arrow:after {
     top: -13px;
-    border-bottom-color: #fbf7ff;
+    border-top-color: #fbf7ff;
 }
 
 .webui-popover.top-left > .arrow:after {
     top: -13px;
-    border-bottom-color: #fbf7ff;
+    border-top-color: #fbf7ff;
 }
 
 /* --------------- */
