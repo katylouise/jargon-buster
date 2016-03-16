@@ -1,17 +1,17 @@
 .definition {
-  color: #087b49;
+  color: #512d6d;
   cursor: help;
-  border-bottom: 1px dotted #099458;
+  border-bottom: 1px dotted #512d6d;
 }
 
 .definition:hover, .definition:focus {
   text-decoration: none;
-  color: #087b49;
+  color: #512d6d;
 }
 
 .definition:visited {
     text-decoration: none;
-    color: #087b49;
+    color: #512d6d;
 }
 
 .definition-content-titles {
@@ -27,60 +27,90 @@
 } 
 
 .webui-popover-inner {
-  background-color: #f7fefb;
+    padding: 15px 10px;
 }
 
 /*This sorts out the arrow border */
 
 .webui-popover {
-    border-top: 2px solid #087b49;
-    border-left: 2px solid #087b49;
-    border-right: 2px solid #087b49;
-    border-bottom: 2px solid #087b49;
+    border-top: 2px solid #512d6d;
+    border-left: 2px solid #512d6d;
+    border-right: 2px solid #512d6d;
+    border-bottom: 2px solid #512d6d;
+    background-color: #fbf7ff;
 }
 
 .webui-popover.bottom > .arrow, .webui-popover.bottom-right > .arrow {
     margin-left:-1px;
-    border-bottom-color: #087b49;
+    border-bottom-color: #512d6d;
     margin-top:-1px;
 }
 
 .webui-popover.bottom-left > .arrow {
     margin-left:-20px;
-    border-bottom-color: #087b49;
+    border-bottom-color: #512d6d;
     margin-top:-1px;
 }
 
 .webui-popover.top > .arrow, .webui-popover.top-right > .arrow {
     margin-left:-1px;
-    border-top-color: #087b49;
+    border-top-color: #512d6d;
     margin-bottom:-1px;
 }
 
-
 .webui-popover.top-left > .arrow {
     margin-left:-20px;
-    border-top-color: #087b49;
+    border-top-color: #512d6d;
     margin-bottom:-1px;
 }
 
 .webui-popover > .arrow {
-    border-width: 10px;
+    border-width: 11px;
 }
 
 .webui-popover.bottom > .arrow:after, .webui-popover.bottom-right > .arrow:after, .webui-popover.bottom-left > .arrow:after {
     top: 3px;
-    border-bottom-color: #f7fefb;
+    border-bottom-color: #fbf7ff;
 }
 
 .webui-popover.top > .arrow:after {
     bottom: 3px;
-    border-top-color: #f7fefb;
+    border-top-color: #fbf7ff;
 }
 
 .webui-popover.top-right > .arrow:after, .webui-popover.top-left > .arrow:after {
     top: -13px;
-    border-bottom-color: #f7fefb;
+    border-top-color: #fbf7ff;
 }
 
 /* --------------- */
+
+/* css for enable-disbale toggle*/
+
+.parl-toggle-definitions-container {
+    width: 190px;
+}
+
+.parl-toggle-definitions-buttons {
+    clear: left;
+    float: left;
+    margin-top: 5px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.parl-toggle-definitions-button {
+    display: block;
+    float: left;
+    padding: 5px 15px;
+    margin: 1px;
+    color: #aaaaaa;
+}
+
+.parl-toggle-definitions-button.enabled {
+    border-radius: 3px;
+    color: white;
+    background-color: #512d6d;
+}
