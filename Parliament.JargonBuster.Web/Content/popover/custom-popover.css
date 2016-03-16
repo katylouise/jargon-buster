@@ -40,13 +40,7 @@
     background-color: #fbf7ff;
 }
 
-.webui-popover.bottom > .arrow {
-    margin-left:-1px;
-    border-bottom-color: #512d6d;
-    margin-top:-1px;
-}
-
-.webui-popover.bottom-right > .arrow {
+.webui-popover.bottom > .arrow, .webui-popover.bottom-right > .arrow {
     margin-left:-1px;
     border-bottom-color: #512d6d;
     margin-top:-1px;
@@ -58,13 +52,7 @@
     margin-top:-1px;
 }
 
-.webui-popover.top > .arrow {
-    margin-left:-1px;
-    border-top-color: #512d6d;
-    margin-bottom:-1px;
-}
-
-.webui-popover.top-right > .arrow {
+.webui-popover.top > .arrow, .webui-popover.top-right > .arrow {
     margin-left:-1px;
     border-top-color: #512d6d;
     margin-bottom:-1px;
@@ -80,17 +68,7 @@
     border-width: 11px;
 }
 
-.webui-popover.bottom > .arrow:after {
-    top: 3px;
-    border-bottom-color: #fbf7ff;
-}
-
-.webui-popover.bottom-right > .arrow:after {
-    top: 3px;
-    border-bottom-color: #fbf7ff;
-}
-
-.webui-popover.bottom-left > .arrow:after {
+.webui-popover.bottom > .arrow:after, .webui-popover.bottom-right > .arrow:after, .webui-popover.bottom-left > .arrow:after {
     top: 3px;
     border-bottom-color: #fbf7ff;
 }
@@ -100,12 +78,7 @@
     border-top-color: #fbf7ff;
 }
 
-.webui-popover.top-right > .arrow:after {
-    top: -13px;
-    border-top-color: #fbf7ff;
-}
-
-.webui-popover.top-left > .arrow:after {
+.webui-popover.top-right > .arrow:after, .webui-popover.top-left > .arrow:after {
     top: -13px;
     border-top-color: #fbf7ff;
 }
