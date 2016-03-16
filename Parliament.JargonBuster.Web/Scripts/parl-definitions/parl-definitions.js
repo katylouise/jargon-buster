@@ -104,18 +104,29 @@ function ParlJargonBuster(options) {
 
     function applyPopoverAnchor(jargonItem, phraseItem, element) {
         var elementContent = $(element).html();
-    	var textToReplace = new RegExp("\\b(" + phraseItem + ")\\b", 'i');
-    	var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1"));
+        var textToReplace = new RegExp("\\b(" + phraseItem + ")\\b", 'i');
 
+        var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1", phraseItem));
         $(element).html(replacedContent);
     }
 
-    function buildPopoverAnchor(jargonItem, textToReplace) {
+    function buildPopoverAnchor(jargonItem, textToReplace, phraseItem) {
         var alternates = "";
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
             alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternative(s): </p>";
-            alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent + "</p></div>";
+            var alternativePhrasesUnaltered = jargonItem.Alternates.slice(0);
+            var alternativePhrases = jargonItem.Alternates.slice(0).map(function (phrase) {
+                return phrase.toLowerCase();
+            });
+            var indexOfPhrase = alternativePhrases.indexOf(phraseItem.toLowerCase());
+            if (indexOfPhrase > -1) {
+                alternativePhrasesUnaltered.splice(indexOfPhrase, 1);
+                alternativePhrasesUnaltered.push(jargonItem.Phrase);
+                alternates = "<p class=&quot;definition-actual-content&quot;>" + alternativePhrasesUnaltered.join(", ") + "</p></div>";
+            } else {
+                alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent + "</p></div>";
+            }
         }
 
         var content = "'<div class=&quot;definition-content&quot;><b class=&quot;definition-content-titles&quot;>Definition: </b><p class=&quot;definition-actual-content&quot;>" + jargonItem.Definition + "</p></div>" + alternativeTitle + alternates + "'";
