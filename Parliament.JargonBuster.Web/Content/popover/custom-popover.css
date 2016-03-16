@@ -39,13 +39,7 @@
     border-bottom: 2px solid #087b49;
 }
 
-.webui-popover.bottom > .arrow {
-    margin-left:-1px;
-    border-bottom-color: #087b49;
-    margin-top:-1px;
-}
-
-.webui-popover.bottom-right > .arrow {
+.webui-popover.bottom > .arrow, .webui-popover.bottom-right > .arrow {
     margin-left:-1px;
     border-bottom-color: #087b49;
     margin-top:-1px;
@@ -57,17 +51,12 @@
     margin-top:-1px;
 }
 
-.webui-popover.top > .arrow {
+.webui-popover.top > .arrow, .webui-popover.top-right > .arrow {
     margin-left:-1px;
     border-top-color: #087b49;
     margin-bottom:-1px;
 }
 
-.webui-popover.top-right > .arrow {
-    margin-left:-1px;
-    border-top-color: #087b49;
-    margin-bottom:-1px;
-}
 
 .webui-popover.top-left > .arrow {
     margin-left:-20px;
@@ -79,17 +68,7 @@
     border-width: 10px;
 }
 
-.webui-popover.bottom > .arrow:after {
-    top: 3px;
-    border-bottom-color: #f7fefb;
-}
-
-.webui-popover.bottom-right > .arrow:after {
-    top: 3px;
-    border-bottom-color: #f7fefb;
-}
-
-.webui-popover.bottom-left > .arrow:after {
+.webui-popover.bottom > .arrow:after, .webui-popover.bottom-right > .arrow:after, .webui-popover.bottom-left > .arrow:after {
     top: 3px;
     border-bottom-color: #f7fefb;
 }
@@ -99,12 +78,7 @@
     border-top-color: #f7fefb;
 }
 
-.webui-popover.top-right > .arrow:after {
-    top: -13px;
-    border-bottom-color: #f7fefb;
-}
-
-.webui-popover.top-left > .arrow:after {
+.webui-popover.top-right > .arrow:after, .webui-popover.top-left > .arrow:after {
     top: -13px;
     border-bottom-color: #f7fefb;
 }

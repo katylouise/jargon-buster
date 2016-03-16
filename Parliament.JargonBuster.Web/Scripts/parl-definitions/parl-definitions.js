@@ -92,11 +92,11 @@ function ParlJargonBuster(options) {
         var alternates = "";
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
-            alternativeTitle = "<b>Alternative(s): </b>";
-            alternates = jargonItem.AlternatesContent;
+            alternativeTitle = "<div class=&quot;definition-alternates&quot;><b class=&quot;definition-content-titles&quot;>Alternative(s): </b>";
+            alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent + "</p></div>";
         }
 
-        var content = "'<div class=&quot;definition-content-titles&quot;><b>Definition: </b>" + alternativeTitle + "</div><div class=&quot;definition-actual-content&quot;><p>" + jargonItem.Definition + "</p><p>" + alternates + "</p></div>'";
+        var content = "'<div class=&quot;definition-content&quot;><b class=&quot;definition-content-titles&quot;>Definition: </b><p class=&quot;definition-actual-content&quot;>" + jargonItem.Definition + "</p></div>" + alternativeTitle + alternates + "'";
     	return "<a class='definition' href='#' data-toggle='popover' data-content=" + content + ">" + textToReplace + "</a>";
     }
 

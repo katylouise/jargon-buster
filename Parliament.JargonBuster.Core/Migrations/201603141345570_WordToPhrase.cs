@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace Parliament.JargonBuster.Core.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class WordToPhrase : DbMigration
     {
         public override void Up()
