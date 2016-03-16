@@ -41,24 +41,28 @@
 }
 
 .webui-popover.bottom > .arrow, .webui-popover.bottom-right > .arrow {
+    top: -10px;
     margin-left:-1px;
     border-bottom-color: #512d6d;
     margin-top:-1px;
 }
 
 .webui-popover.bottom-left > .arrow {
+    top: -10px;
     margin-left:-20px;
     border-bottom-color: #512d6d;
     margin-top:-1px;
 }
 
 .webui-popover.top > .arrow, .webui-popover.top-right > .arrow {
+    bottom: -10px;
     margin-left:-1px;
     border-top-color: #512d6d;
     margin-bottom:-1px;
 }
 
 .webui-popover.top-left > .arrow {
+    bottom: -10px;
     margin-left:-20px;
     border-top-color: #512d6d;
     margin-bottom:-1px;
