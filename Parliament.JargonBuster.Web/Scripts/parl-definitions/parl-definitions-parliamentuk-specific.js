@@ -1,4 +1,14 @@
-﻿function ParlJargonBusterParliamentUK(options) {
+﻿$(document).ready(function () {
+    var options = {
+        wordFrequency: 3,
+        contentSelectors: ["#content"]
+    }
+    var jargonBuster = new ParlJargonBusterParliamentUK(options);
+
+    jargonBuster.Build();
+});
+
+function ParlJargonBusterParliamentUK(options) {
     var _options = options;
     var _jargonBuster;
 
