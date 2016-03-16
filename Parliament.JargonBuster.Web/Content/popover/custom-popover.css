@@ -33,10 +33,10 @@
 /*This sorts out the arrow border */
 
 .webui-popover {
-    border-top: 2px solid #512d6d;
-    border-left: 2px solid #512d6d;
-    border-right: 2px solid #512d6d;
-    border-bottom: 2px solid #512d6d;
+    border-top: 1px solid #512d6d;
+    border-left: 1px solid #512d6d;
+    border-right: 1px solid #512d6d;
+    border-bottom: 1px solid #512d6d;
     background-color: #fbf7ff;
 }
 
@@ -69,17 +69,17 @@
 }
 
 .webui-popover.bottom > .arrow:after, .webui-popover.bottom-right > .arrow:after, .webui-popover.bottom-left > .arrow:after {
-    top: 3px;
+    top: 1px;
     border-bottom-color: #fbf7ff;
 }
 
 .webui-popover.top > .arrow:after {
-    bottom: 3px;
+    bottom: 1px;
     border-top-color: #fbf7ff;
 }
 
 .webui-popover.top-right > .arrow:after, .webui-popover.top-left > .arrow:after {
-    top: -13px;
+    top: -11px;
     border-top-color: #fbf7ff;
 }
 
