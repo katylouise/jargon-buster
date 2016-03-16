@@ -26,7 +26,7 @@ function ParlJargonBuster(options) {
  	    var options = {
  	        placement: "vertical",
  	        type: "html",
- 	        trigger: "click", //and for mobile?
+ 	        trigger: "hover", //and for mobile?
  	        width: 500
  	    }
 
