@@ -1,6 +1,6 @@
 .definition {
   color: #512d6d;
-  cursor: help;
+  cursor: url(question-icon-2.svg), auto;
   border-bottom: 1px dotted #512d6d;
 }
 

@@ -98,7 +98,6 @@ function ParlJargonBuster(options) {
         var textNodes = $(document).find(":not(title, iframe, script, a, :header)").contents().filter(
             function () {
                 return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
-                //return isTextNode(this.nodeType) && ((this.textContent.toLowerCase().indexOf(jargonItem.Phrase) > -1) || (this.textContent.toLowerCase().indexOf(jargonItem.AlternateContent) > -1));
             });
         return textNodes.parent();
     };
@@ -115,7 +114,7 @@ function ParlJargonBuster(options) {
         var alternates = "";
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
-            alternativeTitle = "<div class=&quot;definition-alternates&quot;><b class=&quot;definition-content-titles&quot;>Alternative(s): </b>";
+            alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternative(s): </p>";
             alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent + "</p></div>";
         }
 
