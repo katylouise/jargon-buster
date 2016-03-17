@@ -36,6 +36,18 @@
     overflow: hidden;
 } 
 
+.webui-popover .webui-popover-content {
+    padding: 15px;    
+}
+
+.definition-alternates p {
+    margin-bottom: 0;
+}
+
+.definition-content p {
+    margin-bottom: 5px;
+}
+
 /*This sorts out the arrow border */
 
 .webui-popover {
