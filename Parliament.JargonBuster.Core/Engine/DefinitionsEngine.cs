@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using NLog;
 using Parliament.Common.Caching;
 using Parliament.Common.Extensions;
 using Parliament.Common.Interfaces;
@@ -41,12 +40,14 @@ namespace Parliament.JargonBuster.Core.Engine
                                       .OrderByDescending(x => Regex.Matches(x.Phrase, @"\w").Count)
                                       .ToList();
 
-            var sbPageContent = new StringBuilder(pageContent);
-    
+            var loweredPageContent = pageContent.ToLower();
+            var sbPageContent = new StringBuilder(loweredPageContent);
+            
             return definitions.WhereToList(x =>
             {
-                if (!pageContent.Contains(x.Phrase)) return false;
-                sbPageContent.Replace(x.Phrase, string.Empty);
+                var phrase = x.Phrase.ToLower();
+                if (!loweredPageContent.Contains(phrase)) return false;
+                sbPageContent.Replace(phrase, string.Empty);
                 return true;
             });       
         }
