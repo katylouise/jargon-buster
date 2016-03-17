@@ -86,12 +86,12 @@
 
 /* --------------- */
 
-/* css for enable-disbale toggle*/
+/* css for enable-disable toggle*/
 
 .parl-toggle-definitions-container {
     float: left;
     clear: both;
-    width: 205px;
+    width: 190px;
     padding: 15px 10px;
 }
 

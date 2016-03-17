@@ -1,0 +1,21 @@
+.parl-definitions-toggle-list {
+    float: right;
+    border-right: 0px;
+}
+
+.parl-definitions {
+    color: #512d6d;
+    cursor: help;/* url(question-icon-2.svg), auto;*/
+    border-bottom: 1px dotted #512d6d;
+}
+
+.parl-definitions:hover, .parl-definitions:focus {
+    text-decoration: none;
+    color: #512d6d;
+    background-color: #ffffff;
+}
+
+.parl-definitions:visited {
+    text-decoration: none;
+    color: #512d6d;
+}
