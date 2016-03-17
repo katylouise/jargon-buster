@@ -231,6 +231,10 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\popover\custom-popover.css" />
+    <Content Include="Content\popover\jquery.webui-popover.css" />
+    <Content Include="Content\popover\parliament-specific-css.css" />
+    <Content Include="Content\popover\question-icon-2.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
