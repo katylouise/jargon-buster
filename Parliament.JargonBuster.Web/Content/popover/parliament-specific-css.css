@@ -79,3 +79,10 @@
     text-decoration: none;
     color: #512d6d;
 }
+
+/* Fix for visited links */
+
+#content .definition:visited {
+    text-decoration: none;
+    color: #512d6d;
+}
