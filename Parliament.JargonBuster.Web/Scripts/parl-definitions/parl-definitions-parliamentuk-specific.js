@@ -21,7 +21,7 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function addDefinitionsToggleLink() {
-        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions'>Definitions</a></li>");
+        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions' data-style='toggle'>Definitions</a></li>");
     }
 
     this.Build = build;

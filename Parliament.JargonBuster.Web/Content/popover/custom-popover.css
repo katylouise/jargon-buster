@@ -26,10 +26,6 @@
     overflow: hidden;
 } 
 
-.webui-popover-inner {
-    padding: 15px 10px;
-}
-
 /*This sorts out the arrow border */
 
 .webui-popover {
@@ -93,7 +89,10 @@
 /* css for enable-disbale toggle*/
 
 .parl-toggle-definitions-container {
-    width: 190px;
+    float: left;
+    clear: both;
+    width: 205px;
+    padding: 15px 10px;
 }
 
 .parl-toggle-definitions-buttons {
