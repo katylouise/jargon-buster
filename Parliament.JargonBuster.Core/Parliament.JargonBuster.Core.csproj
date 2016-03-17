@@ -47,6 +47,14 @@
       <HintPath>..\packages\NUnit.3.2.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.1.1.372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.1.372\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.1.1.372, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.1.372\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -58,11 +66,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomModules\CustomModule.cs" />
+    <Compile Include="CustomModules\CustomModulesFactory.cs" />
+    <Compile Include="CustomModules\ICustomModule.cs" />
+    <Compile Include="CustomModules\ICustomModulesFactory.cs" />
     <Compile Include="Domain\AlternateDefinitionItem.cs" />
     <Compile Include="Domain\Context\JargonBusterDbContext.cs" />
     <Compile Include="Domain\DefinitionItem.cs" />
     <Compile Include="Engine\DefinitionsEngine.cs" />
     <Compile Include="Engine\IDefinitionsEngine.cs" />
+    <Compile Include="IoC\CustomModulesIoC.cs" />
     <Compile Include="Migrations\201603091644242_AlternateDefinitionToDefinition.cs" />
     <Compile Include="Migrations\201603091644242_AlternateDefinitionToDefinition.Designer.cs">
       <DependentUpon>201603091644242_AlternateDefinitionToDefinition.cs</DependentUpon>
@@ -97,6 +110,7 @@
       <Name>Parliament.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

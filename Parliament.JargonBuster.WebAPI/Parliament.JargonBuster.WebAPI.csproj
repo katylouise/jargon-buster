@@ -212,13 +212,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\DefinitionsToggleController.cs" />
+    <Compile Include="Controllers\CustomModulesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DefinitionsController.cs" />
     <Compile Include="DependencyResolution\ServiceActivator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomModuleItemModel.cs" />
     <Compile Include="Models\DefinitionsRequestModel.cs" />
     <Compile Include="Models\DefinitionsResultItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,7 +287,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\DefinitionsToggle\_ToggleDefinitions.cshtml" />
+    <Content Include="Views\CustomModules\_ToggleDefinitions.cshtml" />
+    <Content Include="Views\CustomModules\_RightModuleParlUKHelp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Parliament.Common\Parliament.Common.csproj">

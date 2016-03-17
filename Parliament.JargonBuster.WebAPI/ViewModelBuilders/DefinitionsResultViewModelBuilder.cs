@@ -6,6 +6,7 @@ using System.Web.Routing;
 using Parliament.Common.Caching;
 using Parliament.Common.Extensions;
 using Parliament.Common.Interfaces;
+using Parliament.JargonBuster.Core.CustomModules;
 using Parliament.JargonBuster.Core.Domain;
 using Parliament.JargonBuster.Core.Engine;
 using Parliament.JargonBuster.WebAPI.Controllers;
@@ -16,24 +17,41 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
     public class DefinitionsResultViewModelBuilder : CachedService, IDefinitionsResultViewModelBuilder
     {
         private readonly IDefinitionsEngine _engine;
+        private readonly ICustomModulesFactory _customModulesFactory;
 
-        public DefinitionsResultViewModelBuilder(IDefinitionsEngine engine, IConfigurationBuilder configurationBuilder)
+        public DefinitionsResultViewModelBuilder(IDefinitionsEngine engine, IConfigurationBuilder configurationBuilder, ICustomModulesFactory customModulesFactory)
             : base(configurationBuilder, "DefinitionsResult")
         {
             _engine = engine;
+            _customModulesFactory = customModulesFactory;
         }
 
         public DefinitionsResultModel Build(DefinitionsRequestModel requestModel)
         {
             return new DefinitionsResultModel
-            {  
+            {
                 Phrases = _engine.GetDefinitions(requestModel.PageContent, requestModel.PageUrl)
-                                 .SelectToList(BuildItemModel),
-                ToggleDefinitionHtml = GetCached("ToggleDefinitionsHtml", () => RenderPartialViewToString("DefinitionsToggle", "_ToggleDefinitions"))
+                                 .SelectToList(BuildDefinitionsModel),
+                CustomModules = _customModulesFactory.GetCustomModules(requestModel.ProjectName)
+                                                     .SelectToList(BuildCustomModules)
             };
         }
 
-        private DefinitionsResultItemModel BuildItemModel(DefinitionItem definition)
+        private CustomModuleItemModel BuildCustomModules(ICustomModule customModule)
+        {
+            return new CustomModuleItemModel
+            {
+                ModuleName = customModule.ModuleFriendlyName,
+                ModuleHtml = GetCached(BuildCacheKeyForCustomModule(customModule), () => RenderPartialViewToString("CustomModules", customModule.ModuleViewName))
+            };
+        }
+
+        private string BuildCacheKeyForCustomModule(ICustomModule customModule)
+        {
+            return "CustomModule_{0}_{1}".FormatString(customModule.ProjectName, customModule.ModuleFriendlyName);
+        }
+
+        private DefinitionsResultItemModel BuildDefinitionsModel(DefinitionItem definition)
         {
             return new DefinitionsResultItemModel
             {
@@ -51,7 +69,7 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
 
             var routeData = new RouteData();
             routeData.Values.Add("controller", controllerName);
-            var controllerContext = new ControllerContext(contextBase, routeData, new DefinitionsToggleController());
+            var controllerContext = new ControllerContext(contextBase, routeData, new CustomModulesController());
 
             using (var sw = new StringWriter())
             {
@@ -61,7 +79,7 @@ namespace Parliament.JargonBuster.WebAPI.ViewModelBuilders
                 var viewContext = new ViewContext(controllerContext, razorViewResult.View, new ViewDataDictionary(), new TempDataDictionary(), sw);
                 razorViewResult.View.Render(viewContext, sw);
 
-                return sw.GetStringBuilder().ToString();
+                return sw.GetStringBuilder().ToString().Trim();
             }
         }
     }

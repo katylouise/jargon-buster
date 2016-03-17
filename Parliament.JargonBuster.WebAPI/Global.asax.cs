@@ -24,6 +24,8 @@ namespace Parliament.JargonBuster.WebAPI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var container = Bootstrapper.Build();
+
+            _logger.Debug(container.WhatDoIHave());
             GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator),
                 new StructureMapHttpControllerActivator(container));
         }

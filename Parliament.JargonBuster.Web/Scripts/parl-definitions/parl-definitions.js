@@ -5,7 +5,8 @@ function ParlJargonBuster(options) {
         wordFrequency: 3,
         contentSelectors: [],
         enabled: true,
-        definitionToggleSelector: ".parl-definitions"
+        project: "default",
+        onSuccess: null
     };
 
 	function build() {
@@ -32,6 +33,7 @@ function ParlJargonBuster(options) {
 
  	    $('[data-toggle="popover"]').webuiPopover(options);
  	    $('[data-toggle="popover"]').removeClass("disabled");
+ 	    $('[data-toggle="popover"]').click(function (e) { e.preventDefault(); });
  	}
 
 
@@ -43,17 +45,18 @@ function ParlJargonBuster(options) {
             url: "http://definitions.webapi.local.dev.parliament.uk/api/definitions",
             data: JSON.stringify({
                 PageContent: content,
-                PageUrl: window.location.href
+                PageUrl: window.location.href,
+                ProjectName: _options.project
             }),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (result) {
                 $(result.Phrases).each(applyPopoverAnchors);
                 initPopovers();
-                bindToggleDefinitions(result.ToggleDefinitionHtml);
+                if (_options.onSuccess != null) _options.onSuccess(result);
             },
-            error: function(result) {
-                alert("an error occurred");
+            error: function () {
+                //TODO - useful error handling
             }
         });
     }
@@ -141,8 +144,6 @@ function ParlJargonBuster(options) {
     function toggleDefinitions() {
 
         var result = $(this).attr("data-value") === "true";
-        $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
-        $(this).addClass("enabled");
 
         _options.enabled = result;
 
@@ -151,35 +152,12 @@ function ParlJargonBuster(options) {
         } else {
             disablePopovers();
         }
+
+        return _options.enabled;
     }
 
-    function bindToggleDefinitions(html) {
-        var options = {
-            placement: "vertical",
-            type: "html",
-            trigger: "click",
-            onShow: bindEnableDisable,
-            onHide: unbindEnableDisable
-        }
-        $(_options.definitionToggleSelector).attr("data-content", html);
-        $(_options.definitionToggleSelector).webuiPopover(options);
-    }
-
-    function bindEnableDisable() {
-        $(".parl-toggle-definitions-button").click(toggleDefinitions);
-    }
-
-    function unbindEnableDisable() {
-        $(".parl-toggle-definitions-button").unbind("click");
-    }
 
     this.Build = build;
     this.InitPopovers = initPopovers;
     this.ToggleDefinitions = toggleDefinitions;
 }
-
-        // TODO - Content length checking to not put a new jargon buster too close
-        // TODO - Phrase containing another smaller phrase
-        // TODO - Do not apply jargon busters to links or headers
-        // TODO (optional) - Possible override of header?
-
