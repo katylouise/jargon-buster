@@ -60,7 +60,7 @@ function ParlJargonBusterParliamentUK(options) {
         var options = {
             placement: "vertical",
             type: "html",
-            trigger: "hover",
+            trigger: "click",
             width: 500
         }
         $(".definitions-example").webuiPopover(options);
