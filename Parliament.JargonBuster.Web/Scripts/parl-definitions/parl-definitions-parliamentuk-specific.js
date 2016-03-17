@@ -42,6 +42,7 @@ function ParlJargonBusterParliamentUK(options) {
 
         $("#content #panel").prepend(customModule.ModuleHtml);
         $(".parl-definitions-close").click(hideRightModule);
+        buildPopoverAnchorDemo();
         //TODO - Bind links for feedback form
     }
 
@@ -52,6 +53,18 @@ function ParlJargonBusterParliamentUK(options) {
 
     function showRightModule() {
         $(".parl-definitions-right-hand-module").show();
+    }
+
+    //TODO - refactor the parl-definitions version of this so we can just create our own custom popup anchors
+    function buildPopoverAnchorDemo() {
+        var options = {
+            placement: "vertical",
+            type: "html",
+            trigger: "hover",
+            width: 500
+        }
+        $(".definitions-example").webuiPopover(options);
+        $(".definitions-example").click(function (e) { e.preventDefault(); });
     }
 
     /* Enable / Disable Definitions */
@@ -81,17 +94,16 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function bindEnableDisable() {
-        $(".parl-toggle-definitions-button").click(function() {
-            var enabled = _jargonBuster.ToggleDefinitions();
+        $(".parl-toggle-definitions-button").click(function () {
+            var enabled = $(this).attr("data-value") === "true";
+            _jargonBuster.ToggleDefinitions(enabled);
             $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
             $(this).addClass("enabled");
             if (!enabled) {
                 hideRightModule();
             }
-            else {
-                if (hasHiddenRightModuleAtLeastOnce()) {
-                    showRightModule();
-                }
+            else if (hasHiddenRightModuleAtLeastOnce()) {
+                showRightModule();
             }
         });
     }

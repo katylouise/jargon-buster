@@ -31,9 +31,10 @@ function ParlJargonBuster(options) {
  	        width: 500
  	    }
 
- 	    $('[data-toggle="popover"]').webuiPopover(options);
- 	    $('[data-toggle="popover"]').removeClass("disabled");
- 	    $('[data-toggle="popover"]').click(function (e) { e.preventDefault(); });
+	    var $popovers = $('[data-toggle="popover"]');
+	    $popovers.webuiPopover(options);
+	    $popovers.removeClass("disabled");
+	    $popovers.click(function (e) { e.preventDefault(); });
  	}
 
 
@@ -117,7 +118,7 @@ function ParlJargonBuster(options) {
         var alternates = "";
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
-            alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternative(s): </p>";
+            alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternatives: </p>";
             var alternativePhrasesUnaltered = jargonItem.Alternates.slice(0);
             var alternativePhrases = jargonItem.Alternates.slice(0).map(function (phrase) {
                 return phrase.toLowerCase();
@@ -141,10 +142,7 @@ function ParlJargonBuster(options) {
         $('[data-toggle="popover"]').addClass("disabled");
     }
 
-    function toggleDefinitions() {
-
-        var result = $(this).attr("data-value") === "true";
-
+    function toggleDefinitions(result) {
         _options.enabled = result;
 
         if (_options.enabled) {
@@ -152,8 +150,6 @@ function ParlJargonBuster(options) {
         } else {
             disablePopovers();
         }
-
-        return _options.enabled;
     }
 
 

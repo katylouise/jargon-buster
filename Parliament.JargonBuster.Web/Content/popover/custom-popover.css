@@ -4,6 +4,16 @@
   border-bottom: 1px dotted #512d6d;
 }
 
+.definition.disabled, .definition.disabled:visited, .definition.disabled:hover  {
+    color: inherit;
+    cursor: default;
+    border: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+
+
 .definition:hover, .definition:focus {
   text-decoration: none;
   color: #512d6d;
