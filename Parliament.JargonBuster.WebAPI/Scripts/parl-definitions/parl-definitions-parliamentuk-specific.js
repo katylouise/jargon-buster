@@ -69,7 +69,7 @@ function ParlJargonBusterParliamentUK(options) {
 
     /* Enable / Disable Definitions */
     function addDefinitionsToggleLink() {
-        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions'>Definitions <img class='info-icon' src='http://definitions.website.local.dev.parliament.uk/Content/popover/question-icon-2.svg'></a></li>");
+        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions'>Definitions <img class='info-icon' src='http://definitions.webapi.local.dev.parliament.uk/Content/popover/question-icon-2.svg'></a></li>");
 
         //TODO - Could do an ajax request to get just the module content if the WebAPI hasn't either yet returned the page content (or if definitions is currently disabled)      
     }
