@@ -31,9 +31,10 @@ function ParlJargonBuster(options) {
  	        width: 500
  	    }
 
- 	    $('[data-toggle="popover"]').webuiPopover(options);
- 	    $('[data-toggle="popover"]').removeClass("disabled");
- 	    $('[data-toggle="popover"]').click(function (e) { e.preventDefault(); });
+	    var $popovers = $('[data-toggle="popover"]');
+	    $popovers.webuiPopover(options);
+	    $popovers.removeClass("disabled");
+	    $popovers.click(function (e) { e.preventDefault(); });
  	}
 
 
