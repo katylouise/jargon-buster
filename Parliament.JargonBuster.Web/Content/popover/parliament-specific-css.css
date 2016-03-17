@@ -23,3 +23,11 @@
     text-decoration: none;
     color: #512d6d;
 }
+
+#header img.info-icon {
+    float: right;
+    width: 13px;
+    height: 13px;
+    margin-bottom: 0;
+    margin-left: 5px;
+}

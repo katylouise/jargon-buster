@@ -21,7 +21,7 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function addDefinitionsToggleLink() {
-        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions' data-style='toggle'>Definitions</a></li>");
+        $("#navigation #level-1").append("<li class='parl-definitions-toggle-list'><a class='parl-definitions'>Definitions <img class='info-icon' src='http://definitions.website.local.dev.parliament.uk/Content/popover/question-icon-2.svg'></a></li>");
     }
 
     this.Build = build;
