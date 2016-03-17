@@ -271,6 +271,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\PublishProfiles\DevCi.pubxml" />
+    <None Include="Properties\PublishProfiles\PPE.pubxml" />
+    <None Include="Properties\PublishProfiles\Prod.pubxml" />
+    <None Include="Properties\PublishProfiles\QA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
