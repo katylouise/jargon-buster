@@ -81,17 +81,16 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function bindEnableDisable() {
-        $(".parl-toggle-definitions-button").click(function() {
-            var enabled = _jargonBuster.ToggleDefinitions();
+        $(".parl-toggle-definitions-button").click(function () {
+            var enabled = $(this).attr("data-value") === "true";
+            _jargonBuster.ToggleDefinitions(enabled);
             $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
             $(this).addClass("enabled");
             if (!enabled) {
                 hideRightModule();
             }
-            else {
-                if (hasHiddenRightModuleAtLeastOnce()) {
-                    showRightModule();
-                }
+            else if (hasHiddenRightModuleAtLeastOnce()) {
+                showRightModule();
             }
         });
     }

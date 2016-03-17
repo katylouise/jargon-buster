@@ -141,10 +141,7 @@ function ParlJargonBuster(options) {
         $('[data-toggle="popover"]').addClass("disabled");
     }
 
-    function toggleDefinitions() {
-
-        var result = $(this).attr("data-value") === "true";
-
+    function toggleDefinitions(result) {
         _options.enabled = result;
 
         if (_options.enabled) {
@@ -152,8 +149,6 @@ function ParlJargonBuster(options) {
         } else {
             disablePopovers();
         }
-
-        return _options.enabled;
     }
 
 
