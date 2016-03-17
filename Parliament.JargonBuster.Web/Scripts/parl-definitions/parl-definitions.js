@@ -117,7 +117,7 @@ function ParlJargonBuster(options) {
         var alternates = "";
         var alternativeTitle = "";
         if (jargonItem.DisplayAlternates) {
-            alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternative(s): </p>";
+            alternativeTitle = "<div class=&quot;definition-alternates&quot;><p class=&quot;definition-content-titles&quot;>Alternatives: </p>";
             var alternativePhrasesUnaltered = jargonItem.Alternates.slice(0);
             var alternativePhrases = jargonItem.Alternates.slice(0).map(function (phrase) {
                 return phrase.toLowerCase();
