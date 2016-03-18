@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var jargonBuster = new ParlJargonBusterParliamentUK();
-    var options = new {
+    var options = {
          webApiUrl: $("#parl-definitions-url").val()
     };
     jargonBuster.Build(options);
