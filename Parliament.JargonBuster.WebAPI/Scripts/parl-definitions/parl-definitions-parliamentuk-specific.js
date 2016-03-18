@@ -77,7 +77,7 @@ function ParlJargonBusterParliamentUK(options) {
         var options = {
             placement: "vertical",
             type: "html",
-            trigger: "click",
+            trigger: "hover",
             width: 500
         }
         $(".definitions-example").webuiPopover(options);
@@ -102,7 +102,7 @@ function ParlJargonBusterParliamentUK(options) {
         var options = {
             placement: "vertical",
             type: "html",
-            trigger: "hover",
+            trigger: "click",
             onShow: bindEnableDisable,
             onHide: unbindEnableDisable
         }
