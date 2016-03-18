@@ -4,6 +4,15 @@
     };
     var jargonBuster = new ParlJargonBusterParliamentUK(options);
     jargonBuster.Build();
+
+    if (typeof(Cookies.get("hasVisited")) === "undefined") {
+        setTimeout(function () {
+            Cookies.set("hasVisited", "true");
+            var modal = "<div id='modal' style='display: none;'>This is our modal</div>";
+            $('body').append(modal);
+            $('#modal').modal();
+        }, 5000);
+    }
 });
 
 function ParlJargonBusterParliamentUK(options) {
@@ -27,8 +36,14 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function onSuccessParliamentUK(results) {
-        addRightHandModule(results);
+        if (Cookies.get("hasEnabledDefinitions") === undefined || Cookies.get("hasEnabledDefinitions") === "true") {
+            addRightHandModule(results);
+        }
         bindToggleDefinitions(results);
+        if (Cookies.get("hasEnabledDefinitions") !== undefined) {
+            var enabled = Cookies.get("hasEnabledDefinitions") === "true";
+            _jargonBuster.ToggleDefinitions(enabled);
+        }
     }
 
     function getCustomModuleByName(customModules, name) {
@@ -96,8 +111,15 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     function bindEnableDisable() {
+        if (Cookies.get("hasEnabledDefinitions") !== undefined) {
+            $(".parl-toggle-definitions-button").removeClass("enabled");
+            var toggleButton = $(document).find(".parl-toggle-definitions-button[data-value='" + Cookies.get("hasEnabledDefinitions") +"']");
+            toggleButton.addClass("enabled");
+        }
         $(".parl-toggle-definitions-button").click(function () {
-            var enabled = $(this).attr("data-value") === "true";
+            var buttonStateString = $(this).attr("data-value");
+            var enabled = buttonStateString === "true";
+            Cookies.set("hasEnabledDefinitions", buttonStateString);
             _jargonBuster.ToggleDefinitions(enabled);
             $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
             $(this).addClass("enabled");
@@ -119,5 +141,4 @@ function ParlJargonBusterParliamentUK(options) {
     }
 
     this.Build = build;
-
 }
