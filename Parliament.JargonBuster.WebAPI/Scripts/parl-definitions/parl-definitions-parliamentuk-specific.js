@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
     var jargonBuster = new ParlJargonBusterParliamentUK();
-
-    jargonBuster.Build();
+    var options = new {
+         webApiUrl: $("#parl-definitions-url").val()
+    };
+    jargonBuster.Build(options);
 });
 
 function ParlJargonBusterParliamentUK(options) {
