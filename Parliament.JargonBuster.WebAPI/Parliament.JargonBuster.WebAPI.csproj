@@ -302,6 +302,18 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\CustomModules\_ToggleDefinitions.cshtml" />
     <Content Include="Views\CustomModules\_RightModuleParlUKHelp.cshtml" />
+    <None Include="Web.DevCi.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.PPE.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Prod.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.QA.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Parliament.Common\Parliament.Common.csproj">
