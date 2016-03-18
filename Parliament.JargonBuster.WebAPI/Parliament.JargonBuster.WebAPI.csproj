@@ -233,6 +233,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\plugins\jquery-modal.css" />
     <Content Include="Content\popover\custom-popover.css" />
     <Content Include="Content\popover\jquery.webui-popover.css" />
     <Content Include="Content\popover\parliament-specific-css.css" />
@@ -277,6 +278,8 @@
     <None Include="Properties\PublishProfiles\Prod.pubxml" />
     <None Include="Properties\PublishProfiles\QA.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\plugins\jquery-modal.js" />
+    <Content Include="Scripts\plugins\cookies.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

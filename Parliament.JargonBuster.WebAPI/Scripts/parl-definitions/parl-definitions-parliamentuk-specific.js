@@ -2,6 +2,15 @@
     var jargonBuster = new ParlJargonBusterParliamentUK();
 
     jargonBuster.Build();
+
+    if (typeof(Cookies.get('hasVisited')) === "undefined") {
+        setTimeout(function () {
+            Cookies.set('hasVisited', 'true');
+            var modal = "<div id='modal' style='display: none;'>This is our modal</div>";
+            $('body').append(modal);
+            $('#modal').modal();
+        }, 5000);
+    }
 });
 
 function ParlJargonBusterParliamentUK(options) {
