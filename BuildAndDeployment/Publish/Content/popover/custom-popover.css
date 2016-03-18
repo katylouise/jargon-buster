@@ -1,0 +1,142 @@
+.definition {
+  color: #512d6d;
+  cursor: help;/* url(question-icon-2.svg), auto;*/
+  border-bottom: 1px dotted #512d6d;
+}
+
+.definition.disabled, .definition.disabled:visited, .definition.disabled:hover  {
+    color: inherit;
+    cursor: default;
+    border: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+
+
+.definition:hover, .definition:focus {
+  text-decoration: none;
+  color: #512d6d;
+}
+
+.definition:visited {
+    text-decoration: none;
+    color: #512d6d;
+}
+
+.definition-content-titles {
+    float: left;
+    width: 22%;
+    overflow: hidden;
+}
+
+.definition-actual-content {
+    float: left;
+    width: 78%;
+    overflow: hidden;
+} 
+
+.webui-popover .webui-popover-content {
+    padding: 15px;    
+}
+
+.definition-alternates p {
+    margin-bottom: 0;
+}
+
+.definition-content p {
+    margin-bottom: 5px;
+}
+
+/*This sorts out the arrow border */
+
+.webui-popover {
+    border-top: 1px solid #512d6d;
+    border-left: 1px solid #512d6d;
+    border-right: 1px solid #512d6d;
+    border-bottom: 1px solid #512d6d;
+    background-color: #fbf7ff;
+    box-shadow: 1px 2px 8px 2px rgba(51, 51, 51, 0.2);
+}
+
+.webui-popover.bottom > .arrow, .webui-popover.bottom-right > .arrow {
+    top: -10px;
+    margin-left:-1px;
+    border-bottom-color: #512d6d;
+    margin-top:-1px;
+}
+
+.webui-popover.bottom-left > .arrow {
+    top: -10px;
+    margin-left:-20px;
+    border-bottom-color: #512d6d;
+    margin-top:-1px;
+}
+
+.webui-popover.top > .arrow, .webui-popover.top-right > .arrow {
+    bottom: -10px;
+    margin-left:-1px;
+    border-top-color: #512d6d;
+    margin-bottom:-1px;
+}
+
+.webui-popover.top-left > .arrow {
+    bottom: -10px;
+    margin-left:-20px;
+    border-top-color: #512d6d;
+    margin-bottom:-1px;
+}
+
+.webui-popover > .arrow {
+    border-width: 11px;
+}
+
+.webui-popover.bottom > .arrow:after, .webui-popover.bottom-right > .arrow:after, .webui-popover.bottom-left > .arrow:after {
+    top: 1px;
+    border-bottom-color: #fbf7ff;
+}
+
+.webui-popover.top > .arrow:after {
+    bottom: 1px;
+    border-top-color: #fbf7ff;
+}
+
+.webui-popover.top-right > .arrow:after, .webui-popover.top-left > .arrow:after {
+    top: -11px;
+    border-top-color: #fbf7ff;
+}
+
+/* --------------- */
+
+/* css for enable-disable toggle*/
+
+.parl-toggle-definitions-container {
+    float: left;
+    clear: both;
+    width: 190px;
+    padding: 15px 10px;
+}
+
+.parl-toggle-definitions-buttons {
+    clear: left;
+    float: left;
+    margin-top: 10px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.parl-toggle-definitions-button {
+    display: block;
+    float: left;
+    padding: 5px 15px;
+    margin: 1px;
+    color: #aaaaaa;
+}
+
+.parl-toggle-definitions-button.enabled {
+    border-radius: 3px;
+    color: white;
+    background-color: #512d6d;
+}
