@@ -6,7 +6,11 @@ namespace Parliament.Common.Caching
 {
     public abstract class CachedService
     {
-        public virtual bool? CacheEnabled => PrefixedCacheSettings.CacheEnabled;
+        public virtual bool? CacheEnabled
+        {
+            // ReSharper disable once ConvertPropertyToExpressionBody - DO NOT TRY TO APPLY, will cause the Teamcity build to break (.NET version build issues)
+            get { return PrefixedCacheSettings.CacheEnabled; }
+        }
 
         public virtual TimeSpan? CacheDuration
         {

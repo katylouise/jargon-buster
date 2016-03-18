@@ -6,7 +6,8 @@
     $(document).ready(function () {
         var options = {
             wordFrequency: 3,
-            contentSelectors: [".main-content"]
+            contentSelectors: [".main-content"],
+            webApiUrl: "http://definitions.webapi.local.dev.parliament.uk" 
         }
         var jargonBuster = new ParlJargonBuster(options);
 

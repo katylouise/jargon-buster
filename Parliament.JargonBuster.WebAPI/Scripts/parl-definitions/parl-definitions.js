@@ -43,7 +43,7 @@ function ParlJargonBuster(options) {
         $.ajax({
             cache: false,
             type: "POST",
-            url: "http://definitions.webapi.local.dev.parliament.uk/api/definitions",
+            url: _options.webApiUrl + "/api/definitions",
             data: JSON.stringify({
                 PageContent: content,
                 PageUrl: window.location.href,
