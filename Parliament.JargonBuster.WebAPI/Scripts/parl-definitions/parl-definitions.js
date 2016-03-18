@@ -99,7 +99,7 @@ function ParlJargonBuster(options) {
     function getNodesThatContain(jargonItem) {
         var phrasesToLookFor = jargonItem.Alternates.slice(0);
         phrasesToLookFor.push(jargonItem.Phrase);
-        var textNodes = $(document).find(":not(title, iframe, script, a, :header)").contents().filter(
+        var textNodes = $(document).find(":not(title, iframe, script, a, o:p, :header)").contents().filter(
             function () {
                 return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
             });
