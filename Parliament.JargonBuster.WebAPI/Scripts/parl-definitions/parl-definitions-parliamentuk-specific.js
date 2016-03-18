@@ -102,7 +102,7 @@ function ParlJargonBusterParliamentUK(options) {
         var options = {
             placement: "vertical",
             type: "html",
-            trigger: "click",
+            trigger: "hover",
             onShow: bindEnableDisable,
             onHide: unbindEnableDisable
         }
