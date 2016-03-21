@@ -99,11 +99,14 @@ function ParlJargonBuster(options) {
     function getNodesThatContain(jargonItem) {
         var phrasesToLookFor = jargonItem.Alternates.slice(0);
         phrasesToLookFor.push(jargonItem.Phrase);
-        var textNodes = $(document).find(":not(title, iframe, script, a, o, :header, #breadcrumb li)").contents().filter(
+        var textNodes = $(document).find(":not(title, iframe, script, a, :header, #breadcrumb li)").contents().filter(
             function () {
                 return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
             });
-        return textNodes.parent();
+       var nodes = $.grep(textNodes, function(node) {
+            return $(node).parents("a").length <= 0;
+       });
+       return $(nodes).parent();
     };
 
     function applyPopoverAnchor(jargonItem, phraseItem, element) {
@@ -127,7 +130,7 @@ function ParlJargonBuster(options) {
             if (indexOfPhrase > -1) {
                 alternativePhrasesUnaltered.splice(indexOfPhrase, 1);
                 alternativePhrasesUnaltered.push(jargonItem.Phrase);
-                alternates = "<p class=&quot;definition-actual-content&quot;>" + alternativePhrasesUnaltered.join(", ") + "</p></div>";
+                alternates = "<p class=&quot;definition-actual-content&quot;>" + alternativePhrasesUnaltered.join(", ").replace("'", "&apos;") + "</p></div>";
             } else {
                 alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent.replace("'", "&apos;") + "</p></div>";
             }
