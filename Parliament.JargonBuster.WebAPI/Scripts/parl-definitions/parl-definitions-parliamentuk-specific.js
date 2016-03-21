@@ -2,8 +2,14 @@
     var options = {
         webApiUrl: $("#parl-definitions-url").val()
     };
-    var jargonBuster = new ParlJargonBusterParliamentUK(options);
-    jargonBuster.Build();
+
+    setJargonBusterToggleCookie();
+    var jargonBusterOnCookie = Cookies.get("JargonBusterOn");
+
+    if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
+        var jargonBuster = new ParlJargonBusterParliamentUK(options);
+        jargonBuster.Build();
+    }
 
     if (typeof(Cookies.get("hasVisited")) === "undefined") {
         setTimeout(function () {
@@ -14,6 +20,17 @@
         }, 40000);
     }
 });
+
+function setJargonBusterToggleCookie() {
+    var dateNow = new Date();
+    var currentMins = dateNow.getMinutes();
+
+    if (currentMins < 30) {
+        Cookies.set("JargonBusterOn", "true", { expires: 1 });
+    } else {
+        Cookies.set("JargonBusterOn", "false", { expires: 1 });
+    }
+}
 
 function ParlJargonBusterParliamentUK(options) {
     var _options = options;
