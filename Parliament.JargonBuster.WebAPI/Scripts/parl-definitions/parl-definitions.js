@@ -116,11 +116,32 @@ function ParlJargonBuster(options) {
     };
 
     function applyPopoverAnchor(jargonItem, phraseItem, element) {
-        var elementContent = $(element).html();
+        var $element = $(element);
+        var elementContent = $element.html();
+
+        var alreadyBuiltDefinitions = $element.find("a[class='definition']");
+        var placeholders = [];
+        if (alreadyBuiltDefinitions.length > 0) {
+            alreadyBuiltDefinitions.each(function(i, element) {
+                var placeholder = "{" + i + "}";
+                var html = element.outerHTML;
+                placeholders.push({
+                    Placeholder: placeholder,
+                    Html: html
+                });
+                elementContent = elementContent.replace(html, placeholder);
+            });
+        }
+
         var textToReplace = new RegExp("\\b(" + phraseItem + ")\\b", 'i');
 
         var replacedContent = elementContent.replace(textToReplace, buildPopoverAnchor(jargonItem, "$1", phraseItem));
-        $(element).html(replacedContent);
+
+        $(placeholders).each(function (i, element) {
+            replacedContent = replacedContent.replace(element.Placeholder, element.Html);
+        });
+
+        $element.html(replacedContent);
     }
 
     function buildPopoverAnchor(jargonItem, textToReplace, phraseItem) {
