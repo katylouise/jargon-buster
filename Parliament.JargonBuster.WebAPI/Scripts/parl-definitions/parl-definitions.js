@@ -99,11 +99,15 @@ function ParlJargonBuster(options) {
     function getNodesThatContain(jargonItem) {
         var phrasesToLookFor = jargonItem.Alternates.slice(0);
         phrasesToLookFor.push(jargonItem.Phrase);
-        var textNodes = $(document).find(":not(title, iframe, script, a, o, :header, #breadcrumb li)").contents().filter(
+
+        var textNodes = $(document).find(":not(title, iframe, script, a, :header, #breadcrumb li)").contents().filter(
             function () {
                 return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
             });
-        return textNodes.parent();
+       var nodes = $.grep(textNodes, function(node) {
+            return $(node).parents("a").length <= 0;
+       });
+       return $(nodes).parent();
     };
 
     function applyPopoverAnchor(jargonItem, phraseItem, element) {
@@ -127,14 +131,14 @@ function ParlJargonBuster(options) {
             if (indexOfPhrase > -1) {
                 alternativePhrasesUnaltered.splice(indexOfPhrase, 1);
                 alternativePhrasesUnaltered.push(jargonItem.Phrase);
-                alternates = "<p class=&quot;definition-actual-content&quot;>" + alternativePhrasesUnaltered.join(", ") + "</p></div>";
+                alternates = "<p class=&quot;definition-actual-content&quot;>" + alternativePhrasesUnaltered.join(", ").replace("'", "&apos;") + "</p></div>";
             } else {
-                alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent + "</p></div>";
+                alternates = "<p class=&quot;definition-actual-content&quot;>" + jargonItem.AlternatesContent.replace("'", "&apos;") + "</p></div>";
             }
         }
 
         var content = "'<div class=&quot;definition-content&quot;><b class=&quot;definition-content-titles&quot;>Definition: </b><p class=&quot;definition-actual-content&quot;>" + jargonItem.Definition + "</p></div>" + alternativeTitle + alternates + "'";
-    	return "<a class='definition' href='#' data-toggle='popover' data-content=" + content + ">" + textToReplace + "</a>";
+    	return "<a class='definition' href='#' data-toggle='popover' data-content=" + content + ">" + textToReplace.replace("'", "&apos;") + "</a>";
     }
 
     function disablePopovers() {
