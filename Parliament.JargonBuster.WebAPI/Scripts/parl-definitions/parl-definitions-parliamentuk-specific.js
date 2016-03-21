@@ -22,7 +22,8 @@
 });
 
 function setJargonBusterToggleCookie() {
-    var currentMins = Date.now.getMinutes();
+    var dateNow = new Date();
+    var currentMins = dateNow.getMinutes();
 
     if (currentMins < 30) {
         Cookies.set("JargonBusterOn", "true", { expires: 1 });
