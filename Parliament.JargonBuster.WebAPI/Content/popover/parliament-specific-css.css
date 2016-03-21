@@ -86,3 +86,7 @@
     text-decoration: none;
     color: #512d6d;
 }
+
+#modal {
+    width: 500px;
+}

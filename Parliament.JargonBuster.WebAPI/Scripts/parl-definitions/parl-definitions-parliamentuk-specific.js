@@ -8,10 +8,10 @@
     if (typeof(Cookies.get("hasVisited")) === "undefined") {
         setTimeout(function () {
             Cookies.set("hasVisited", "true");
-            var modal = "<div id='modal' style='display: none;'>This is our modal</div>";
+            var modal = "<div id='modal' style='display: none;'><iframe src='https://docs.google.com/forms/d/1QjEi363DhFkG7sKRVhE8PRVUAgPjo-j8Neezge0Tg1A/viewform?embedded=true' width='500' height='500' frameborder='0' marginheight='0' marginwidth='0'>Loading...</iframe></div>";
             $('body').append(modal);
             $('#modal').modal();
-        }, 5000);
+        }, 40000);
     }
 });
 
