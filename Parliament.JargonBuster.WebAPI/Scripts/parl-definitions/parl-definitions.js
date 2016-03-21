@@ -34,15 +34,13 @@ function ParlJargonBuster(options) {
  	    var $popovers = $('[data-toggle="popover"]');         
  	    $popovers.webuiPopover(options);
 	    $popovers.removeClass("disabled");
-	    //$popovers.click(function (e) { e.preventDefault(); });
-	    //$popovers.focusin(function () {
-	    //    alert("focussed");
-	    //     this.webuiPopover('show');
-	    //});
-	    //$popovers.focusout(function () {
-	    //    alert("focussed gone");
-	    //    this.webuiPopover('hide');
-	    //});
+	    $popovers.click(function (e) { e.preventDefault(); });
+	    $popovers.focusin(function () {
+	         $(this).webuiPopover('show');
+	    });
+	    $popovers.focusout(function () {
+	        $(this).webuiPopover('hide');
+	    });
 	 }
 
     function getPhrases(content)
