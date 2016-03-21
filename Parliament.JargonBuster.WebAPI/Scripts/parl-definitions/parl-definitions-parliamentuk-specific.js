@@ -6,10 +6,10 @@
     setJargonBusterToggleCookie();
     var jargonBusterOnCookie = Cookies.get("JargonBusterOn");
 
-    //if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
+    if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
         var jargonBuster = new ParlJargonBusterParliamentUK(options);
         jargonBuster.Build();
-    //}
+    }
 
     if (typeof(Cookies.get("hasVisited")) === "undefined") {
         setTimeout(function () {
