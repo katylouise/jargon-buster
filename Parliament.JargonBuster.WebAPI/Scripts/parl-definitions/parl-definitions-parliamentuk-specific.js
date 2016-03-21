@@ -6,10 +6,10 @@
     setJargonBusterToggleCookie();
     var jargonBusterOnCookie = Cookies.get("JargonBusterOn");
 
-    if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
+    //if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
         var jargonBuster = new ParlJargonBusterParliamentUK(options);
         jargonBuster.Build();
-    }
+    //}
 
     if (typeof(Cookies.get("hasVisited")) === "undefined") {
         setTimeout(function () {
@@ -24,10 +24,14 @@
 function setJargonBusterToggleCookie() {
     var dateNow = new Date();
     var currentMins = dateNow.getMinutes();
+    var jargonBusterOnCookies = Cookies.get("JargonBusterOn");
 
-    if (currentMins < 30) {
+    if (jargonBusterOnCookies === undefined && currentMins < 30) {
         Cookies.set("JargonBusterOn", "true", { expires: 1 });
-    } else {
+    }
+
+    if (jargonBusterOnCookies === undefined && currentMins >= 30)
+    {
         Cookies.set("JargonBusterOn", "false", { expires: 1 });
     }
 }

@@ -12,7 +12,9 @@
     font-weight: inherit;
 }
 
-
+.definition-content-container {
+    display: none;
+}
 
 .definition:hover, .definition:focus {
   text-decoration: none;
