@@ -30,13 +30,20 @@ function ParlJargonBuster(options) {
  	        trigger: "hover", //and for mobile?
  	        width: 500
  	    }
-
-	    var $popovers = $('[data-toggle="popover"]');
-	    $popovers.webuiPopover(options);
+        
+ 	    var $popovers = $('[data-toggle="popover"]');         
+ 	    $popovers.webuiPopover(options);
 	    $popovers.removeClass("disabled");
-	    $popovers.click(function (e) { e.preventDefault(); });
- 	}
-
+	    //$popovers.click(function (e) { e.preventDefault(); });
+	    //$popovers.focusin(function () {
+	    //    alert("focussed");
+	    //     this.webuiPopover('show');
+	    //});
+	    //$popovers.focusout(function () {
+	    //    alert("focussed gone");
+	    //    this.webuiPopover('hide');
+	    //});
+	 }
 
     function getPhrases(content)
  	{
@@ -62,19 +69,19 @@ function ParlJargonBuster(options) {
         });
     }
 
-    function applyPopoverAnchors(index, jargonItem)
-    {
-    	var phrasedElements = getNodesThatContain(jargonItem);
-    	phrasedElements.each(function (phrasedElementIndex, phrasedElementItem) {
-    	    var phrases = jargonItem.Alternates.slice(0);
-	        phrases.push(jargonItem.Phrase);
-    	    if (phrasedElementIndex % _options.wordFrequency === 0) {
-	            $(phrases).each(function(phraseIndex, phraseItem) {
-	                applyPopoverAnchor(jargonItem, phraseItem, phrasedElementItem);
-	            });
-                
-            }
-    	});
+    function applyPopoverAnchors(index, jargonItem) {
+        $(_options.contentSelectors).each(function(contentSelectorIndex, contentSelector) {
+            var phrasedElements = getNodesThatContain(jargonItem, contentSelector);
+            phrasedElements.each(function (phrasedElementIndex, phrasedElementItem) {
+                var phrases = jargonItem.Alternates.slice(0);
+                phrases.push(jargonItem.Phrase);
+                if (phrasedElementIndex % _options.wordFrequency === 0) {
+                    $(phrases).each(function (phraseIndex, phraseItem) {
+                        applyPopoverAnchor(jargonItem, phraseItem, phrasedElementItem);
+                    });
+                }
+            });
+        });  	
     }
 
     function isTextNode(nodeType) {
@@ -96,11 +103,11 @@ function ParlJargonBuster(options) {
         return phraseInText;
     }
 
-    function getNodesThatContain(jargonItem) {
+    function getNodesThatContain(jargonItem, contentSelector) {
         var phrasesToLookFor = jargonItem.Alternates.slice(0);
         phrasesToLookFor.push(jargonItem.Phrase);
 
-        var textNodes = $(document).find(":not(title, iframe, script, a, :header, #breadcrumb li)").contents().filter(
+        var textNodes = $(contentSelector).find(":not(title, iframe, script, a, :header)").contents().filter(
             function () {
                 return isTextNode(this.nodeType) && isPhraseInText(this.textContent.toLowerCase(), phrasesToLookFor);
             });
@@ -140,7 +147,7 @@ function ParlJargonBuster(options) {
         var content = "'<div class=&quot;definition-content&quot;><b class=&quot;definition-content-titles&quot;>Definition: </b><p class=&quot;definition-actual-content&quot;>" + jargonItem.Definition + "</p></div>" + alternativeTitle + alternates + "'";
     	return "<a class='definition' href='#' data-toggle='popover' data-content=" + content + ">" + textToReplace.replace("'", "&apos;") + "</a>";
     }
-
+    
     function disablePopovers() {
         $('[data-toggle="popover"]').webuiPopover("destroy");
         $('[data-toggle="popover"]').addClass("disabled");
@@ -155,7 +162,6 @@ function ParlJargonBuster(options) {
             disablePopovers();
         }
     }
-
 
     this.Build = build;
     this.InitPopovers = initPopovers;
