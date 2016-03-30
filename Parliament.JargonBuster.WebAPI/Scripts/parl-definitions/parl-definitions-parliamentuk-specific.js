@@ -5,8 +5,8 @@
 
     setJargonBusterToggleCookie();
     var jargonBusterOnCookie = Cookies.get("JargonBusterOn");
-
-    if (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true") {
+    var hasJargonBuster = (jargonBusterOnCookie !== undefined && jargonBusterOnCookie === "true");
+    if (hasJargonBuster) {
         var jargonBuster = new ParlJargonBusterParliamentUK(options);
         jargonBuster.Build();
     }
@@ -14,7 +14,9 @@
     if (typeof(Cookies.get("hasVisited")) === "undefined") {
         setTimeout(function () {
             Cookies.set("hasVisited", "true");
-            var modal = "<div id='modal' style='display: none;'><iframe src='https://docs.google.com/forms/d/1QjEi363DhFkG7sKRVhE8PRVUAgPjo-j8Neezge0Tg1A/viewform?embedded=true' width='500' height='500' frameborder='0' marginheight='0' marginwidth='0'>Loading...</iframe></div>";
+            var googleFormToUse = "https://docs.google.com/forms/d/1ZIcRcwYVZQTmlr5w5K8-gJaLkr9uBX4ng7tQwdFyd2k/viewform?embedded=true";
+            if (hasJargonBuster) googleFormToUse = "https://docs.google.com/forms/d/1QjEi363DhFkG7sKRVhE8PRVUAgPjo-j8Neezge0Tg1A/viewform?embedded=true";
+            var modal = "<div id='modal' style='display: none;'><iframe src='" + googleFormToUse + "' width='500' height='500' frameborder='0' marginheight='0' marginwidth='0'>Loading...</iframe></div>";
             $('body').append(modal);
             $('#modal').modal();
         }, 40000);
