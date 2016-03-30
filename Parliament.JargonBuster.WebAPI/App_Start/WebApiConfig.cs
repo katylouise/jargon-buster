@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Parliament.JargonBuster.WebAPI.ActionFilters;
 
 namespace Parliament.JargonBuster.WebAPI
 {
@@ -20,6 +21,8 @@ namespace Parliament.JargonBuster.WebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Filters.Add(new ExceptionHandlingAttribute());
       
         }
     }

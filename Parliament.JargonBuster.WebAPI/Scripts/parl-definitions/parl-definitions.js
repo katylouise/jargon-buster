@@ -14,9 +14,11 @@ function ParlJargonBuster(options) {
 
 	    var content = "";
 	    $(_options.contentSelectors).each(function (contentSelectorIndex, contentSelector) {
-	        var $contentSelector = $(contentSelector);
+	        var $contentSelector = $(contentSelector).clone();
+	        $contentSelector.find("script, link, iframe").remove();
             if ($contentSelector.length !== 0) {
                 content += $contentSelector.text();
+                content = content.replace(/\s+/g, " ");
             }   
         });
 
