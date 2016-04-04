@@ -130,12 +130,14 @@ function ParlJargonBuster(options) {
                 var placeholder = "{" + i + "}";
                 var $element = $(element);
                 var containerContent = $element.parent().find($element.attr("data-url"));
-                var html = element.outerHTML + containerContent[0].outerHTML;
-                placeholders.push({
-                    Placeholder: placeholder,
-                    Html: html
-                });
-                elementContent = elementContent.replace(html, placeholder);
+                if (containerContent.length > 0) {
+                    var html = element.outerHTML + containerContent[0].outerHTML;
+                    placeholders.push({
+                        Placeholder: placeholder,
+                        Html: html
+                    });
+                    elementContent = elementContent.replace(html, placeholder);
+                }
             });
         }
 
