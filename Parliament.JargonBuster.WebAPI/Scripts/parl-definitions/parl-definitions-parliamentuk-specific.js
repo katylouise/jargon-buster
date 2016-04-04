@@ -132,7 +132,7 @@ function ParlJargonBusterParliamentUK(options) {
             placement: "vertical",
             type: "html",
             trigger: "click",
-            onShow: new function() { bindEnableDisable(results); },
+            onShow: function() { bindEnableDisable(results); },
             onHide: unbindEnableDisable
         }
         $(_options.definitionToggleSelector).attr("data-content", customModule.ModuleHtml);
