@@ -53,12 +53,8 @@ function ParlJargonBusterParliamentUK(options) {
     function build() {
         _options = $.extend({}, _defaultOptions, _options);
 
-        var isInIFrame = false;
-        $(_options.contentSelectors).each(function(contentSelectorIndex, contentSelector) {
-            if ($(contentSelector).parents("iframe").length > 0) {
-                isInIFrame = true;
-            }
-        });
+        var isInIFrame = (window.location != window.parent.location) ? true : false;
+        
         if (isInIFrame) return;
 
         _jargonBuster = new ParlJargonBuster(_options);

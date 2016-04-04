@@ -176,14 +176,16 @@ function ParlJargonBuster(options) {
     
     function disablePopovers() {
         $('[data-toggle="popover"]').webuiPopover("destroy");
-        $('[data-toggle="popover"]').addClass("disabled");
+        $('[data-toggle="popover"]').each(function() {
+            $(this).contents().unwrap();
+        });
     }
 
     function toggleDefinitions(result) {
         _options.enabled = result;
 
         if (_options.enabled) {
-            initPopovers();
+            build();
         } else {
             disablePopovers();
         }
