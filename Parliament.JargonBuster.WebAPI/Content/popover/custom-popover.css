@@ -135,6 +135,7 @@
     padding: 5px 15px;
     margin: 1px;
     color: #aaaaaa;
+    cursor: pointer;
 }
 
 .parl-toggle-definitions-button.enabled {
