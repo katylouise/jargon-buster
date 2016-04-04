@@ -181,11 +181,12 @@ function ParlJargonBuster(options) {
         });
     }
 
-    function toggleDefinitions(result) {
+    function toggleDefinitions(result, results) {
         _options.enabled = result;
 
         if (_options.enabled) {
-            build();
+            $(results.Phrases).each(applyPopoverAnchors);
+            initPopovers();
         } else {
             disablePopovers();
         }

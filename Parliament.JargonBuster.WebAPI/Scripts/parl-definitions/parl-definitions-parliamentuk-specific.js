@@ -71,7 +71,7 @@ function ParlJargonBusterParliamentUK(options) {
         bindToggleDefinitions(results);
         if (Cookies.get("hasEnabledDefinitions") !== undefined) {
             var enabled = Cookies.get("hasEnabledDefinitions") === "true";
-            _jargonBuster.ToggleDefinitions(enabled);
+            _jargonBuster.ToggleDefinitions(enabled, results);
         }
     }
 
