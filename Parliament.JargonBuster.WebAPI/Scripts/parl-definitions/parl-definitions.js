@@ -1,4 +1,5 @@
 function ParlJargonBuster(options) {
+
     var _options = options;
     var _defaultOptions =
     {
@@ -59,6 +60,7 @@ function ParlJargonBuster(options) {
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
             success: function (result) {
+                resultsContainer = result;
                 $(result.Phrases).each(applyPopoverAnchors);
                 initPopovers();
                 if (_options.onSuccess != null) _options.onSuccess(result);

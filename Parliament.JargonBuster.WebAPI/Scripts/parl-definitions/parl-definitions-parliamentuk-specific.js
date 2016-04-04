@@ -132,14 +132,14 @@ function ParlJargonBusterParliamentUK(options) {
             placement: "vertical",
             type: "html",
             trigger: "click",
-            onShow: bindEnableDisable,
+            onShow: new function() { bindEnableDisable(results); },
             onHide: unbindEnableDisable
         }
         $(_options.definitionToggleSelector).attr("data-content", customModule.ModuleHtml);
         $(_options.definitionToggleSelector).webuiPopover(options);
     }
 
-    function bindEnableDisable() {
+    function bindEnableDisable(results) {
         if (Cookies.get("hasEnabledDefinitions") !== undefined) {
             $(".parl-toggle-definitions-button").removeClass("enabled");
             var toggleButton = $(document).find(".parl-toggle-definitions-button[data-value='" + Cookies.get("hasEnabledDefinitions") +"']");
@@ -149,7 +149,7 @@ function ParlJargonBusterParliamentUK(options) {
             var buttonStateString = $(this).attr("data-value");
             var enabled = buttonStateString === "true";
             Cookies.set("hasEnabledDefinitions", buttonStateString);
-            _jargonBuster.ToggleDefinitions(enabled);
+            _jargonBuster.ToggleDefinitions(enabled, results);
             $(".parl-toggle-definitions-button.enabled").removeClass("enabled");
             $(this).addClass("enabled");
             if (!enabled) {
