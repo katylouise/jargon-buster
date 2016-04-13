@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="ControllersTests\GivenADefinitionsControllerBase.cs" />
     <Compile Include="MockBuilders\MockDefinitionBuilder.cs" />
+    <Compile Include="MockBuilders\MockDefinitionDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesTests\GivenADefinitionsServiceBase.cs" />
   </ItemGroup>

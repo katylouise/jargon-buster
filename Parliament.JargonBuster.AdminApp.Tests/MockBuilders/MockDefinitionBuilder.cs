@@ -49,5 +49,10 @@ namespace Parliament.JargonBuster.AdminApp.Tests.MockBuilders
             return this;
         }
 
+        public virtual DefinitionItem Build()
+        {
+            return _entity;
+        }
+
     }
 }
