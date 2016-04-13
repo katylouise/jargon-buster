@@ -8,11 +8,6 @@ namespace Parliament.JargonBuster.AdminApp.Tests.MockBuilders
 {
     public class MockDefinitionBuilder
     {
-        private readonly Definition _entity;
 
-        public MockDefinitionBuilder()
-        {
-            _entity = new Definition();
-        }
     }
 }
