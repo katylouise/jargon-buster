@@ -11,7 +11,7 @@ namespace Parliament.JargonBuster.AdminApp.Tests.ServicesTests
     [TestFixture]
     public abstract class GivenADefinitionsServiceBase
     {
-        public virtual void GivenADefinitionService()
+        public virtual void Given_A_Definition_Service()
         {
 
         }
