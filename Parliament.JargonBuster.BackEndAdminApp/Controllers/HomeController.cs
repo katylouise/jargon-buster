@@ -17,6 +17,9 @@ namespace Parliament.JargonBuster.BackEndAdminApp.Controllers
         public ActionResult Index()
         {
             var model = _definitionsService.GetDefinitions();
+
+            // Add a view model builder here!
+
             return View(model);
         }
 

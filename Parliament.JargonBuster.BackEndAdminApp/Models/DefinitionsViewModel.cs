@@ -9,6 +9,6 @@ namespace Parliament.JargonBuster.BackEndAdminApp.Models
 {
     public class DefinitionsViewModel
     {
-        public IList<DefinitionViewModel> Definitions { get; set; }
+        public IEnumerable<DefinitionViewModel> Definitions { get; set; }
     }
 }

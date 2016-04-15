@@ -1,5 +1,7 @@
 ﻿using StructureMap;
 using StructureMap.Graph;
+using System.Linq;
+using Parliament.Common.Interfaces;
 
 namespace Parliament.Common.IoC
 {
@@ -8,20 +10,21 @@ namespace Parliament.Common.IoC
         public static IContainer Build()
         {
             var container = new Container(x =>
-                x.Scan(scan =>
-                {
-                    scan.TheCallingAssembly();
-                    scan.AssembliesFromApplicationBaseDirectory(
-                        y =>
-                            (y.FullName.StartsWith("Parliament") || y.FullName.StartsWith("Veneer")) &&
-                            !y.FullName.EndsWith("Tests"));
-                    scan.WithDefaultConventions();
-                    scan.LookForRegistries();
-                }
-             ));
-            
+            {
+                x.Scan(
+               assembly =>
+               {
+                   assembly.TheCallingAssembly();
+                   assembly.LookForRegistries();
+                   assembly.WithDefaultConventions();
+                   assembly.AssembliesFromApplicationBaseDirectory(y => y.FullName.StartsWith("Parliament."));
+               });
+            });
+
+            var xx = container.WhatDoIHave();
+
             container.AssertConfigurationIsValid();
-            return container;            
+            return container;
         }
     }
 }

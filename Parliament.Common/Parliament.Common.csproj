@@ -82,6 +82,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Helper\EnumHelper.cs" />
     <Compile Include="Interfaces\IConfigurationBuilder.cs" />
+    <Compile Include="Interfaces\IPluggable.cs" />
     <Compile Include="IoC\Bootstrapper.cs" />
     <Compile Include="IoC\CommonRegistry.cs" />
     <Compile Include="Parser\TypeParser.cs" />
