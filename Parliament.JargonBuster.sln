@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.Adm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.AdminApp.Tests", "Parliament.JargonBuster.AdminApp.Tests\Parliament.JargonBuster.AdminApp.Tests.csproj", "{51B20FEB-D811-4530-9686-3D63746C3B16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.BackEndAdminApp", "Parliament.JargonBuster.BackEndAdminApp\Parliament.JargonBuster.BackEndAdminApp.csproj", "{F5B82187-25B7-4714-ABC9-62479786BA59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,18 @@ Global
 		{51B20FEB-D811-4530-9686-3D63746C3B16}.QA|Any CPU.Build.0 = Release|Any CPU
 		{51B20FEB-D811-4530-9686-3D63746C3B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B20FEB-D811-4530-9686-3D63746C3B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.DevCi|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.DevCi|Any CPU.Build.0 = Debug|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.PPE|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.PPE|Any CPU.Build.0 = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Prod|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Prod|Any CPU.Build.0 = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.QA|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.QA|Any CPU.Build.0 = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5B82187-25B7-4714-ABC9-62479786BA59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

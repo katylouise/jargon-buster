@@ -1,12 +1,16 @@
 ﻿using Parliament.JargonBuster.Core.Services;
 using System.Web.Mvc;
 
-namespace Parliament.JargonBuster.AdminApp.Controllers
+namespace Parliament.JargonBuster.BackEndAdminApp.Controllers
 {
-    public class DefinitionsController : Controller
+    public class HomeController : Controller
     {
         private readonly IDefinitionsService _definitionsService;
-        public DefinitionsController(IDefinitionsService DefinitionsService)
+        public HomeController()
+        {
+
+        }
+        public HomeController(IDefinitionsService DefinitionsService)
         {
             _definitionsService = DefinitionsService;
         }
