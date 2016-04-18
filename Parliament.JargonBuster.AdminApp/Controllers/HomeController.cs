@@ -36,7 +36,7 @@ namespace AdminApp.Controllers
         public ActionResult Edit(DefinitionViewModel model)
         {
             _definitionsViewModelBuilder.UpdateDefinitionViewModel(model);
-            return Redirect("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

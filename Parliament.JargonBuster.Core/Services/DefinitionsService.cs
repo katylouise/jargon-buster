@@ -26,6 +26,7 @@ namespace Parliament.JargonBuster.Core.Services
             using (var context = new JargonBusterDbContext())
             {
                 return context.Definitions
+                              .Include("Alternates")
                               .Where(x => x.Id == id)
                               .Single();
             }
@@ -36,7 +37,8 @@ namespace Parliament.JargonBuster.Core.Services
             using (var context = new JargonBusterDbContext())
             {
                 var definition = context.Definitions
-                              .Where(x => x.Phrase.ToLower().Contains(phrase.ToLower()));
+                                        .Include("Alternates")
+                                        .Where(x => x.Phrase.ToLower().Contains(phrase.ToLower()));
 
                 return definition.Count() != 0 ? definition.Single() : null;
             }
