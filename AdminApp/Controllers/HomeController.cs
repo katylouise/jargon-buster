@@ -4,22 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Parliament.JargonBuster.Core.Services;
+using AdminApp.ViewModelBuilders;
 
 namespace AdminApp.Controllers
 {
     public class HomeController : Controller
     {
-        private IDefinitionsService _definitionsService;
+        private IDefinitionsViewModelBuilder _definitionsViewModelBuilder;
 
-        public HomeController(IDefinitionsService definitionsService)
+        public HomeController(IDefinitionsViewModelBuilder definitionsViewModelBuilder)
         {
-            _definitionsService = definitionsService;
+            _definitionsViewModelBuilder = definitionsViewModelBuilder;
         }
 
         public ActionResult Index()
         {
-            var definitions = _definitionsService.GetDefinitions();
-            return View();
+            var model = _definitionsViewModelBuilder.Build();
+            return View(model);
         }
 
         public ActionResult About()

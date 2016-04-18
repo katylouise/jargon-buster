@@ -208,6 +208,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModelBuilders\DefinitionsViewModelBuilder.cs" />
+    <Compile Include="ViewModelBuilders\IDefinitionsViewModelBuilder.cs" />
+    <Compile Include="ViewModels\DefinitionsViewModel.cs" />
+    <Compile Include="ViewModels\DefinitionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

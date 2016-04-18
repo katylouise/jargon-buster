@@ -1,4 +1,5 @@
-﻿using Parliament.JargonBuster.Core.Services;
+﻿using AdminApp.ViewModelBuilders;
+using Parliament.JargonBuster.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,9 @@ namespace AdminApp.Controllers.ControllerFactory
     {
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
-            IDefinitionsService definitionsService = new DefinitionsService();
-            var controller = new HomeController(definitionsService);
+            IDefinitionsService definitionService= new DefinitionsService();
+            IDefinitionsViewModelBuilder definitionsViewModelBuilder = new DefinitionsViewModelBuilder(definitionService);
+            var controller = new HomeController(definitionsViewModelBuilder);
             return controller;
         }
 

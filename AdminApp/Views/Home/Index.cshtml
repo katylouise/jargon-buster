@@ -1,5 +1,12 @@
-﻿@{
+﻿@Model Parliament.JargonBuster.AdminApp.ViewModels.DefinitionsViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div>This is our horrible backend page</div>
+<ul>
+    @foreach (var def in Model.Definitions)
+    {
+        <li>@def</li>
+    }
+</ul>
