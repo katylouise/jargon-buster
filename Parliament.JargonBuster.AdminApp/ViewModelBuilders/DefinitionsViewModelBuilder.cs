@@ -21,7 +21,7 @@ namespace AdminApp.ViewModelBuilders
         {
             var definitions = _defintionsService.GetDefinitions();
             var model = new DefinitionsViewModel();
-            model.Definitions = definitions.Select(BuildDefinitionViewModel).ToList();
+            model.Definitions = definitions.Select(BuildDefinitionViewModel).OrderBy(x => x.Phrase).ToList();
             return model;
         }
 
@@ -42,10 +42,15 @@ namespace AdminApp.ViewModelBuilders
             return new DefinitionViewModel
             {
                 Id = definitionItem.Id,
-                Phrase = definitionItem.Phrase,
+                Phrase = Capitalize(definitionItem.Phrase),
                 Definition = definitionItem.Definition,
                 Alternates = definitionItem.Alternates
             };
+        }
+
+        private String Capitalize(String word)
+        {
+            return word[0].ToString().ToUpper() + word.Substring(1, word.Length - 1);
         }
     }
 }
