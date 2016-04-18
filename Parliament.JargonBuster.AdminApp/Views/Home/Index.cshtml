@@ -4,9 +4,9 @@
     ViewBag.Title = "Home Page";
 }
 
-<ul>
+<ol>
     @foreach (var def in Model.Definitions)
     {
-        <li>@def</li>
+        <li>@def.Phrase</li>
     } 
-</ul>
+</ol>
