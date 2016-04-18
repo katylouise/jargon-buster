@@ -23,18 +23,24 @@ namespace AdminApp.Controllers
             return View(model);
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
+            return PartialView("_EditModal", model);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+        //[HttpPost]
+        //public ActionResult Edit(int id)
+        //{
 
-            return View();
+        //}
+
+        [HttpPost]
+        public ActionResult Search(string searchTerm)
+        {
+            var phrase = _definitionsViewModelBuilder.BuildDefinitionViewModelFromPhrase(searchTerm.Trim());
+            return Redirect("Index");
         }
     }
 }

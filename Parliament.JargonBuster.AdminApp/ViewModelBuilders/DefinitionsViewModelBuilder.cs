@@ -25,6 +25,18 @@ namespace AdminApp.ViewModelBuilders
             return model;
         }
 
+        public DefinitionViewModel BuildDefinitionViewModelFromId(int id)
+        {
+            var definitionItem = _defintionsService.GetDefinitionById(id);
+            return BuildDefinitionViewModel(definitionItem);
+        }
+
+        public DefinitionViewModel BuildDefinitionViewModelFromPhrase(string phrase)
+        {
+            var definitionItem = _defintionsService.GetDefinitionByPhrase(phrase);
+
+            return definitionItem != null ? BuildDefinitionViewModel(definitionItem) : null;
+        }
         private DefinitionViewModel BuildDefinitionViewModel(DefinitionItem definitionItem)
         {
             return new DefinitionViewModel
