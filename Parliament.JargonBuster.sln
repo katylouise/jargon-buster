@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.Common", "Parlia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.WebAPI", "Parliament.JargonBuster.WebAPI\Parliament.JargonBuster.WebAPI.csproj", "{E16171DA-DD03-41FC-BAD9-894AF9AB6880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.AdminApp", "AdminApp\Parliament.JargonBuster.AdminApp.csproj", "{3E634E62-DAED-4526-87BD-E4E79D650CC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parliament.JargonBuster.AdminApp", "Parliament.JargonBuster.AdminApp\Parliament.JargonBuster.AdminApp.csproj", "{3E634E62-DAED-4526-87BD-E4E79D650CC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
