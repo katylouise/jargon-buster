@@ -7,5 +7,9 @@ namespace Parliament.JargonBuster.Core.Services
     public interface IDefinitionsService
     {
         IList<DefinitionItem> GetDefinitions();
+
+        DefinitionItem GetDefinitionById(int id);
+
+        DefinitionItem GetDefinitionByPhrase(string phrase);
     }
 }

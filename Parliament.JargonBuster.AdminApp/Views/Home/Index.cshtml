@@ -1,0 +1,18 @@
+﻿@Model Parliament.JargonBuster.AdminApp.ViewModels.DefinitionsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+{
+    <input type="text" id="searchTerm" name="searchTerm" />
+    <button type="submit">Search</button>
+}
+<ol>
+    @foreach (var def in Model.Definitions)
+    {
+        <li>@def.Phrase</li>
+        @Html.ActionLink("Edit", "Edit", new { id = def.Id })
+    } 
+</ol>
