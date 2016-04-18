@@ -18,6 +18,7 @@ namespace AdminApp.Controllers
 
         public ActionResult Index()
         {
+            var definitions = _definitionsService.GetDefinitions();
             return View();
         }
 
