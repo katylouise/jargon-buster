@@ -41,5 +41,19 @@ namespace Parliament.JargonBuster.Core.Services
                 return definition.Count() != 0 ? definition.Single() : null;
             }
         }
+
+        public void UpdateDefinitionItem(DefinitionItem definitionItem)
+        {
+            using (var context = new JargonBusterDbContext())
+            {
+                var definition = GetDefinitionById(definitionItem.Id);
+                definition.Id = definitionItem.Id;
+                definition.Phrase = definitionItem.Phrase;
+                definition.Definition = definition.Definition;
+                //TODO Alternates
+
+                context.SaveChanges();
+            }
+        }
     }
 }

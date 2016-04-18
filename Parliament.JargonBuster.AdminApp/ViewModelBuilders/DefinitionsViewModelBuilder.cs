@@ -2,6 +2,7 @@
 using AdminApp.ViewModels;
 using Parliament.JargonBuster.Core.Domain;
 using Parliament.JargonBuster.Core.Services;
+using System;
 
 namespace AdminApp.ViewModelBuilders
 {
@@ -34,6 +35,20 @@ namespace AdminApp.ViewModelBuilders
 
             return definitionItem != null ? BuildDefinitionViewModel(definitionItem) : null;
         }
+
+        public void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        {
+            var definition = new DefinitionItem
+            {
+                Id = definitionViewModel.Id,
+                Phrase = definitionViewModel.Phrase,
+                Definition = definitionViewModel.Definition
+
+                //TODO - alternates
+            };
+            _defintionsService.UpdateDefinitionItem(definition);
+        }
+
         private DefinitionViewModel BuildDefinitionViewModel(DefinitionItem definitionItem)
         {
             return new DefinitionViewModel
