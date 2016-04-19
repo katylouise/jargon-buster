@@ -48,10 +48,8 @@ namespace Parliament.JargonBuster.Core.Services
         {
             using (var context = new JargonBusterDbContext())
             {
-                var definition = GetDefinitionById(definitionItem.Id);
-                definition.Id = definitionItem.Id;
-                definition.Phrase = definitionItem.Phrase;
-                definition.Definition = definition.Definition;
+                var definition = context.Definitions.Single(x => x.Id == definitionItem.Id);
+                context.Entry(definition).CurrentValues.SetValues(definitionItem);
                 //TODO Alternates
 
                 context.SaveChanges();
@@ -68,3 +66,4 @@ namespace Parliament.JargonBuster.Core.Services
         }
     }
 }
+
