@@ -9,5 +9,17 @@
     @Html.TextBoxFor(m => m.Phrase)
     @Html.TextBoxFor(m => m.Definition)
 
+    if (Model != null && Model.Alternates.Any())
+    {
+        <ul>
+            @foreach (var alt in Model.Alternates)
+            {
+                <li>@Html.TextBoxFor(m => alt.AlternateDefinition)</li>
+            }
+        </ul>
+    }
+
+    <input type="text" name="newAlternate" placeholder="new alternate definition"/>
+
     <button type="submit">Save</button>
 }

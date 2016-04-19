@@ -9,10 +9,13 @@ namespace AdminApp.ViewModelBuilders
     public class DefinitionsViewModelBuilder : IDefinitionsViewModelBuilder
     {
         private readonly IDefinitionsService _defintionsService;
+        private readonly IAlternateItemsViewModelBuilder _alternateItemsViewModelBuilder;
 
-        public DefinitionsViewModelBuilder(IDefinitionsService definitionsService)
+        public DefinitionsViewModelBuilder(IDefinitionsService definitionsService, IAlternateItemsViewModelBuilder alternateItemsViewModelBuilder)
         {
             _defintionsService = definitionsService;
+            _alternateItemsViewModelBuilder = alternateItemsViewModelBuilder;
+
         }
 
         public DefinitionsViewModel Build()
@@ -43,7 +46,7 @@ namespace AdminApp.ViewModelBuilders
                 Id = definitionItem.Id,
                 Phrase = Capitalize(definitionItem.Phrase),
                 Definition = definitionItem.Definition,
-                Alternates = definitionItem.Alternates
+                Alternates = _alternateItemsViewModelBuilder.Build(definitionItem)
             };
         }
 
