@@ -6,22 +6,38 @@ using System.Web.Mvc;
 using Parliament.JargonBuster.Core.Services;
 using AdminApp.ViewModelBuilders;
 using AdminApp.ViewModels;
+using AdminApp.Services;
 
 namespace AdminApp.Controllers
 {
     public class HomeController : Controller
     {
         private IDefinitionsViewModelBuilder _definitionsViewModelBuilder;
+        private IAdminDefinitionsService _adminDefinitionsService;
 
-        public HomeController(IDefinitionsViewModelBuilder definitionsViewModelBuilder)
+        public HomeController(IDefinitionsViewModelBuilder definitionsViewModelBuilder, IAdminDefinitionsService adminDefinitionsService)
         {
             _definitionsViewModelBuilder = definitionsViewModelBuilder;
+            _adminDefinitionsService = adminDefinitionsService;
         }
 
         public ActionResult Index()
         {
             var model = _definitionsViewModelBuilder.Build();
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return PartialView("_EditModal");
+        }
+
+        [HttpPost]
+        public ActionResult Add(DefinitionViewModel model)
+        {
+            _adminDefinitionsService.AddDefinitionViewModel(model);
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -32,23 +48,10 @@ namespace AdminApp.Controllers
             return PartialView("_EditModal", model);
         }
 
-        [HttpGet]
-        public ActionResult Add()
-        {
-            return PartialView("_EditModal");
-        }
-
         [HttpPost]
         public ActionResult Edit(DefinitionViewModel model)
         {
-            _definitionsViewModelBuilder.UpdateDefinitionViewModel(model);
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Add(DefinitionViewModel model)
-        {
-            _definitionsViewModelBuilder.AddDefinitionViewModel(model);
+            _adminDefinitionsService.UpdateDefinitionViewModel(model);
             return RedirectToAction("Index");
         }
 
