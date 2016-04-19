@@ -30,15 +30,12 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return PartialView("_EditModal");
+            return PartialView("_FormModal");
         }
 
         [HttpPost]
-        public ActionResult Add(DefinitionViewModel model, string newAlternate)
+        public ActionResult Add(DefinitionViewModel model)
         {
-            var newAlternates = new List<AlternateItemViewModel>();
-            newAlternates.Add(new AlternateItemViewModel { AlternateDefinition = newAlternate });
-            model.Alternates = newAlternates;
             _adminDefinitionsService.AddDefinitionViewModel(model);
             return RedirectToAction("Index");
         }
@@ -48,7 +45,7 @@ namespace AdminApp.Controllers
         {
             var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
 
-            return PartialView("_EditModal", model);
+            return PartialView("_FormModal", model);
         }
 
         [HttpPost]
