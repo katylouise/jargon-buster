@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Parliament.JargonBuster.Core.Services;
 using AdminApp.ViewModelBuilders;
+using AdminApp.ViewModels;
 
 namespace AdminApp.Controllers
 {
@@ -27,19 +28,23 @@ namespace AdminApp.Controllers
         public ActionResult Edit(int id)
         {
             var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
+
             return PartialView("_EditModal", model);
         }
 
-        //[HttpPost]
-        //public ActionResult Edit(int id)
-        //{
-
-        //}
+        [HttpPost]
+        public ActionResult Edit(DefinitionViewModel model)
+        {
+            _definitionsViewModelBuilder.UpdateDefinitionViewModel(model);
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         public ActionResult Search(string searchTerm)
         {
             var phrase = _definitionsViewModelBuilder.BuildDefinitionViewModelFromPhrase(searchTerm.Trim());
+
+            //TODO - talk to Jack about what searching should look like
             return Redirect("Index");
         }
     }
