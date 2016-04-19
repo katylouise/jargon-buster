@@ -49,15 +49,6 @@ namespace Parliament.JargonBuster.Core.Services
             using (var context = new JargonBusterDbContext())
             {
                 context.Definitions.Add(definitionItem);
-
-                //if (definitionItem.Alternates.Any()) //not sure if we need this or not?
-                //{
-                //    foreach (var item in definitionItem.Alternates)
-                //    {
-                //        context.AlternateDefinitionItems.Add(item);
-                //    }
-                //}
-
                 context.SaveChanges();
             }
         }

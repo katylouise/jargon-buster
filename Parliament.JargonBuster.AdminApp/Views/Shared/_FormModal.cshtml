@@ -19,7 +19,10 @@
         </ul>
     }
 
-    <input type="text" name="newAlternate" placeholder="new alternate definition"/>
+    else
+    {
+        @Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)
 
+    }
     <button type="submit">Save</button>
 }
