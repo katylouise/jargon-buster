@@ -34,8 +34,11 @@ namespace AdminApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(DefinitionViewModel model)
+        public ActionResult Add(DefinitionViewModel model, string newAlternate)
         {
+            var newAlternates = new List<AlternateItemViewModel>();
+            newAlternates.Add(new AlternateItemViewModel { AlternateDefinition = newAlternate });
+            model.Alternates = newAlternates;
             _adminDefinitionsService.AddDefinitionViewModel(model);
             return RedirectToAction("Index");
         }
@@ -49,7 +52,7 @@ namespace AdminApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(DefinitionViewModel model)
+        public ActionResult Edit(DefinitionViewModel model, string newAlternate)
         {
             _adminDefinitionsService.UpdateDefinitionViewModel(model);
             return RedirectToAction("Index");

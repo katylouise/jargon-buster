@@ -16,8 +16,9 @@ namespace AdminApp.Controllers.ControllerFactory
         public IController CreateController(RequestContext requestContext, string controllerName)
         {
             IDefinitionsService definitionService = new DefinitionsService();
+            IAlternateItemsViewModelBuilder alternateItemsViewModelBuilder = new AlternateItemsViewModelBuilder();
             IAdminDefinitionsService adminDefinitionsService = new AdminDefinitionsService(definitionService);
-            IDefinitionsViewModelBuilder definitionsViewModelBuilder = new DefinitionsViewModelBuilder(definitionService);
+            IDefinitionsViewModelBuilder definitionsViewModelBuilder = new DefinitionsViewModelBuilder(definitionService, alternateItemsViewModelBuilder);
             var controller = new HomeController(definitionsViewModelBuilder, adminDefinitionsService);
             return controller;
         }

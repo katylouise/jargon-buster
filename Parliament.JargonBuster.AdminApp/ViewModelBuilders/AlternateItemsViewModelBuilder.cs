@@ -7,7 +7,7 @@ using System.Web;
 
 namespace AdminApp.ViewModelBuilders
 {
-    public class AlternateItemsViewModelBuilder
+    public class AlternateItemsViewModelBuilder : IAlternateItemsViewModelBuilder
     {
         public List<AlternateItemViewModel> Build(DefinitionItem defintionItem)
         {
