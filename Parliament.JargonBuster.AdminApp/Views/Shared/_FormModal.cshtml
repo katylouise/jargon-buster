@@ -19,10 +19,16 @@
         </ul>
     }
 
+    if (Model != null && Model.Alternates.Count == 0)
+    {
+        <div>@Model.Alternates.Count</div>
+    }
+
     else
     {
-        @Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)
-
+        <ul>
+            <li>@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)</li>
+        </ul>
     }
     <button type="submit">Save</button>
 }

@@ -206,7 +206,6 @@
     <Compile Include="ViewModelBuilders\DefinitionsViewModelBuilder.cs" />
     <Compile Include="ViewModelBuilders\IAlternateItemsViewModelBuilder.cs" />
     <Compile Include="ViewModelBuilders\IDefinitionsViewModelBuilder.cs" />
-    <Compile Include="ViewModels\AlternateItemsViewModel.cs" />
     <Compile Include="ViewModels\AlternateItemViewModel.cs" />
     <Compile Include="ViewModels\DefinitionsViewModel.cs" />
     <Compile Include="ViewModels\DefinitionViewModel.cs" />
