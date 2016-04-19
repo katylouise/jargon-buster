@@ -201,6 +201,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelBuilders\AlternateItemsViewModelBuilder.cs" />
+    <Compile Include="Services\AdminDefinitionsService.cs" />
+    <Compile Include="Services\IAdminDefinitionsService.cs" />
     <Compile Include="ViewModelBuilders\DefinitionsViewModelBuilder.cs" />
     <Compile Include="ViewModelBuilders\IAlternateItemsViewModelBuilder.cs" />
     <Compile Include="ViewModelBuilders\IDefinitionsViewModelBuilder.cs" />

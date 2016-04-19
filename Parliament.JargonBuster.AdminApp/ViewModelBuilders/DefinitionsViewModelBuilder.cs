@@ -39,29 +39,6 @@ namespace AdminApp.ViewModelBuilders
             return definitionItem != null ? BuildDefinitionViewModel(definitionItem) : null;
         }
 
-        public void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel)
-        {
-            var definition = new DefinitionItem
-            {
-                Id = definitionViewModel.Id,
-                Phrase = definitionViewModel.Phrase,
-                Definition = definitionViewModel.Definition,
-                //TODO - alternates
-                Alternates = _alternateItemsViewModelBuilder.Build(definition)
-            };
-            _defintionsService.UpdateDefinitionItem(definition);
-        }
-
-        public void AddDefinitionViewModel(DefinitionViewModel definitionViewModel)
-        {
-            var definitionItemToAdd = new DefinitionItem
-            {
-                Phrase = definitionViewModel.Phrase,
-                Definition = definitionViewModel.Definition
-            };
-            _defintionsService.AddDefinition(definitionItemToAdd);
-        }
-
         private DefinitionViewModel BuildDefinitionViewModel(DefinitionItem definitionItem)
         {
             return new DefinitionViewModel
