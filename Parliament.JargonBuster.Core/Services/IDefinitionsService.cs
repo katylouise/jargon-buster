@@ -13,5 +13,6 @@ namespace Parliament.JargonBuster.Core.Services
         DefinitionItem GetDefinitionByPhrase(string phrase);
 
         void UpdateDefinitionItem(DefinitionItem definitionItem);
+        void AddDefinition(DefinitionItem definitionItem);
     }
 }

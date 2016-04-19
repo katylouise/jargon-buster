@@ -49,6 +49,16 @@ namespace AdminApp.ViewModelBuilders
             _defintionsService.UpdateDefinitionItem(definition);
         }
 
+        public void AddDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        {
+            var definitionItemToAdd = new DefinitionItem
+            {
+                Phrase = definitionViewModel.Phrase,
+                Definition = definitionViewModel.Definition
+            };
+            _defintionsService.AddDefinition(definitionItemToAdd);
+        }
+
         private DefinitionViewModel BuildDefinitionViewModel(DefinitionItem definitionItem)
         {
             return new DefinitionViewModel

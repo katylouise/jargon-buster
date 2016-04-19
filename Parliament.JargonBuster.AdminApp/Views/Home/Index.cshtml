@@ -4,6 +4,8 @@
     ViewBag.Title = "Home Page";
 }
 
+@Html.ActionLink("Add", "Add", new { })
+
 @using (Html.BeginForm("Search", "Home", FormMethod.Post))
 {
     <input type="text" id="searchTerm" name="searchTerm" />
