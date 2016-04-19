@@ -32,10 +32,23 @@ namespace AdminApp.Controllers
             return PartialView("_EditModal", model);
         }
 
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return PartialView("_EditModal");
+        }
+
         [HttpPost]
         public ActionResult Edit(DefinitionViewModel model)
         {
             _definitionsViewModelBuilder.UpdateDefinitionViewModel(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Add(DefinitionViewModel model)
+        {
+            _definitionsViewModelBuilder.AddDefinitionViewModel(model);
             return RedirectToAction("Index");
         }
 

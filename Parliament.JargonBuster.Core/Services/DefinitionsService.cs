@@ -57,5 +57,14 @@ namespace Parliament.JargonBuster.Core.Services
                 context.SaveChanges();
             }
         }
+
+        public void AddDefinition(DefinitionItem definitionItem)
+        {
+            using (var context = new JargonBusterDbContext())
+            {
+                context.Definitions.Add(definitionItem);
+                context.SaveChanges();
+            }
+        }
     }
 }

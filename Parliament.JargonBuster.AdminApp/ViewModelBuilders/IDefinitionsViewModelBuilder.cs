@@ -16,5 +16,6 @@ namespace AdminApp.ViewModelBuilders
         DefinitionViewModel BuildDefinitionViewModelFromPhrase(string phrase);
 
         void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel);
+        void AddDefinitionViewModel(DefinitionViewModel definitionViewModel);
     }
 }
