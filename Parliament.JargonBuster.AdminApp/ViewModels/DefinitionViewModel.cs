@@ -12,7 +12,7 @@ namespace AdminApp.ViewModels
         public string Phrase { get; set; }
         public string Definition { get; set; }
         //TODO make this its own view model
-        public List<AlternateDefinitionItem> Alternates { get; set; }
+        public List<AlternateItemViewModel> Alternates { get; set; }
 
     }
 }
