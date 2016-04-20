@@ -12,9 +12,9 @@
     if (Model != null && Model.Alternates.Any())
     {
         <ul>
-            @foreach (var alt in Model.Alternates)
+            @for(var i = 0; i < Model.Alternates.Count(); i++)
             {
-                <li>@Html.TextBoxFor(m => alt.AlternateDefinition)</li>
+                <li>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
             }
         </ul>
     }
