@@ -49,7 +49,7 @@ namespace AdminApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(DefinitionViewModel model, string newAlternate)
+        public ActionResult Edit(DefinitionViewModel model)
         {
             _adminDefinitionsService.UpdateDefinitionViewModel(model);
             return RedirectToAction("Index");
