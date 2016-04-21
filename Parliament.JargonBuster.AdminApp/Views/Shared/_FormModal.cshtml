@@ -1,4 +1,6 @@
-﻿@model AdminApp.ViewModels.DefinitionViewModel
+﻿
+
+@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
     var ActionName = ViewContext.RouteData.Values["action"].ToString();
 }
@@ -11,19 +13,31 @@
 
     if (Model != null && Model.Alternates.Any())
     {
-        <ul>
+        <ul class="alternatesList">
             @for(var i = 0; i < Model.Alternates.Count(); i++)
             {
                 @Html.HiddenFor(m => m.Alternates[i].Id)
-                <li>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
+                <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
             }
         </ul>
+        <a class="addAlternate" href="#">Add another alternate</a>
+    }
+
+    else if (Model != null && Model.Alternates.Count == 0)
+    {
+        <div>@Model.Alternates.Count</div>
     }
 
     else
     {
-        @Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)
-
+        <ul class="alternatesList">
+            <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)</li>
+        </ul>
+        <a class="addAlternate" href="#">Add another alternate</a>
     }
     <button type="submit">Save</button>
 }
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/bundles/admin-app")
