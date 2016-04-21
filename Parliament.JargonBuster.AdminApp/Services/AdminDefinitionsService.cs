@@ -18,12 +18,7 @@ namespace AdminApp.Services
         }
         public void AddDefinitionViewModel(DefinitionViewModel definitionViewModel)
         {
-            var definitionItemToAdd = new DefinitionItem
-            {
-                Phrase = definitionViewModel.Phrase,
-                Definition = definitionViewModel.Definition,
-                Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
-            };
+            var definitionItemToAdd = BuildDefinitionItemFromViewModel(definitionViewModel);
             _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
@@ -41,13 +36,28 @@ namespace AdminApp.Services
 
         private DefinitionItem BuildDefinitionItemFromViewModel(DefinitionViewModel definitionViewModel)
         {
-            return new DefinitionItem
+            var definitionItem = new DefinitionItem
             {
-                Id = definitionViewModel.Id,
                 Phrase = definitionViewModel.Phrase.Trim(),
                 Definition = definitionViewModel.Definition.Trim(),
-                Alternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null).Select(BuildAlternateFromViewModel).ToList()
+                Alternates = BuildAlternateItemsList(definitionViewModel)
             };
+            if(definitionViewModel.Id != 0)
+            {
+                definitionItem.Id = definitionViewModel.Id;
+            }
+            return definitionItem;
+        }
+
+        private List<AlternateDefinitionItem> BuildAlternateItemsList(DefinitionViewModel definitionViewModel)
+        {
+            var alternatesForNewDefinition = new List<AlternateDefinitionItem>();
+            var ViewModelAlternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null);
+            if (ViewModelAlternates.Count() > 0)
+            {
+                alternatesForNewDefinition = ViewModelAlternates.Select(BuildAlternateFromViewModel).ToList();
+            }
+            return alternatesForNewDefinition;
         }
 
         private AlternateDefinitionItem BuildAlternateFromViewModel(AlternateItemViewModel alternateItemViewModel)

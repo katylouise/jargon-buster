@@ -3,7 +3,9 @@
 $(document).ready(function () {
 
     $(".addAlternate").click(function () {
-        var counter = parseInt($("li").last().attr("id")) + 1;
+        var listId = $("li").last().attr("id");
+        console.log(listId);
+        var counter = listId === undefined ? 0 : parseInt(listId) + 1;
         var newLi = '<li><input name="Alternates['+ counter +'].AlternateDefinition" type="text" value=""></li>';
         $("ul").append(newLi);
         $("li").last().attr("id", counter);
