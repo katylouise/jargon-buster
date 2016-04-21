@@ -88,37 +88,39 @@ namespace Parliament.JargonBuster.Core.Services
         {
             foreach (var item in newDefinitionItem.Alternates)
             {
-                if(item.Id != 0 && existingDefinitionItem.Alternates.Any(x => x.Id == item.Id))
+                if (item.AlternateDefinition != null)
                 {
-                    var exisitingAlternate = existingDefinitionItem.Alternates.First(x => x.Id == item.Id);
-                    exisitingAlternate.AlternateDefinition = item.AlternateDefinition;
-                }
+                    if (item.Id != 0 && existingDefinitionItem.Alternates.Any(x => x.Id == item.Id))
+                    {
+                        //existing one - update
+                        var exisitingAlternate = existingDefinitionItem.Alternates.First(x => x.Id == item.Id);
+                        exisitingAlternate.AlternateDefinition = item.AlternateDefinition;
+                    }
 
+                    else
+                    {
+                        // new one
+                        existingDefinitionItem.Alternates.Add(item);
+                    }
+                }
                 else
                 {
-                    existingDefinitionItem.Alternates.Add(item);
+                    //existing one - delete
+                    RemoveAlternate(existingDefinitionItem, item);
                 }
-            }
-            RemoveAlternates(existingDefinitionItem, newDefinitionItem);
+            }          
         }
 
-        private void RemoveAlternates(DefinitionItem exisitingDefinitionItem, DefinitionItem newDefinitionItem)
+        private void RemoveAlternate(DefinitionItem exisitingDefinitionItem, AlternateDefinitionItem item)
         {
-            var alternateToRemove = new List<AlternateDefinitionItem>();
-
-            foreach (var item in exisitingDefinitionItem.Alternates)
+            using (var context = new JargonBusterDbContext())
             {
-                if (newDefinitionItem.Alternates.All(x => x.Id != item.Id))
-                {
-                    alternateToRemove.Add(item);
-                }
+                var altToRemove = context.AlternateDefinitionItems.First(x => x.Id == item.Id);
+                context.Definitions.Include("Alternates")
+                                        .Single(x => x.Id == exisitingDefinitionItem.Id).Alternates.Remove(altToRemove);
+                context.AlternateDefinitionItems.Remove(altToRemove);
+                context.SaveChanges();
             }
-
-            foreach (var item in alternateToRemove)
-            {
-                //delete each alternate here
-            }
-
         }
     }
 }
