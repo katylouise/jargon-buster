@@ -11,5 +11,6 @@ namespace AdminApp.Services
     {
         void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel);
         void AddDefinitionViewModel(DefinitionViewModel definitionViewModel);
+        void DeleteDefinitionViewModel(DefinitionViewModel definitionViewModel);
     }
 }

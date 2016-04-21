@@ -64,6 +64,7 @@ namespace AdminApp.Controllers
         [HttpPost]
         public ActionResult Delete(DefinitionViewModel model)
         {
+            _adminDefinitionsService.DeleteDefinitionViewModel(model);
             return RedirectToAction("Index");
         }
 

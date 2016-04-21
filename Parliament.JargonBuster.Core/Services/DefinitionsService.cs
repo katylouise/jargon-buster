@@ -44,7 +44,7 @@ namespace Parliament.JargonBuster.Core.Services
             }
         }
 
-        public void AddDefinition(DefinitionItem definitionItem)
+        public void AddDefinitionItem(DefinitionItem definitionItem)
         {
             using (var context = new JargonBusterDbContext())
             {
@@ -67,18 +67,20 @@ namespace Parliament.JargonBuster.Core.Services
                 {
                     UpdateAlternateDefinitionItems(definitionItem, definition);
                 }
-                //context.Entry(definition).CurrentValues.SetValues(definitionItem);
-                //TODO Alternates
-
                 context.SaveChanges();
             }
         }
 
-        public void RemoveDefinitionItem(DefinitionItem definitionItem)
+        public void DeleteDefinitionItem(DefinitionItem definitionItem)
         {
             using (var context = new JargonBusterDbContext())
             {
-
+                //TODO include alternates
+                var definition = context.Definitions
+                                        .Include("Alternates")
+                                        .Single(x => x.Id == definitionItem.Id);
+                context.Definitions.Remove(definition);
+                context.SaveChanges();
             }
         }
 
