@@ -44,9 +44,9 @@ namespace AdminApp.Services
             return new DefinitionItem
             {
                 Id = definitionViewModel.Id,
-                Phrase = definitionViewModel.Phrase,
-                Definition = definitionViewModel.Definition,
-                Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
+                Phrase = definitionViewModel.Phrase.Trim(),
+                Definition = definitionViewModel.Definition.Trim(),
+                Alternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null).Select(BuildAlternateFromViewModel).ToList()
             };
         }
 
@@ -55,7 +55,7 @@ namespace AdminApp.Services
             return new AlternateDefinitionItem
             {
                 Id = alternateItemViewModel.Id,
-                AlternateDefinition = alternateItemViewModel.AlternateDefinition
+                AlternateDefinition = alternateItemViewModel.AlternateDefinition.Trim()
             };
         }
     }
