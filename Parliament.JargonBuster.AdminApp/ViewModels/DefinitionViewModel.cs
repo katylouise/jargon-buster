@@ -11,7 +11,6 @@ namespace AdminApp.ViewModels
         public int Id { get; set; }
         public string Phrase { get; set; }
         public string Definition { get; set; }
-        //TODO make this its own view model
         public List<AlternateItemViewModel> Alternates { get; set; }
 
     }

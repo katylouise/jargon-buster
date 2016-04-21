@@ -46,7 +46,7 @@ namespace AdminApp.Services
                 Id = definitionViewModel.Id,
                 Phrase = definitionViewModel.Phrase,
                 Definition = definitionViewModel.Definition,
-                //Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
+                Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
             };
         }
 
