@@ -1,6 +1,4 @@
-﻿
-
-@model AdminApp.ViewModels.DefinitionViewModel
+﻿@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
     var ActionName = ViewContext.RouteData.Values["action"].ToString();
 }
@@ -23,11 +21,8 @@
     }
     else if (Model != null && Model.Alternates.Count == 0)
     {
-        <div>@Model.Alternates.Count</div>
-        <ul class="alternatesList">
-        </ul>
+        <ul class="alternatesList"></ul>
     }
-
     else
     {
         <ul class="alternatesList">
