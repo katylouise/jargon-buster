@@ -117,7 +117,7 @@ namespace Parliament.JargonBuster.Core.Services
             {
                 var altToRemove = context.AlternateDefinitionItems.First(x => x.Id == item.Id);
                 context.Definitions.Include("Alternates")
-                                        .Single(x => x.Id == exisitingDefinitionItem.Id).Alternates.Remove(altToRemove);
+                                   .Single(x => x.Id == exisitingDefinitionItem.Id).Alternates.Remove(altToRemove);
                 context.AlternateDefinitionItems.Remove(altToRemove);
                 context.SaveChanges();
             }
