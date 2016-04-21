@@ -24,19 +24,30 @@ namespace AdminApp.Services
                 Definition = definitionViewModel.Definition,
                 Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
             };
-            _definitionsService.AddDefinition(definitionItemToAdd);
+            _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
         public void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel)
         {
-            var definition = new DefinitionItem
+            var definitionItemToUpdate = BuildDefinitionItemFromViewModel(definitionViewModel);
+            _definitionsService.UpdateDefinitionItem(definitionItemToUpdate);
+        }
+
+        public void DeleteDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        {
+            var definitionItemToDelete = BuildDefinitionItemFromViewModel(definitionViewModel);
+            _definitionsService.DeleteDefinitionItem(definitionItemToDelete);
+        }
+
+        private DefinitionItem BuildDefinitionItemFromViewModel(DefinitionViewModel definitionViewModel)
+        {
+            return new DefinitionItem
             {
                 Id = definitionViewModel.Id,
                 Phrase = definitionViewModel.Phrase,
                 Definition = definitionViewModel.Definition,
-                Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
+                //Alternates = definitionViewModel.Alternates.Select(BuildAlternateFromViewModel).ToList()
             };
-            _definitionsService.UpdateDefinitionItem(definition);
         }
 
         private AlternateDefinitionItem BuildAlternateFromViewModel(AlternateItemViewModel alternateItemViewModel)

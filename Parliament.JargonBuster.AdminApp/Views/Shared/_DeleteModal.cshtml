@@ -1,0 +1,10 @@
+﻿@model AdminApp.ViewModels.DefinitionViewModel
+
+<div>Are you sure you want to delete the definition for @Model.Phrase?</div>
+
+@using (Html.BeginForm("Delete", "Home", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit">Yes</button>
+}
+
