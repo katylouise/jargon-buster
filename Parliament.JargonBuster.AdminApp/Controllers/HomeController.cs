@@ -44,7 +44,6 @@ namespace AdminApp.Controllers
         public ActionResult Edit(int id)
         {
             var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
-
             return PartialView("_FormModal", model);
         }
 
@@ -52,6 +51,19 @@ namespace AdminApp.Controllers
         public ActionResult Edit(DefinitionViewModel model)
         {
             _adminDefinitionsService.UpdateDefinitionViewModel(model);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
+            return PartialView("_DeleteModal", model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(DefinitionViewModel model)
+        {
             return RedirectToAction("Index");
         }
 

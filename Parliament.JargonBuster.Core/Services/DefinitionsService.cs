@@ -74,6 +74,14 @@ namespace Parliament.JargonBuster.Core.Services
             }
         }
 
+        public void RemoveDefinitionItem(DefinitionItem definitionItem)
+        {
+            using (var context = new JargonBusterDbContext())
+            {
+
+            }
+        }
+
         private void UpdateAlternateDefinitionItems(DefinitionItem newDefinitionItem, DefinitionItem existingDefinitionItem)
         {
             foreach (var item in newDefinitionItem.Alternates)
