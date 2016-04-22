@@ -14,6 +14,8 @@ namespace AdminApp.ViewModels
         public string Phrase { get; set; }
         [Required(ErrorMessage = "A definition meaning is required")]
         public string Definition { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public List<AlternateItemViewModel> Alternates { get; set; }
 
     }
