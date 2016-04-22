@@ -17,12 +17,8 @@
             <li>
                 <ul>
                     <li>@def.Phrase</li>
-                    <li>@def.CreatedAt</li>
-
-                    if (@def.UpdatedAt != null)
-                    {
-                    <li>@def.UpdatedAt</li>
-                    }
+                    <li>Created at: @def.CreatedAt.ToString("dd/MM/yyyy hh:mm tt")</li>
+                    <li>Last updated at: @def.UpdatedAt.ToString("dd/MM/yyyy hh:mm tt")</li>
                     <li>@Html.ActionLink("Edit", "Edit", new { id = def.Id })</li>
                     <li>@Html.ActionLink("Delete", "Delete", new { id = def.Id })</li>
                 </ul>
