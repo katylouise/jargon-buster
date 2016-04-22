@@ -54,7 +54,7 @@ namespace AdminApp.Controllers
         [HttpPost]
         public ActionResult Edit(DefinitionViewModel model)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
             {
                 _adminDefinitionsService.UpdateDefinitionViewModel(model);
                 return RedirectToAction("Index");
