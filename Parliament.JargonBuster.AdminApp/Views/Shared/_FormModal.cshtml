@@ -1,6 +1,4 @@
-﻿
-
-@model AdminApp.ViewModels.DefinitionViewModel
+﻿@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
     var ActionName = ViewContext.RouteData.Values["action"].ToString();
 }
@@ -24,21 +22,18 @@
                 <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
             }
         </ul>
-        <a class="addAlternate" href="#">Add another alternate</a>
     }
-
     else if (Model != null && Model.Alternates.Count == 0)
     {
-        <div>@Model.Alternates.Count</div>
+        <ul class="alternatesList"></ul>
     }
-
     else
     {
         <ul class="alternatesList">
             <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)</li>
         </ul>
-        <a class="addAlternate" href="#">Add another alternate</a>
     }
+    <a class="addAlternate" href="#">Add a new alternate</a>
     <button type="submit">Save</button>
 }
 
