@@ -12,10 +12,20 @@
     <button type="submit">Search</button>
 }
 <ol>
-    @foreach (var def in Model.Definitions)
-    {
-        <li>@def.Phrase</li>
-        @Html.ActionLink("Edit", "Edit", new { id = def.Id })
-        @Html.ActionLink("Delete", "Delete", new { id = def.Id})
+        @foreach (var def in Model.Definitions)
+        {
+            <li>
+                <ul>
+                    <li>@def.Phrase</li>
+                    <li>@def.CreatedAt</li>
+
+                    if (@def.UpdatedAt != null)
+                    {
+                    <li>@def.UpdatedAt</li>
+                    }
+                    <li>@Html.ActionLink("Edit", "Edit", new { id = def.Id })</li>
+                    <li>@Html.ActionLink("Delete", "Delete", new { id = def.Id })</li>
+                </ul>
+        </li>
     } 
 </ol>
