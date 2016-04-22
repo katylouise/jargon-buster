@@ -16,20 +16,20 @@ namespace AdminApp.Services
         {
             _definitionsService = DefinitionsService;
         }
-        public void AddDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        public void AddDefinitionItem(DefinitionViewModel definitionViewModel)
         {
             var definitionItemToAdd = BuildDefinitionItemFromViewModel(definitionViewModel);
             definitionItemToAdd.CreatedAt = DateTime.Now;
             _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
-        public void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        public void UpdateDefinitionItem(DefinitionViewModel definitionViewModel)
         {
             var definitionItemToUpdate = BuildDefinitionItemFromViewModel(definitionViewModel);
             _definitionsService.UpdateDefinitionItem(definitionItemToUpdate);
         }
 
-        public void DeleteDefinitionViewModel(DefinitionViewModel definitionViewModel)
+        public void DeleteDefinitionItem(DefinitionViewModel definitionViewModel)
         {
             var definitionItemToDelete = BuildDefinitionItemFromViewModel(definitionViewModel);
             _definitionsService.DeleteDefinitionItem(definitionItemToDelete);
@@ -37,13 +37,14 @@ namespace AdminApp.Services
 
         private DefinitionItem BuildDefinitionItemFromViewModel(DefinitionViewModel definitionViewModel)
         {
+            HouseType houseType = (HouseType)Enum.Parse(typeof(HouseType), definitionViewModel.House);
             var definitionItem = new DefinitionItem
             {
                 Phrase = definitionViewModel.Phrase.Trim(),
                 Definition = definitionViewModel.Definition.Trim(),
                 Alternates = BuildAlternateItemsList(definitionViewModel),
                 UpdatedAt = DateTime.Now,
-                //HouseType = definitionViewModel.House
+                HouseType = houseType
             };
             if(definitionViewModel.Id != 0)
             {
