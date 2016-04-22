@@ -15,7 +15,6 @@ namespace AdminApp.ViewModelBuilders
         {
             _defintionsService = definitionsService;
             _alternateItemsViewModelBuilder = alternateItemsViewModelBuilder;
-
         }
 
         public DefinitionsViewModel Build()
@@ -46,7 +45,9 @@ namespace AdminApp.ViewModelBuilders
                 Id = definitionItem.Id,
                 Phrase = Capitalize(definitionItem.Phrase),
                 Definition = definitionItem.Definition,
-                Alternates = _alternateItemsViewModelBuilder.Build(definitionItem)
+                Alternates = _alternateItemsViewModelBuilder.Build(definitionItem),
+                UpdatedAt = definitionItem.UpdatedAt,
+                CreatedAt = definitionItem.CreatedAt
             };
         }
 
