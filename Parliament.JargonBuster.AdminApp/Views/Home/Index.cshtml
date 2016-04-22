@@ -19,6 +19,7 @@
                     <li>@def.Phrase</li>
                     <li>Created at: @def.CreatedAt.ToString("dd/MM/yyyy hh:mm tt")</li>
                     <li>Last updated at: @def.UpdatedAt.ToString("dd/MM/yyyy hh:mm tt")</li>
+                    <li>@def.House</li>
                     <li>@Html.ActionLink("Edit", "Edit", new { id = def.Id })</li>
                     <li>@Html.ActionLink("Delete", "Delete", new { id = def.Id })</li>
                 </ul>
