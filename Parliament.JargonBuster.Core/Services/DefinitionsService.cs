@@ -75,10 +75,13 @@ namespace Parliament.JargonBuster.Core.Services
         {
             using (var context = new JargonBusterDbContext())
             {
-                //TODO include alternates
                 var definition = context.Definitions
                                         .Include("Alternates")
                                         .Single(x => x.Id == definitionItem.Id);
+                if (definition.Alternates.Any())
+                {
+                    context.AlternateDefinitionItems.RemoveRange(definition.Alternates);
+                }
                 context.Definitions.Remove(definition);
                 context.SaveChanges();
             }
