@@ -16,6 +16,7 @@ namespace AdminApp.ViewModels
         public string Definition { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public HouseType House { get; set; }
         public List<AlternateItemViewModel> Alternates { get; set; }
 
     }
