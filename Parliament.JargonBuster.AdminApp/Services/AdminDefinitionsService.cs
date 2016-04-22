@@ -52,9 +52,9 @@ namespace AdminApp.Services
         private List<AlternateDefinitionItem> BuildAlternateItemsList(DefinitionViewModel definitionViewModel)
         {
             var alternatesForNewDefinition = new List<AlternateDefinitionItem>();
-            var ViewModelAlternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null);
-            if (ViewModelAlternates.Count() > 0)
+            if (definitionViewModel.Alternates != null && definitionViewModel.Alternates.Count() > 0)
             {
+                var ViewModelAlternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null);
                 alternatesForNewDefinition = ViewModelAlternates.Select(BuildAlternateFromViewModel).ToList();
             }
             return alternatesForNewDefinition;

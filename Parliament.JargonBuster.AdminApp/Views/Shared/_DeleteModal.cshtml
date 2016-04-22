@@ -5,6 +5,16 @@
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.Phrase)
+    @Html.HiddenFor(m => m.Definition)
+    if (Model.Alternates.Any())
+    {
+        for (var i = 0; i < Model.Alternates.Count(); i++)
+        {
+            @Html.HiddenFor(m => m.Alternates[i].Id)
+            @Html.HiddenFor(m => m.Alternates[i].AlternateDefinition)
+        }
+    }
     <button type="submit">Yes</button>
 }
 
