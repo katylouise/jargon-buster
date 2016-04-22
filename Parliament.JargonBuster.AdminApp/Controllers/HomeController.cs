@@ -10,6 +10,7 @@ using AdminApp.Services;
 
 namespace AdminApp.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IDefinitionsViewModelBuilder _definitionsViewModelBuilder;
