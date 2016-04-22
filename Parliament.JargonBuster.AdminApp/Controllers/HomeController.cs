@@ -36,8 +36,12 @@ namespace AdminApp.Controllers
         [HttpPost]
         public ActionResult Add(DefinitionViewModel model)
         {
-            _adminDefinitionsService.AddDefinitionViewModel(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
+            {
+                _adminDefinitionsService.AddDefinitionViewModel(model);
+                return RedirectToAction("Index");
+            }
+            return PartialView("_FormModal", model);
         }
 
         [HttpGet]
@@ -50,8 +54,12 @@ namespace AdminApp.Controllers
         [HttpPost]
         public ActionResult Edit(DefinitionViewModel model)
         {
-            _adminDefinitionsService.UpdateDefinitionViewModel(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
+            {
+                _adminDefinitionsService.UpdateDefinitionViewModel(model);
+                return RedirectToAction("Index");
+            }
+            return PartialView("_FormModal", model);
         }
 
         [HttpGet]

@@ -6,8 +6,12 @@
 @using (Html.BeginForm(ActionName, "Home", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.Id)
+
     @Html.TextBoxFor(m => m.Phrase)
+    @Html.ValidationMessageFor(m => m.Phrase)
+
     @Html.TextBoxFor(m => m.Definition)
+    @Html.ValidationMessageFor(m => m.Definition)
 
     if (Model != null && Model.Alternates.Any())
     {
