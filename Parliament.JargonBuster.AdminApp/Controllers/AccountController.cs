@@ -28,7 +28,7 @@ namespace AdminApp.Controllers
                 ModelState.AddModelError("", "Incorrect username and/or password");
             }
 
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
