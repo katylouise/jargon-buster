@@ -13,9 +13,13 @@
     @Html.TextBoxFor(m => m.Definition)
     @Html.ValidationMessageFor(m => m.Definition)
 
-    @Html.RadioButtonFor(m => m.House, HouseType.Bicameral)
-    @Html.RadioButtonFor(m => m.House, HouseType.Commons)
-    @Html.RadioButtonFor(m => m.House, HouseType.Lords)
+    @Html.LabelFor(m => m.House, "Bicameral")
+    @Html.RadioButtonFor(m => m.House, "Bicameral")
+    @Html.LabelFor(m => m.House, "Commons")
+    @Html.RadioButtonFor(m => m.House, "Commons")
+    @Html.LabelFor(m => m.House, "Lords")
+    @Html.RadioButtonFor(m => m.House, "Lords")
+
     if (Model != null && Model.Alternates.Any())
     {
         <ul class="alternatesList">

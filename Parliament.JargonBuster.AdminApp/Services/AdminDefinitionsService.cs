@@ -43,7 +43,7 @@ namespace AdminApp.Services
                 Definition = definitionViewModel.Definition.Trim(),
                 Alternates = BuildAlternateItemsList(definitionViewModel),
                 UpdatedAt = DateTime.Now,
-                HouseType = definitionViewModel.House
+                //HouseType = definitionViewModel.House
             };
             if(definitionViewModel.Id != 0)
             {
