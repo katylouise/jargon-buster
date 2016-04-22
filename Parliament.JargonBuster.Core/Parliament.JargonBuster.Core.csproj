@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201604220959589_changed timestamps to DateTime.Designer.cs">
       <DependentUpon>201604220959589_changed timestamps to DateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604221041255_added housetype enum to definitionitem.cs" />
+    <Compile Include="Migrations\201604221041255_added housetype enum to definitionitem.Designer.cs">
+      <DependentUpon>201604221041255_added housetype enum to definitionitem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DefinitionsService.cs" />
@@ -136,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604220959589_changed timestamps to DateTime.resx">
       <DependentUpon>201604220959589_changed timestamps to DateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604221041255_added housetype enum to definitionitem.resx">
+      <DependentUpon>201604221041255_added housetype enum to definitionitem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
