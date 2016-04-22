@@ -9,8 +9,8 @@ namespace AdminApp.Services
 {
     public interface IAdminDefinitionsService
     {
-        void UpdateDefinitionViewModel(DefinitionViewModel definitionViewModel);
-        void AddDefinitionViewModel(DefinitionViewModel definitionViewModel);
-        void DeleteDefinitionViewModel(DefinitionViewModel definitionViewModel);
+        void UpdateDefinitionItem(DefinitionViewModel definitionViewModel);
+        void AddDefinitionItem(DefinitionViewModel definitionViewModel);
+        void DeleteDefinitionItem(DefinitionViewModel definitionViewModel);
     }
 }

@@ -38,7 +38,7 @@ namespace AdminApp.Controllers
         {
             if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
             {
-                _adminDefinitionsService.AddDefinitionViewModel(model);
+                _adminDefinitionsService.AddDefinitionItem(model);
                 return RedirectToAction("Index");
             }
             return PartialView("_FormModal", model);
@@ -56,7 +56,7 @@ namespace AdminApp.Controllers
         {
             if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
             {
-                _adminDefinitionsService.UpdateDefinitionViewModel(model);
+                _adminDefinitionsService.UpdateDefinitionItem(model);
                 return RedirectToAction("Index");
             }
             return PartialView("_FormModal", model);
@@ -72,7 +72,7 @@ namespace AdminApp.Controllers
         [HttpPost]
         public ActionResult Delete(DefinitionViewModel model)
         {
-            _adminDefinitionsService.DeleteDefinitionViewModel(model);
+            _adminDefinitionsService.DeleteDefinitionItem(model);
             return RedirectToAction("Index");
         }
 
