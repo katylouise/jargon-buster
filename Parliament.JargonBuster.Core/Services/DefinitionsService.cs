@@ -62,6 +62,7 @@ namespace Parliament.JargonBuster.Core.Services
                                         .Single(x => x.Id == definitionItem.Id);
                 definition.Definition = definitionItem.Definition;
                 definition.Phrase = definitionItem.Phrase;
+                definition.UpdatedAt = definitionItem.UpdatedAt;
                 
                 if (definitionItem.Alternates.Any())
                 {

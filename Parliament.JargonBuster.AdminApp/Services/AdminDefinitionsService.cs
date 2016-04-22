@@ -19,6 +19,7 @@ namespace AdminApp.Services
         public void AddDefinitionViewModel(DefinitionViewModel definitionViewModel)
         {
             var definitionItemToAdd = BuildDefinitionItemFromViewModel(definitionViewModel);
+            definitionItemToAdd.CreatedAt = DateTime.Now;
             _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
@@ -40,7 +41,8 @@ namespace AdminApp.Services
             {
                 Phrase = definitionViewModel.Phrase.Trim(),
                 Definition = definitionViewModel.Definition.Trim(),
-                Alternates = BuildAlternateItemsList(definitionViewModel)
+                Alternates = BuildAlternateItemsList(definitionViewModel),
+                UpdatedAt = DateTime.Now
             };
             if(definitionViewModel.Id != 0)
             {
