@@ -47,7 +47,8 @@ namespace AdminApp.ViewModelBuilders
                 Definition = definitionItem.Definition,
                 Alternates = _alternateItemsViewModelBuilder.Build(definitionItem),
                 UpdatedAt = definitionItem.UpdatedAt,
-                CreatedAt = definitionItem.CreatedAt
+                CreatedAt = definitionItem.CreatedAt,
+                House = definitionItem.HouseType
             };
         }
 
