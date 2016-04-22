@@ -37,13 +37,14 @@ namespace AdminApp.Services
 
         private DefinitionItem BuildDefinitionItemFromViewModel(DefinitionViewModel definitionViewModel)
         {
+            HouseType houseType = (HouseType)Enum.Parse(typeof(HouseType), definitionViewModel.House);
             var definitionItem = new DefinitionItem
             {
                 Phrase = definitionViewModel.Phrase.Trim(),
                 Definition = definitionViewModel.Definition.Trim(),
                 Alternates = BuildAlternateItemsList(definitionViewModel),
                 UpdatedAt = DateTime.Now,
-                //HouseType = definitionViewModel.House
+                HouseType = houseType
             };
             if(definitionViewModel.Id != 0)
             {
