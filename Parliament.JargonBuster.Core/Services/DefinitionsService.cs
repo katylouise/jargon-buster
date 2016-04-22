@@ -63,6 +63,7 @@ namespace Parliament.JargonBuster.Core.Services
                 definition.Definition = definitionItem.Definition;
                 definition.Phrase = definitionItem.Phrase;
                 definition.UpdatedAt = definitionItem.UpdatedAt;
+                definition.HouseType = definitionItem.HouseType;
                 
                 if (definitionItem.Alternates.Any())
                 {
