@@ -3,16 +3,6 @@
     var ActionName = ViewContext.RouteData.Values["action"].ToString();
 }
 
-@using (Html.BeginForm(ActionName, "Home", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.Id)
-
-    @Html.TextBoxFor(m => m.Phrase)
-    @Html.ValidationMessageFor(m => m.Phrase)
-
-    @Html.TextBoxFor(m => m.Definition)
-    @Html.ValidationMessageFor(m => m.Definition)
-
     @Html.LabelFor(m => m.House, "Bicameral")
     @Html.RadioButtonFor(m => m.House, "Bicameral")
     @Html.LabelFor(m => m.House, "Commons")
@@ -43,6 +33,44 @@
     <a class="addAlternate" href="#">Add a new alternate</a>
     <button type="submit">Save</button>
 }
+
+<div class="overlay">
+        <div class="modal">
+            @using (Html.BeginForm(ActionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
+            {
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="edit-wrapper">
+                    <h3 class="edit-title">Add/Edit Definition </h3>
+
+                    @Html.TextBoxFor(m => m.Phrase, new { @class = "edit-term" })
+                    @Html.ValidationMessageFor(m => m.Phrase)
+
+
+                    @Html.TextAreaFor(m => m.Definition, new { @class = "edit-definition", @rows = "10" })
+                    @Html.ValidationMessageFor(m => m.Definition)
+
+                    <div class="edit-alternatives">
+                        <ul class="edit-alternatives__list">
+                            <li><input type="text" name="alternatives-term" class="edit-alternatives__term" value="Alternative"></li>
+                            <li><input type="text" name="alternatives-term" class="edit-alternatives__term" value="Alternative"></li>
+                        </ul>
+                        <a href="#" class="edit-alternatives__add">Add alternative term</a>
+                    </div>
+                    <select name="edit-group" class="edit-group">
+                        <option value="Bicameral">Bicameral</option>
+                        <option value="Commons">Commons</option>
+                        <option value="Lords">Lords</option>
+                    </select>
+                </div>
+                <div class="edit-submit cf">
+                    <button class="edit-submit__save">Save</button>
+                    <a href="#" class="edit-submit__cancel">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")

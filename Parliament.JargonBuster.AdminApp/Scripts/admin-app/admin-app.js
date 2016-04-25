@@ -10,5 +10,7 @@ $(document).ready(function () {
         $("ul").append(newLi);
         $("li").last().attr("id", counter);
     });
+
+
 });
 
