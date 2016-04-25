@@ -11,6 +11,10 @@ $(document).ready(function () {
         $("li").last().attr("id", counter);
     });
 
+    $("a[data-toggle]").click(function () {
+        var modal = this.data("target");
+        modal.show();
+    });
 
 });
 
