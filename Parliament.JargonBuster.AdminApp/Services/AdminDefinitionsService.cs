@@ -7,7 +7,7 @@ using Parliament.JargonBuster.Core.Domain;
 using Parliament.JargonBuster.Core.Services;
 
 namespace AdminApp.Services
-{
+{   
     public class AdminDefinitionsService : IAdminDefinitionsService
     {
         private readonly IDefinitionsService _definitionsService;
