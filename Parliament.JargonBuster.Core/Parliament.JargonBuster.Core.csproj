@@ -86,6 +86,7 @@
     <Compile Include="Domain\Context\JargonBusterDbContext.cs" />
     <Compile Include="Domain\DefinitionItem.cs" />
     <Compile Include="Domain\HouseType.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Engine\DefinitionsEngine.cs" />
     <Compile Include="Engine\IDefinitionsEngine.cs" />
     <Compile Include="IoC\CustomModulesIoC.cs" />

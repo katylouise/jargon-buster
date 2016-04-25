@@ -17,7 +17,14 @@ namespace AdminApp.Security
         /// <param name="username">The name of the user to validate. </param><param name="password">The password for the specified user. </param>
         public override bool ValidateUser(string username, string password)
         {
-            return (username == "" && password == "");
+            if (username == "Admin" && password == "1234")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion
