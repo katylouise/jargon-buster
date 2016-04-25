@@ -10,34 +10,46 @@
         <div class="header cf">
             <h1 class="header__title">Jargon Buster: Admin </h1>
             <h2 class="header__subtitle">Edit definitions </h2>
-            @Html.ActionLink("Add a definition", "Add", null, new { @class="add-definition", data_toggle = "modal", data_target = "#formModal" })
+            <p class="add-definition"><img src="~/Content/img/add--blue.png" /> @Html.ActionLink("Add a definition", "Add", null, new Dictionary<string, Object> { { "data-toggle", "modal" }, { "data-target", "formModal" } })</p>
         </div>
 
     </div>
 
-</div>
-
-<table border="0" cellspacing="0" cellpadding="0" class="definitions-table">
-    <thead>
-        <tr>
-            <th scope="col" class="header-name">Name</th>
-            <th colspan="2" scope="col" class="header-action">Actions</th>
-            <th scope="col" class="header-category">Category</th>
-            <th scope="col" class="header-created">Created</th>
-            <th scope="col" class="header-edited">Last edited</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var def in Model.Definitions)
-        {
-            <tr class="item-group">
-                <td>@def.Phrase</td>
-                <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { id = def.Id })</td>
-                <td class="item-delete"><a href="#">@Html.ActionLink("Delete", "Delete", new { id = def.Id })</a></td>
-                <td class="item-category">@def.House</td>
-                <td class="item-created">@def.CreatedAt.ToString("dd/MM/yyyy hh:mm tt")</td>
-                <td class="item-edited">@def.UpdatedAt.ToString("dd/MM/yyyy hh:mm tt")</td>
+    <table border="0" cellspacing="0" cellpadding="0" class="definitions-table">
+        <thead>
+            <tr>
+                <th scope="col" class="header-name">Name</th>
+                <th colspan="2" scope="col" class="header-action">Actions</th>
+                <th scope="col" class="header-category">Category</th>
+                <th scope="col" class="header-created">Created</th>
+                <th scope="col" class="header-edited">Last edited</th>
             </tr>
-        } 
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var def in Model.Definitions)
+            {
+                <tr class="item-group">
+                    <td>@def.Phrase</td>
+                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { id = def.Id }, new Dictionary<string, Object> { { "class", "item-edit" }, { "data-toggle", "modal" }, { "data-target", "formModal" } })</td>
+                    <td class="item-delete"><a href="#">@Html.ActionLink("Delete", "Delete", new { id = def.Id }, new Dictionary<string, Object> { { "class", "item-delete" }, { "data-toggle", "modal" }, { "data-target", "deleteModal" } })</a></td>
+                    @if(@def.House == "Bicameral"){
+                        <td class="item-category"><img src="~/Content/img/dot--bi.png" class="house-icon" />@def.House</td>
+                    }
+                    else if (@def.House == "Commons")
+                    {
+                        <td class="item-category"><img src="~/Content/img/dot--green.png" class="house-icon" />@def.House</td>
+                    }
+                    else
+                    {
+                        <td class="item-category"><img src="~/Content/img/dot--red.png" class="house-icon" />@def.House</td>
+                    }
+                    <td class="item-created">@def.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td class="item-edited">@def.UpdatedAt.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p class="add-definition"><img src="~/Content/img/add--blue.png"/> @Html.ActionLink("Add a definition", "Add", null, new Dictionary<string, Object> { { "data-toggle", "modal" }, { "data-target", "formModal" } })</p>
+
+</div>
