@@ -86,6 +86,7 @@
     <Compile Include="Domain\Context\JargonBusterDbContext.cs" />
     <Compile Include="Domain\DefinitionItem.cs" />
     <Compile Include="Domain\HouseType.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Engine\DefinitionsEngine.cs" />
     <Compile Include="Engine\IDefinitionsEngine.cs" />
     <Compile Include="IoC\CustomModulesIoC.cs" />
@@ -112,6 +113,10 @@
     <Compile Include="Migrations\201604221041255_added housetype enum to definitionitem.cs" />
     <Compile Include="Migrations\201604221041255_added housetype enum to definitionitem.Designer.cs">
       <DependentUpon>201604221041255_added housetype enum to definitionitem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604250717168_added user model and table.cs" />
+    <Compile Include="Migrations\201604250717168_added user model and table.Designer.cs">
+      <DependentUpon>201604250717168_added user model and table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604221041255_added housetype enum to definitionitem.resx">
       <DependentUpon>201604221041255_added housetype enum to definitionitem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604250717168_added user model and table.resx">
+      <DependentUpon>201604250717168_added user model and table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

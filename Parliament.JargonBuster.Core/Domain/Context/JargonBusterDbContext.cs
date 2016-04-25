@@ -6,5 +6,6 @@ namespace Parliament.JargonBuster.Core.Domain.Context
     {
         public DbSet<DefinitionItem> Definitions { get; set; }
         public DbSet<AlternateDefinitionItem> AlternateDefinitionItems { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

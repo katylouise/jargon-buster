@@ -20,7 +20,14 @@ namespace AdminApp.Controllers.ControllerFactory
             IAdminDefinitionsService adminDefinitionsService = new AdminDefinitionsService(definitionService);
             IDefinitionsViewModelBuilder definitionsViewModelBuilder = new DefinitionsViewModelBuilder(definitionService, alternateItemsViewModelBuilder);
             var controller = new HomeController(definitionsViewModelBuilder, adminDefinitionsService);
-            return controller;
+            if(controllerName == "Account")
+            {
+                return new AccountController();
+            }
+            else
+            {
+                return controller;
+            }
         }
 
         public SessionStateBehavior GetControllerSessionBehavior(RequestContext requestContext, string controllerName)
