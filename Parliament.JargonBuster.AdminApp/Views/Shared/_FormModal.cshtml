@@ -1,17 +1,18 @@
 ﻿@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
     var ActionName = ViewContext.RouteData.Values["action"].ToString();
+
+    List<SelectListItem> houseItems = new List<SelectListItem>();
+
+    houseItems.Add(new SelectListItem { Text = "Bicameral", Value = "Bicameral", Selected = true });
+
+    houseItems.Add(new SelectListItem { Text = "Commons", Value = "Commons" });
+
+    houseItems.Add(new SelectListItem { Text = "Lords", Value = "Lords" });
 }
 
-    @Html.LabelFor(m => m.House, "Bicameral")
-    @Html.RadioButtonFor(m => m.House, "Bicameral")
-    @Html.LabelFor(m => m.House, "Commons")
-    @Html.RadioButtonFor(m => m.House, "Commons")
-    @Html.LabelFor(m => m.House, "Lords")
-    @Html.RadioButtonFor(m => m.House, "Lords")
-
 <div class="overlay">
-        <div class="modal">
+        <div id="#formModal" class="modal">
             @using (Html.BeginForm(ActionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
             {
                 @Html.HiddenFor(m => m.Id)
@@ -51,11 +52,8 @@
                         <a class="edit-alternatives__add" href="#">Add alternative term</a>
                      </div>
 
-                    <select name="edit-group" class="edit-group">
-                        <option value="Bicameral">Bicameral</option>
-                        <option value="Commons">Commons</option>
-                        <option value="Lords">Lords</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
+
                 </div>
                 <div class="edit-submit cf">
                     <button class="edit-submit__save">Save</button>

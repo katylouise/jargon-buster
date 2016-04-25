@@ -4,6 +4,7 @@ using AdminApp.ViewModels;
 using AdminApp.Services;
 using System.Web.Security;
 using AdminApp.Models;
+using System.Collections.Generic;
 
 namespace AdminApp.Controllers
 {
@@ -82,5 +83,6 @@ namespace AdminApp.Controllers
             //TODO - talk to Jack about what searching should look like
             return Redirect("Index");
         }
+
     }
 }

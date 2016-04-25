@@ -10,7 +10,7 @@
         <div class="header cf">
             <h1 class="header__title">Jargon Buster: Admin </h1>
             <h2 class="header__subtitle">Edit definitions </h2>
-            @Html.ActionLink("Add a definition", "Add", new { @class="add-definition", @data_toggle = "modal", @data_attribute = "#formModal" })
+            @Html.ActionLink("Add a definition", "Add", null, new { @class="add-definition", data_toggle = "modal", data_target = "#formModal" })
         </div>
 
     </div>
