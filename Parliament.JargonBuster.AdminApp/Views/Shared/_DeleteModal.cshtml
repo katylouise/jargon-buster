@@ -7,6 +7,8 @@
     @Html.HiddenFor(m => m.Id)
     @Html.HiddenFor(m => m.Phrase)
     @Html.HiddenFor(m => m.Definition)
+    @Html.HiddenFor(m => m.House)
+
     if (Model.Alternates.Any())
     {
         for (var i = 0; i < Model.Alternates.Count(); i++)
