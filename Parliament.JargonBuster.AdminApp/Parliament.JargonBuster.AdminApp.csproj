@@ -216,6 +216,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\add--blue.png" />
+    <Content Include="Content\img\add--blue.svg" />
+    <Content Include="Content\img\delete--red.svg" />
+    <Content Include="Content\img\dot--bi.png" />
+    <Content Include="Content\img\dot--bi.svg" />
+    <Content Include="Content\img\dot--green.png" />
+    <Content Include="Content\img\dot--green.svg" />
+    <Content Include="Content\img\dot--red.png" />
+    <Content Include="Content\img\dot--red.svg" />
+    <Content Include="Content\img\logo.gif" />
+    <Content Include="Content\img\tick--blue.png" />
+    <Content Include="Content\img\tick--blue.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
