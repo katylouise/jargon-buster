@@ -12,8 +12,7 @@ $(document).ready(function () {
     });
 
     $("a[data-toggle]").click(function () {
-        //var modal = this.data("target");
-        $(".modal").show();
+        $("#formModal").modal();
     });
 
 });
