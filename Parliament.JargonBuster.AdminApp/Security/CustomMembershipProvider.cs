@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parliament.JargonBuster.Core.Domain.Context;
+using System;
 using System.Linq;
 using System.Web.Security;
 
@@ -17,13 +18,17 @@ namespace AdminApp.Security
         /// <param name="username">The name of the user to validate. </param><param name="password">The password for the specified user. </param>
         public override bool ValidateUser(string username, string password)
         {
-            if (username == "Admin" && password == "1234")
-            {
-                return true;
-            }
-            else
-            {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return false;
+
+            using (var context = new JargonBusterDbContext())
+            {
+                var user = (from u in context.Users
+                            where String.Compare(u.Username, username, StringComparison.OrdinalIgnoreCase) == 0
+                                  && String.Compare(u.Password, password, StringComparison.OrdinalIgnoreCase) == 0
+                            select u).FirstOrDefault();
+
+                return user != null;
             }
         }
 
