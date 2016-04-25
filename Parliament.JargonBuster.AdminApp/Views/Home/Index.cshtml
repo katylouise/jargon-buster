@@ -31,7 +31,7 @@
                 <tr class="item-group">
                     <td>@def.Phrase</td>
                     <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { id = def.Id }, new Dictionary<string, Object> { { "class", "item-edit" }, { "data-toggle", "modal" }, { "data-target", "formModal" } })</td>
-                    <td class="item-delete"><a href="#">@Html.ActionLink("Delete", "Delete", new { id = def.Id }, new Dictionary<string, Object> { { "class", "item-delete" }, { "data-toggle", "modal" }, { "data-target", "deleteModal" } })</a></td>
+                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", new { id = def.Id }, new Dictionary<string, Object> { { "class", "item-delete" }, { "data-toggle", "modal" }, { "data-target", "deleteModal" } })</td>
                     @if(@def.House == "Bicameral"){
                         <td class="item-category"><img src="~/Content/img/dot--bi.png" class="house-icon" />@def.House</td>
                     }
