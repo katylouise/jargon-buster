@@ -29,7 +29,7 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            return PartialView("_FormModal");
         }
 
         [HttpPost]
