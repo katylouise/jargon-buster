@@ -10,30 +10,6 @@
     @Html.LabelFor(m => m.House, "Lords")
     @Html.RadioButtonFor(m => m.House, "Lords")
 
-    if (Model != null && Model.Alternates.Any())
-    {
-        <ul class="alternatesList">
-            @for(var i = 0; i < Model.Alternates.Count(); i++)
-            {
-                @Html.HiddenFor(m => m.Alternates[i].Id)
-                <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
-            }
-        </ul>
-    }
-    else if (Model != null && Model.Alternates.Count == 0)
-    {
-        <ul class="alternatesList"></ul>
-    }
-    else
-    {
-        <ul class="alternatesList">
-            <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)</li>
-        </ul>
-    }
-    <a class="addAlternate" href="#">Add a new alternate</a>
-    <button type="submit">Save</button>
-}
-
 <div class="overlay">
         <div class="modal">
             @using (Html.BeginForm(ActionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
@@ -51,12 +27,30 @@
                     @Html.ValidationMessageFor(m => m.Definition)
 
                     <div class="edit-alternatives">
-                        <ul class="edit-alternatives__list">
-                            <li><input type="text" name="alternatives-term" class="edit-alternatives__term" value="Alternative"></li>
-                            <li><input type="text" name="alternatives-term" class="edit-alternatives__term" value="Alternative"></li>
-                        </ul>
-                        <a href="#" class="edit-alternatives__add">Add alternative term</a>
-                    </div>
+                        @if (Model != null && Model.Alternates.Any())
+                        {
+                            <ul class="edit-alternatives__list">
+                                @for (var i = 0; i < Model.Alternates.Count(); i++)
+                                {
+                                    @Html.HiddenFor(m => m.Alternates[i].Id)
+                                    <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition, new { @class = "edit-alternatives__term" })</li>
+                                }
+                            </ul>
+                        }
+                        else if (Model != null && Model.Alternates.Count == 0)
+                        {
+                            <ul class="edit-alternatives__list"></ul>
+                        }
+                        else
+                        {
+                            <ul class="edit-alternatives__list">
+                                <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition, new { @class = "edit-alternatives__term" })</li>
+                            </ul>
+                        }
+
+                        <a class="edit-alternatives__add" href="#">Add alternative term</a>
+                     </div>
+
                     <select name="edit-group" class="edit-group">
                         <option value="Bicameral">Bicameral</option>
                         <option value="Commons">Commons</option>
