@@ -20,4 +20,3 @@ $(document).ready(function () {
         $(this).removeData("bs.modal");
     });
 });
-
