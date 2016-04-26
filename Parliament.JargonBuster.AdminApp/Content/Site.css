@@ -238,8 +238,7 @@ a:hover, a:focus {
 }
 
 
-.add-definition::before,
-.edit-alternatives__add::before {
+.add-definition::before {
   content: "";
   background: url("../images/add--blue.png");
   background: url("../images/add--blue.svg");

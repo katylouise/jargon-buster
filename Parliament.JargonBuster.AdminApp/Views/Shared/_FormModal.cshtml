@@ -49,8 +49,12 @@
                             </ul>
                         }
 
-                        <a class="addAlternate edit-alternatives__add" href="#">Add alternative term</a>
-                     </div>
+                        <p class="edit-alternatives__add">
+                            <img src="~/Content/img/add--blue.png" />
+                            <a class="addAlternate" href="#">Add alternative term</a>
+                        </p>
+                        
+</div>
 
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
 
