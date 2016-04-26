@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    $(".addAlternate").click(function () {
+    $(".edit-alternatives__add").click(function () {
         var listId = $("li").last().attr("id");
         console.log(listId);
         var counter = listId === undefined ? 0 : parseInt(listId) + 1;
