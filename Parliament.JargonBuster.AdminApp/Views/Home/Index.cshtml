@@ -30,8 +30,8 @@
             {
                 <tr class="item-group">
                     <td>@def.Phrase</td>
-                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", null, new { @class = "open-modal", @id = @def.Id } )</td>
-                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", null, new { @class = "open-modal", @id = @def.Id } )</td>
+                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { @id = def.Id }, new { @class = "open-modal" } )</td>
+                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", new { @id = def.Id}, new { @class = "open-modal" } )</td>
                     @if(@def.House == "Bicameral"){
                         <td class="item-category"><img src="~/Content/img/dot--bi.png" class="house-icon" />@def.House</td>
                     }

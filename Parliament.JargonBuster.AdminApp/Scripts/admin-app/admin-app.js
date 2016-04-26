@@ -17,8 +17,12 @@ $(document).ready(function () {
         $(this).attr('data-toggle', 'modal');
     });
 
+    $('body').on('click', '.cancelButton', function (e) {
+        $('#modal-container').modal('hide');
+    });
+
     $("#modal-container").on("hidden-bs-modal", function () {
-        $(this).removeData("bs-modal");
+        $(this).removeData("bs.modal");
     });
 });
 
