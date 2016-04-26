@@ -18,17 +18,8 @@ $(document).ready(function () {
         $(this).attr("data-toggle", "modal");
     });
 
-    $("body").on("click", ".modal-close-btn", function (e) {
-        $("#modal-container").modal("hide");
-    });
-
     $("#modal-container").on("hidden-bs-modal", function () {
-        this.removeData("bs-modal");
+        $(this).removeData("bs-modal");
     });
-
-    $("#btnSave").click(function () {
-        $("#modal-container").modal("hide");
-    })
-
 });
 

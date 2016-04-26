@@ -20,11 +20,12 @@
                 <div class="edit-wrapper">
                     <h3 class="edit-title">Add/Edit Definition </h3>
 
-                    @Html.TextBoxFor(m => m.Phrase, new { @class = "edit-term" })
+                    @Html.LabelFor(m => m.Phrase)
+                    @Html.TextBoxFor(m => m.Phrase, new { @class = "edit-term", required = "required" })
                     @Html.ValidationMessageFor(m => m.Phrase)
 
-
-                    @Html.TextAreaFor(m => m.Definition, new { @class = "edit-definition", @rows = "10" })
+                    @Html.LabelFor(m => m.Definition)
+                    @Html.TextAreaFor(m => m.Definition, new { @class = "edit-definition", @rows = "10", required = "required" })
                     @Html.ValidationMessageFor(m => m.Definition)
 
                     <div class="edit-alternatives">
@@ -55,15 +56,10 @@
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
 
                 </div>
-                <div class="edit-submit cf">
+                <div class="modal-footer edit-submit cf">
                     <button id="btnSave" class="edit-submit__save">Save</button>
-                    <a href="#" class="modal-close-btn edit-submit__cancel">Cancel</a>
+                    <a data-dismiss="modal" href="#" class="modal-close-btn edit-submit__cancel">Cancel</a>
                 </div>
             }
         </div>
     </div>
-
-
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/admin-app")
