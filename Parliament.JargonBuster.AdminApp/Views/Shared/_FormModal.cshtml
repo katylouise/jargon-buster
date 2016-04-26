@@ -11,8 +11,8 @@
     houseItems.Add(new SelectListItem { Text = "Lords", Value = "Lords" });
 }
 
-<div class="overlay">
-        <div id="#formModal" class="modal">
+<div>
+        <div id="#formModal">
             @using (Html.BeginForm(ActionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
             {
                 @Html.HiddenFor(m => m.Id)
@@ -56,8 +56,8 @@
 
                 </div>
                 <div class="edit-submit cf">
-                    <button class="edit-submit__save">Save</button>
-                    <a href="#" class="edit-submit__cancel">Cancel</a>
+                    <button id="btnSave" class="edit-submit__save">Save</button>
+                    <a href="#" class="modal-close-btn edit-submit__cancel">Cancel</a>
                 </div>
             }
         </div>

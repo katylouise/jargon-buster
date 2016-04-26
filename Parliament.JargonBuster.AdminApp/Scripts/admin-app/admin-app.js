@@ -11,9 +11,24 @@ $(document).ready(function () {
         $("li").last().attr("id", counter);
     });
 
-    $("a[data-toggle]").click(function () {
-        $("#formModal").modal();
+    $("body").on("click", ".open-modal", function (e) {
+        console.log("banana");
+        e.preventDefault();
+        $(this).attr("data-target", "#modal-container");
+        $(this).attr("data-toggle", "modal");
     });
+
+    $("body").on("click", ".modal-close-btn", function (e) {
+        $("#modal-container").modal("hide");
+    });
+
+    $("#modal-container").on("hidden-bs-modal", function () {
+        this.removeData("bs-modal");
+    });
+
+    $("#btnSave").click(function () {
+        $("#modal-container").modal("hide");
+    })
 
 });
 

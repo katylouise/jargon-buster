@@ -30,8 +30,8 @@
             {
                 <tr class="item-group">
                     <td>@def.Phrase</td>
-                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { id = def.Id }, new { @class = "item-edit", data_toggle = "modal", data_target = "#formModal" })</td>
-                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", new { id = def.Id }, new { @class = "item-delete", data_toggle = "modal", data_target = "#deleteModal" })</td>
+                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", null, new { @class = "open-modal", @id = @def.Id } )</td>
+                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", null, new { @class = "open-modal", @id = @def.Id } )</td>
                     @if(@def.House == "Bicameral"){
                         <td class="item-category"><img src="~/Content/img/dot--bi.png" class="house-icon" />@def.House</td>
                     }
@@ -50,6 +50,9 @@
         </tbody>
     </table>
 
-    <p class="add-definition"><img src="~/Content/img/add--blue.png"/> @Html.ActionLink("Add a definition", "Add", null, new Dictionary<string, Object> { { "data-toggle", "modal" }, { "data-target", "formModal" } })</p>
+    <p class="add-definition"><img src="~/Content/img/add--blue.png"/> @Html.ActionLink("Add a definition", "Add", null, new Dictionary<string, Object> { { "class", "add-new-def"} })</p>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/admin-app")
 </div>
