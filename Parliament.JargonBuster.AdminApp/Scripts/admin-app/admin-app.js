@@ -2,8 +2,8 @@
 
 $(document).ready(function () {
 
-    $(".edit-alternatives__add").click(function () {
-        var listId = $("li").last().attr("id");
+    $(".addAlternate").click( function () {
+        var listId = $("li").last().attr("id"); 
         var counter = listId === undefined ? 0 : parseInt(listId) + 1;
         var newLi = '<li><input name="Alternates[' + counter + '].AlternateDefinition" type="text" value="" class="edit-alternatives__term"></li>';
         $("ul").append(newLi);
@@ -18,10 +18,13 @@ $(document).ready(function () {
     });
 
     $('body').on('click', '.cancelButton', function (e) {
+        $('#modal-container').removeData("bs.modal");
+        $('#modal-container').find("input,textarea,select").val('').end();
         $('#modal-container').modal('hide');
     });
 
     $("#modal-container").on("hidden-bs-modal", function () {
+        $('#modal-container').find("input,textarea,select").val('').end();
         $(this).removeData("bs.modal");
     });
 });
