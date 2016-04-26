@@ -3,20 +3,31 @@
     ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title</h2>
-<hr />
-@Html.ValidationSummary(true)
-<br />
-@using (Html.BeginForm(null, null, FormMethod.Post))
-{
-    @Html.LabelFor(m => m.UserName)
-    @Html.TextBoxFor(m => m.UserName)
-    @Html.ValidationMessageFor(m => m.UserName)
-    <br />
-    @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
-    @Html.ValidationMessageFor(m => m.Password)
-    <br />
+<div class="wrapper login">
 
-    <input type="submit" value="Log in" />
-}
+    <div class="content">
+        <div class="login-container">
+
+            <div class="header cf">
+                <h1 class="login__title">@ViewBag.Title</h1>
+            </div>
+
+            @using (Html.BeginForm(null, null, FormMethod.Post))
+            {
+                @Html.LabelFor(m => m.UserName, new { @class = "login__label" })
+                @Html.TextBoxFor(m => m.UserName, new { @class = "login__input", @id = "edit-name", placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.UserName)
+                <br />
+                @Html.LabelFor(m => m.Password, new { @class = "login__label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "login__input", @id = "edit-pass", placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+                <br />
+
+                <span class="form-error">@Html.ValidationSummary(true)</span>
+
+                <input type="submit" value="Log in" class="submit" />
+            }
+
+        </div>
+    </div>
+</div>
