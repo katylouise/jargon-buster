@@ -17,6 +17,10 @@
             @Html.HiddenFor(m => m.Alternates[i].AlternateDefinition)
         }
     }
-    <button type="submit">Yes</button>
+
+    <div class="modal-footer edit-submit cf">
+        <button class="edit-submit__save">OK</button>
+        <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
+    </div>
 }
 
