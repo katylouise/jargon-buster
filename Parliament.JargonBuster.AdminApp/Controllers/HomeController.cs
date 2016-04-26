@@ -29,7 +29,7 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Add()
         {
-            return View();
+            return PartialView("_FormModal");
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace AdminApp.Controllers
         public ActionResult Edit(int id)
         {
             var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
-            return View(model);
+            return PartialView("_FormModal", model);
         }
 
         [HttpPost]
@@ -65,7 +65,7 @@ namespace AdminApp.Controllers
         public ActionResult Delete(int id)
         {
             var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
-            return View(model);
+            return PartialView("_DeleteModal", model);
         }
 
         [HttpPost]

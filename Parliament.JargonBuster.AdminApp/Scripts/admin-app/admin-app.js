@@ -2,13 +2,12 @@
 
 $(document).ready(function () {
 
-    $(".addAlternate").click( function () {
-        var listId = $("li").last().attr("id"); 
+    $("body").on("click", ".addAlternate", function () {
+        var listId = $("li").last().attr("id");
         var counter = listId === undefined ? 0 : parseInt(listId) + 1;
         var newLi = '<li><input name="Alternates[' + counter + '].AlternateDefinition" type="text" value="" class="edit-alternatives__term"></li>';
         $("ul").append(newLi);
         $("li").last().attr("id", counter);
-        console.log("banana");
     });
 
     $('body').on('click', '.open-modal', function (e) {
@@ -17,15 +16,7 @@ $(document).ready(function () {
         $(this).attr('data-toggle', 'modal');
     });
 
-    $('body').on('click', '.cancelButton', function (e) {
-        $('#modal-container').removeData("bs.modal");
-        $('#modal-container').find("input,textarea,select").val('').end();
-        $('#modal-container').modal('hide');
-    });
-
-    $("#modal-container").on("hidden-bs-modal", function () {
-        $('#modal-container').find("input,textarea,select").val('').end();
+    $("#modal-container").on("hidden.bs.modal", function () {
         $(this).removeData("bs.modal");
     });
 });
-
