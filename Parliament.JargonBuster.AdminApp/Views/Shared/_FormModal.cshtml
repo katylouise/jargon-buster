@@ -49,7 +49,7 @@
                             </ul>
                         }
 
-                        <a class="edit-alternatives__add" href="#">Add alternative term</a>
+                        <a class="addAlternate edit-alternatives__add" href="#">Add alternative term</a>
                      </div>
 
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
@@ -57,7 +57,7 @@
                 </div>
                 <div class="edit-submit cf">
                     <button id="btnSave" class="edit-submit__save">Save</button>
-                    <a href="#" class="modal-close-btn edit-submit__cancel">Cancel</a>
+                    <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
                 </div>
             }
         </div>
