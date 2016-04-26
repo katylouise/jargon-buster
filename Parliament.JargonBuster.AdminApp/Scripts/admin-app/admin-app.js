@@ -17,14 +17,8 @@ $(document).ready(function () {
         $(this).attr('data-toggle', 'modal');
     });
 
-    $('body').on('click', '.modal-close-btn', function () {
-        $('#modal-container').modal('hide');
+    $("#modal-container").on("hidden-bs-modal", function () {
+        $(this).removeData("bs-modal");
     });
-
-    $('#modal-container').on('hidden.bs.modal', function () {
-        console.log("elephant");
-        $(this).removeData('bs.modal');
-    });
-
 });
 
