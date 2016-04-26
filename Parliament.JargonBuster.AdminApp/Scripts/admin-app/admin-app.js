@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
 
-    $(".addAlternate").click(function () {
+    $(".edit-alternatives__add").click(function () {
         var listId = $("li").last().attr("id");
         var counter = listId === undefined ? 0 : parseInt(listId) + 1;
         var newLi = '<li><input name="Alternates[' + counter + '].AlternateDefinition" type="text" value="" class="edit-alternatives__term"></li>';
