@@ -19,4 +19,9 @@ $(document).ready(function () {
     $("#modal-container").on("hidden.bs.modal", function () {
         $(this).removeData("bs.modal");
     });
+
+    setTimeout(function () {
+        $(".sitewide-message").fadeOut()
+    }, 5000);
 });
+

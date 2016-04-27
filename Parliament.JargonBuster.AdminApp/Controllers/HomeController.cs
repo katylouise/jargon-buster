@@ -38,6 +38,7 @@ namespace AdminApp.Controllers
             if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
             {
                 _adminDefinitionsService.AddDefinitionItem(model);
+                TempData["Message"] = "You have successfully added a definition.";
                 return RedirectToAction("Index");
             }
             return PartialView("_FormModal", model);
@@ -56,6 +57,7 @@ namespace AdminApp.Controllers
             if (ModelState.IsValidField("Phrase") && ModelState.IsValidField("Definition"))
             {
                 _adminDefinitionsService.UpdateDefinitionItem(model);
+                TempData["Message"] = "You have successfully updated the definition.";
                 return RedirectToAction("Index");
             }
             return PartialView("_FormModal", model);
@@ -72,16 +74,8 @@ namespace AdminApp.Controllers
         public ActionResult Delete(DefinitionViewModel model)
         {
             _adminDefinitionsService.DeleteDefinitionItem(model);
+            TempData["Message"] = "You have successfully deleted the definition.";
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult Search(string searchTerm)
-        {
-            var phrase = _definitionsViewModelBuilder.BuildDefinitionViewModelFromPhrase(searchTerm.Trim());
-
-            //TODO - talk to Jack about what searching should look like
-            return Redirect("Index");
         }
 
     }

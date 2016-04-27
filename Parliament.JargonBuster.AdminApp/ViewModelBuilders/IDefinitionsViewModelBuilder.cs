@@ -12,7 +12,5 @@ namespace AdminApp.ViewModelBuilders
         DefinitionsViewModel Build();
 
         DefinitionViewModel BuildDefinitionViewModelFromId(int id);
-
-        DefinitionViewModel BuildDefinitionViewModelFromPhrase(string phrase);
     }
 }
