@@ -32,18 +32,6 @@ namespace Parliament.JargonBuster.Core.Services
             }
         }
 
-        public DefinitionItem GetDefinitionByPhrase(string phrase)
-        {
-            using (var context = new JargonBusterDbContext())
-            {
-                var definition = context.Definitions
-                                        .Include("Alternates")
-                                        .Where(x => x.Phrase.ToLower().Contains(phrase.ToLower()));
-
-                return definition.Count() != 0 ? definition.Single() : null;
-            }
-        }
-
         public void AddDefinitionItem(DefinitionItem definitionItem)
         {
             using (var context = new JargonBusterDbContext())

@@ -1,24 +1,364 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*Clearfix*/
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  font-size: 14px;
+  color: #333;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+body {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input, textarea, select, option {
+  font-size: 1em;
+  font-family: Helvetica, Arial, sans-serif;
+  border: 2px solid #ddd;
+  padding: 0.3em
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.313em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+.header {
+  margin-top: 3em;
+  position: relative;
+}
+
+.header__title {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  margin-bottom: 0.1em;
+}
+
+.header__subtitle {
+  margin-top: 0;
+  font-size: 1.75em;
+}
+
+a {
+  color: #085196;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #4e9bd7;
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+}
+
+
+.wrapper {
+  margin: 0 auto;
+  padding: 0 1em;
+  max-width: 65em;
+  margin-top: 5em;
+}
+
+.login.wrapper {
+  max-width: 22em;
+}
+.login__title {
+  margin-top: 0;
+}
+
+.definitions-table {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-bottom: none;
+}
+
+.definitions-table th {
+  background-color: #f2f2f2;
+}
+
+.definitions-table td, 
+.definitions-table th {
+  padding: 0.4em;
+  border-bottom: 1px solid #ccc;
+}
+
+.definitions-table:last-child {
+  border-bottom: none;
+}
+
+.item-group--success {
+  background-color: #ddffe2;
+}
+
+.sitewide-message {
+  background-color: rgba(173, 208, 242, 0.4);
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+}
+
+.sitewide-message__text {
+  margin-top: 0.5em;
+  padding: 0.5em 0;
+}
+
+.sitewide-message__text::before {
+  content: "";
+  background: url("../images/tick--blue.png");
+  background: url("../images/tick--blue.svg");
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  padding-left: 8px;
+}
+
+.item-edit {
+  width: 30px;
+}
+
+.item-category--lords::before {
+  background: url("../images/red-dot.png");
+  background: url("../images/red-dot.svg");
+}
+
+.item-category--bicameral::before {
+  background: url("~Content/img/bi-dot.png");
+  background: url("~Content/img/bi-dot.svg");
+}
+
+.modal {
+  position: absolute;
+  background-color: #fff;
+  max-width: 33em;
+  max-height: 588px;
+  margin: 2em auto 0;
+  box-shadow: 0px 2px 12px 2px rgba(0,0,0,0.3);
+  bottom: auto;
+  overflow-y: auto;
+}
+
+.delete-message {
+  padding: 30px 0 10px 10px;
+}
+
+.edit-wrapper {
+  padding: 1em;
+}
+
+.edit-term,
+.edit-definition,
+.edit-alternatives__term,
+.edit-group {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.edit-alternatives__term {
+  margin-bottom: 0.5em;
+}
+
+.edit-alternatives__add {
+  margin-bottom: 1em;
+  display: block;
+}
+
+.edit-definition {
+  width: calc(100% - 1em);
+}
+
+.edit-alternatives__list li {
+  list-style: none;
+}
+
+.edit-alternatives__list {
+  margin: 0;
+  padding: 0;
+}
+
+.edit-submit {
+  width: calc(100%-2em);
+  padding: 1em;
+  background-color: #eee;
+}
+
+.submit,
+.edit-submit__save {
+  font-size: 1em;
+  background-color: #016131;
+  padding: 0.75em;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.edit-submit__save {
+    float: right;
+    margin-left: 0.5em;
+}
+
+.edit-submit__cancel {
+  float: right;
+  padding: 0.75em;
+  cursor: pointer;
+}
+
+.submit:hover,
+.edit-submit__save:hover,
+.submit:active,
+.edit-submit__save:active,
+.submit:focus,
+.edit-submit__save:focus {
+  background-color: #014c27;
+}
+
+.edit-alternatives {
+  font-size: 1em;
+}
+
+
+.add-definition::before {
+  content: "";
+  /*background: url("../images/add--blue.png");
+  background: url("../images/add--blue.svg");*/
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: text-top;
+  padding-left: 8px;  
+}
+
+.add-definition {
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+.edit-title {
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+.header-created,
+.item-created {
+  display: none;
+}
+
+.login-container {
+  border: 1px solid #ddd;
+  padding: 1em;
+}
+.login__label {
+  display: block;
+  margin-bottom: 0.25em;
+}
+.login__input {
+  display: block;
+  margin-bottom: 1em;
+  width: calc(100% - 1em);
+}
+.form-error {
+  color: #db354d;
+  display: block;
+  margin-bottom: 1em;
+}
+
+.form-error ul {
+    padding-left: 0;
+    list-style-type: none;
+}		
+
+/*Media queries*/
+
+@media only screen and (min-width: 25em) { 
+  
+  .add-definition {
+    float: right;
+  }
+
+  .header .add-definition {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 1.5em;
+  }
+
+}
+
+@media only screen and (min-width: 39em) { 
+  
+  .header-created,
+  .item-created {
+    display: table-cell;
+  }
+
+}
+
+@media only screen and (min-width: 49em) { 
+
+  html {
+    font-size: 16px;
+  }
+
+  .item-category::before {
+    content: "";
+    /*background: url("../images/dot--green.png");
+    background: url("../images/dot--green.svg");*/
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    margin-right: -5px;
+  }  
+
+  .house-icon {
+      margin-right: 5px;
+      height: 10px;
+  }
+
+  .item-category--lords::before {
+    /*background: url("../images/dot--red.png");
+    background: url("../images/dot--red.svg");*/
+  }
+
+  .item-category--bicameral::before {
+    /*background: url("~/img/dot--bi.png");
+    background: url("~/Content/img/dot--bi.svg");*/
+  }
+
 }

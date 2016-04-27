@@ -1,20 +1,31 @@
 ﻿@model AdminApp.ViewModels.DefinitionViewModel
 
-<div>Are you sure you want to delete the definition for @Model.Phrase?</div>
-
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
 {
     @Html.HiddenFor(m => m.Id)
     @Html.HiddenFor(m => m.Phrase)
     @Html.HiddenFor(m => m.Definition)
-    if (Model.Alternates.Any())
-    {
-        for (var i = 0; i < Model.Alternates.Count(); i++)
+    @Html.HiddenFor(m => m.House)
+
+<div class="edit-wrapper">
+    <h3 class="edit-title">Delete Definition </h3>
+
+    <div class="delete-message">Are you sure you want to delete the definition for <strong>@Model.Phrase</strong>?</div>
+
+        @if (Model.Alternates.Any())
         {
-            @Html.HiddenFor(m => m.Alternates[i].Id)
-            @Html.HiddenFor(m => m.Alternates[i].AlternateDefinition)
+            for (var i = 0; i < Model.Alternates.Count(); i++)
+            {
+                @Html.HiddenFor(m => m.Alternates[i].Id)
+                @Html.HiddenFor(m => m.Alternates[i].AlternateDefinition)
+            }
         }
+        </div>
+        <div class="modal-footer edit-submit cf">
+            <button class="edit-submit__save">OK</button>
+            <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
+        </div>
     }
-    <button type="submit">Yes</button>
-}
+
+
 

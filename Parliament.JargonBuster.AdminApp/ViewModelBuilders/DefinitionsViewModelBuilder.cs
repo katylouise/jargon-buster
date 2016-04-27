@@ -31,13 +31,6 @@ namespace AdminApp.ViewModelBuilders
             return BuildDefinitionViewModel(definitionItem);
         }
 
-        public DefinitionViewModel BuildDefinitionViewModelFromPhrase(string phrase)
-        {
-            var definitionItem = _defintionsService.GetDefinitionByPhrase(phrase);
-
-            return definitionItem != null ? BuildDefinitionViewModel(definitionItem) : null;
-        }
-
         private DefinitionViewModel BuildDefinitionViewModel(DefinitionItem definitionItem)
         {
             return new DefinitionViewModel

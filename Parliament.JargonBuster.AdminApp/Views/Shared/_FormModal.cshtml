@@ -1,49 +1,68 @@
 ﻿@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
-    var ActionName = ViewContext.RouteData.Values["action"].ToString();
+    var actionName = ViewContext.RouteData.Values["action"].ToString();
+
+    List<SelectListItem> houseItems = new List<SelectListItem>();
+
+    houseItems.Add(new SelectListItem { Text = "Bicameral", Value = "Bicameral", Selected = true });
+
+    houseItems.Add(new SelectListItem { Text = "Commons", Value = "Commons" });
+
+    houseItems.Add(new SelectListItem { Text = "Lords", Value = "Lords" });
 }
 
-@using (Html.BeginForm(ActionName, "Home", FormMethod.Post))
-{
-    @Html.HiddenFor(m => m.Id)
-
-    @Html.TextBoxFor(m => m.Phrase)
-    @Html.ValidationMessageFor(m => m.Phrase)
-
-    @Html.TextBoxFor(m => m.Definition)
-    @Html.ValidationMessageFor(m => m.Definition)
-
-    @Html.LabelFor(m => m.House, "Bicameral")
-    @Html.RadioButtonFor(m => m.House, "Bicameral")
-    @Html.LabelFor(m => m.House, "Commons")
-    @Html.RadioButtonFor(m => m.House, "Commons")
-    @Html.LabelFor(m => m.House, "Lords")
-    @Html.RadioButtonFor(m => m.House, "Lords")
-
-    if (Model != null && Model.Alternates.Any())
-    {
-        <ul class="alternatesList">
-            @for(var i = 0; i < Model.Alternates.Count(); i++)
+        <div id="#formModal">
+            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
             {
-                @Html.HiddenFor(m => m.Alternates[i].Id)
-                <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition)</li>
-            }
-        </ul>
-    }
-    else if (Model != null && Model.Alternates.Count == 0)
-    {
-        <ul class="alternatesList"></ul>
-    }
-    else
-    {
-        <ul class="alternatesList">
-            <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition)</li>
-        </ul>
-    }
-    <a class="addAlternate" href="#">Add a new alternate</a>
-    <button type="submit">Save</button>
-}
+                @Html.HiddenFor(m => m.Id)
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/admin-app")
+                <div class="edit-wrapper">
+                    <h3 class="edit-title">@actionName Definition </h3>
+
+                    @Html.LabelFor(m => m.Phrase)
+                    @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Phrase)
+
+                    @Html.LabelFor(m => m.Definition)
+                    @Html.TextAreaFor(m => m.Definition, new { @class = "formInput edit-definition", @rows = "10", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Definition)
+
+                    <div class="edit-alternatives">
+                        @if (Model != null && Model.Alternates.Any())
+                        {
+                            <ul class="edit-alternatives__list">
+                                @for (var i = 0; i < Model.Alternates.Count(); i++)
+                                {
+                                    @Html.HiddenFor(m => m.Alternates[i].Id)
+                                    <li id=@i>@Html.TextBoxFor(m => m.Alternates[i].AlternateDefinition, new { @class = "edit-alternatives__term" })</li>
+                                }
+                            </ul>
+                        }
+                        else if (Model != null && Model.Alternates.Count == 0)
+                        {
+                            <ul class="edit-alternatives__list"></ul>
+                        }
+                        else
+                        {
+                            <ul class="edit-alternatives__list">
+                                <li id="0">@Html.TextBoxFor(m => m.Alternates[0].AlternateDefinition, new { @class = "edit-alternatives__term" })</li>
+                            </ul>
+                        }
+
+                        <p class="edit-alternatives__add">
+                            <img src="~/Content/img/add--blue.png" />
+                            <a class="addAlternate" href="#">Add alternative term</a>
+                        </p>
+                        
+                    </div>
+
+                    @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
+
+                </div>
+                <div class="modal-footer edit-submit cf">
+                    <button class="btnSave edit-submit__save">Save</button>
+                    <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
+                </div>
+            }
+        </div>
+
