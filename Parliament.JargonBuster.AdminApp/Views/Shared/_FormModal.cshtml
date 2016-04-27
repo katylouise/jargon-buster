@@ -1,6 +1,6 @@
 ﻿@model AdminApp.ViewModels.DefinitionViewModel
 @{ 
-    var ActionName = ViewContext.RouteData.Values["action"].ToString();
+    var actionName = ViewContext.RouteData.Values["action"].ToString();
 
     List<SelectListItem> houseItems = new List<SelectListItem>();
 
@@ -12,12 +12,12 @@
 }
 
         <div id="#formModal">
-            @using (Html.BeginForm(ActionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
+            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
             {
                 @Html.HiddenFor(m => m.Id)
 
                 <div class="edit-wrapper">
-                    <h3 class="edit-title">Add/Edit Definition </h3>
+                    <h3 class="edit-title">@actionName Definition </h3>
 
                     @Html.LabelFor(m => m.Phrase)
                     @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", required = "required" })
