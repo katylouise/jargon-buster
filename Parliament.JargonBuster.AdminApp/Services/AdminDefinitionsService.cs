@@ -58,7 +58,7 @@ namespace AdminApp.Services
             var alternatesForNewDefinition = new List<AlternateDefinitionItem>();
             if (definitionViewModel.Alternates != null && definitionViewModel.Alternates.Count() > 0)
             {
-                var ViewModelAlternates = definitionViewModel.Alternates.Where(x => x.AlternateDefinition != null);
+                var ViewModelAlternates = definitionViewModel.Alternates;
                 alternatesForNewDefinition = ViewModelAlternates.Select(BuildAlternateFromViewModel).ToList();
             }
             return alternatesForNewDefinition;
@@ -66,10 +66,10 @@ namespace AdminApp.Services
 
         private AlternateDefinitionItem BuildAlternateFromViewModel(AlternateItemViewModel alternateItemViewModel)
         {
-            return new AlternateDefinitionItem
+            return new AlternateDefinitionItem()
             {
                 Id = alternateItemViewModel.Id,
-                AlternateDefinition = alternateItemViewModel.AlternateDefinition.Trim()
+                AlternateDefinition = alternateItemViewModel.AlternateDefinition
             };
         }
     }

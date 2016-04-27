@@ -99,7 +99,10 @@ namespace Parliament.JargonBuster.Core.Services
                 else
                 {
                     //existing one - delete
-                    RemoveAlternate(existingDefinitionItem, item);
+                    if(item.Id != 0)
+                    {
+                        RemoveAlternate(existingDefinitionItem, item);
+                    }
                 }
             }          
         }
