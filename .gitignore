@@ -5,4 +5,3 @@
 /bootstrap-3.3.6-dist
 /.vs
 **/logs
-*/Migrations/Configuration.cs
