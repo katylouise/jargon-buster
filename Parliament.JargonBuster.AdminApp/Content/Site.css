@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 0 20px 0;
 }
 
 img {
@@ -35,6 +35,10 @@ input, textarea, select, option {
   font-family: Helvetica, Arial, sans-serif;
   border: 2px solid #ddd;
   padding: 0.3em
+}
+
+h1, h2, h3, h4 {
+    font-weight: bold;
 }
 
 h1 {
@@ -55,6 +59,7 @@ h4 {
 
 .header {
   margin-top: 3em;
+  margin-bottom: 10px;
   position: relative;
 }
 
@@ -93,6 +98,12 @@ a:hover, a:focus {
 .login.wrapper {
   max-width: 22em;
 }
+.login__header {
+  margin-top: 1em;
+  margin-bottom: 10px;
+  position: relative;
+}
+
 .login__title {
   margin-top: 0;
 }
@@ -251,19 +262,6 @@ a:hover, a:focus {
   font-size: 1em;
 }
 
-
-.add-definition::before {
-  content: "";
-  /*background: url("../images/add--blue.png");
-  background: url("../images/add--blue.svg");*/
-  background-repeat: no-repeat;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: text-top;
-  padding-left: 8px;  
-}
-
 .add-definition {
   display: inline-block;
   margin-bottom: 1em;
@@ -301,6 +299,10 @@ a:hover, a:focus {
 .form-error ul {
     padding-left: 0;
     list-style-type: none;
+}
+
+.house-icon {
+    display: none;
 }		
 
 /*Media queries*/
@@ -309,6 +311,7 @@ a:hover, a:focus {
   
   .add-definition {
     float: right;
+    margin-top: 15px;
   }
 
   .header .add-definition {
@@ -335,30 +338,10 @@ a:hover, a:focus {
     font-size: 16px;
   }
 
-  .item-category::before {
-    content: "";
-    /*background: url("../images/dot--green.png");
-    background: url("../images/dot--green.svg");*/
-    background-repeat: no-repeat;
-    display: inline-block;
-    width: 0.6em;
-    height: 0.6em;
-    margin-right: -5px;
-  }  
-
   .house-icon {
+      display: inline-block;
       margin-right: 5px;
       height: 10px;
-  }
-
-  .item-category--lords::before {
-    /*background: url("../images/dot--red.png");
-    background: url("../images/dot--red.svg");*/
-  }
-
-  .item-category--bicameral::before {
-    /*background: url("~/img/dot--bi.png");
-    background: url("~/Content/img/dot--bi.svg");*/
   }
 
 }
