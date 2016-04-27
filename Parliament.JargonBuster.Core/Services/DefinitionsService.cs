@@ -86,20 +86,17 @@ namespace Parliament.JargonBuster.Core.Services
                 {
                     if (item.Id != 0 && existingDefinitionItem.Alternates.Any(x => x.Id == item.Id))
                     {
-                        //existing one - update
                         var exisitingAlternate = existingDefinitionItem.Alternates.First(x => x.Id == item.Id);
                         exisitingAlternate.AlternateDefinition = item.AlternateDefinition;
                     }
 
                     else
                     {
-                        // new one
                         existingDefinitionItem.Alternates.Add(item);
                     }
                 }
                 else
                 {
-                    //existing one - delete
                     if(item.Id != 0)
                     {
                         RemoveAlternate(existingDefinitionItem, item);
