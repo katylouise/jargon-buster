@@ -4,23 +4,22 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="wrapper">
-    @{
-        string message = TempData["Message"] as string;
-        if (!String.IsNullOrEmpty(message))
-        {
-            <div class="sitewide-message">
-                <div class="wrapper">
-                    <p class="sitewide-message__text">@message</p>
-                </div>
+@{
+    string message = TempData["Message"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+        <div class="sitewide-message">
+            <div class="">
+                <p class="sitewide-message__text">@message</p>
             </div>
-        }
+        </div>
     }
+}
 
+<div class="wrapper">
     <div class="content">
         <div class="header cf">
-            <h1 class="header__title">Definitions: Admin </h1>
-            <h2 class="header__subtitle">Edit definitions </h2>
+            <h2 class="header__subtitle">Definitions Admin</h2>
             <p class="add-definition"><img src="~/Content/img/add--blue.png" /> @Html.ActionLink("Add a definition", "Add", null, new { @class = "open-modal" })</p>
         </div>
 
