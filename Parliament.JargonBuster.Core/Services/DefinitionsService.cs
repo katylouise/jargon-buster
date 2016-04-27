@@ -99,7 +99,7 @@ namespace Parliament.JargonBuster.Core.Services
                 else
                 {
                     //existing one - delete
-                    if(item.AlternateDefinition != null)
+                    if(item.Id != 0)
                     {
                         RemoveAlternate(existingDefinitionItem, item);
                     }
