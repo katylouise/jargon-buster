@@ -1,0 +1,65 @@
+﻿@model AdminApp.ViewModels.DefinitionsViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    string message = TempData["Message"] as string;
+    if (!String.IsNullOrEmpty(message))
+    {
+        <div class="sitewide-message">
+            <div class="">
+                <p class="sitewide-message__text">@message</p>
+            </div>
+        </div>
+    }
+}
+
+<div class="wrapper">
+    <div class="content">
+        <div class="header cf">
+            <h2 class="header__subtitle">Definitions Admin</h2>
+            <p class="add-definition"><img src="~/Content/img/add--blue.png" /> @Html.ActionLink("Add a definition", "Add", null, new { @class = "open-modal" })</p>
+        </div>
+
+    </div>
+
+    <table border="0" cellspacing="0" cellpadding="0" class="definitions-table">
+        <thead>
+            <tr>
+                <th scope="col" class="header-name">Name</th>
+                <th colspan="2" scope="col" class="header-action">Actions</th>
+                <th scope="col" class="header-category">Category</th>
+                <th scope="col" class="header-created">Created</th>
+                <th scope="col" class="header-edited">Last edited</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var def in Model.Definitions)
+            {
+                <tr class="item-group">
+                    <td>@def.Phrase</td>
+                    <td class="item-edit">@Html.ActionLink("Edit", "Edit", new { @id = @def.Id }, new { @class = "open-modal" } )</td>
+                    <td class="item-delete">@Html.ActionLink("Delete", "Delete", new { @id = @def.Id }, new { @class = "open-modal" } )</td>
+                    @if(@def.House == "Bicameral"){
+                        <td class="item-category"><img src="~/Content/img/dot--bi.png" class="house-icon" />@def.House</td>
+                    }
+                    else if (@def.House == "Commons")
+                    {
+                        <td class="item-category"><img src="~/Content/img/dot--green.png" class="house-icon" />@def.House</td>
+                    }
+                    else
+                    {
+                        <td class="item-category"><img src="~/Content/img/dot--red.png" class="house-icon" />@def.House</td>
+                    }
+                    <td class="item-created">@def.CreatedAt.ToString("dd/MM/yyyy")</td>
+                    <td class="item-edited">@def.UpdatedAt.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p class="add-definition"><img src="~/Content/img/add--blue.png"/> @Html.ActionLink("Add a definition", "Add", null, new Dictionary<string, Object> { { "class", "add-new-def"} })</p>
+
+</div>
