@@ -303,7 +303,14 @@ a:hover, a:focus {
 
 .house-icon {
     display: none;
-}		
+}
+
+.field-validation-error	{
+    display: block;
+    color: rgb(219, 53, 77);
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
 
 /*Media queries*/
 
