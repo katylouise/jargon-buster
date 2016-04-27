@@ -1,6 +1,6 @@
 ﻿@model AdminApp.ViewModels.DefinitionViewModel
 
-<div>Are you sure you want to delete the definition for @Model.Phrase?</div>
+<div class="delete-message">Are you sure you want to delete the definition for <strong>@Model.Phrase</strong>?</div>
 
 @using (Html.BeginForm("Delete", "Home", FormMethod.Post))
 {
