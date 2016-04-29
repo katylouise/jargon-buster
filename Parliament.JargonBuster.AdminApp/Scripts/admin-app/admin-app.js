@@ -23,20 +23,27 @@ $(document).ready(function () {
     $("body").on("click", ".btnSave", function (e) {
         e.preventDefault();
         var phrase = $(".formInput").val();
-        $.ajax({
-            url: "/Home/ValidateDefinition",
-            type: "POST",
-            dataType: "json",
-            data: "phrase=" + phrase,
-            success: function (result) {
-                if (result) {
-                    $(".modalForm").submit();
+        var action = $(".modalForm").attr("action");
+        if (action === "/Home/Add") {
+            $.ajax({
+                url: "/Home/ValidateDefinition",
+                type: "POST",
+                dataType: "json",
+                data: "phrase=" + phrase,
+                success: function (result) {
+                    if (result) {
+                        $(".modalForm").submit();
+                    }
+                    else {
+                        $(".errorMessage").text("This is a duplicate term.");
+                    }
                 }
-                else {
-                    $(".errorMessage").text("This is a duplicate term.");
-                }
-            }
-        })
+            })
+        }
+        else {
+            $(".modalForm").submit();
+        }
+
     });
 
     setTimeout(function () {
