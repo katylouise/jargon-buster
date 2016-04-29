@@ -43,6 +43,7 @@ namespace Parliament.JargonBuster.Core.Services
 
         public void AddDefinitionItem(DefinitionItem definitionItem)
         {
+            definitionItem.Alternates = definitionItem.Alternates.Where(x => x.AlternateDefinition != null).ToList();
             using (var context = new JargonBusterDbContext())
             {
                 context.Definitions.Add(definitionItem);
