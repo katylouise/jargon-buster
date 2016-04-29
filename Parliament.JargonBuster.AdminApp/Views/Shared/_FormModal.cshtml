@@ -58,11 +58,11 @@
 
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
 
+                    <div class="errorMessage form-error"></div>
                 </div>
 
-                <div class="errorMessage"></div>
                 <div class="modal-footer edit-submit cf">
-                    <button class="btnSave edit-submit__save">Save</button>
+                    <button class="btnSave edit-submit__save">Publish</button>
                     <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
                 </div>
             }
