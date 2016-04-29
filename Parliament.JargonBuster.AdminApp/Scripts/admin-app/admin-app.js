@@ -20,6 +20,19 @@ $(document).ready(function () {
         $(this).removeData("bs.modal");
     });
 
+    $("body").on("click", ".btnSave", function () {
+        var phrase = $(".formInput").val();
+        $.ajax({
+            url: "/Home/ValidateDefinition",
+            type: "POST",
+            dataType: "json",
+            data: "phrase=" + phrase,
+            success: function (result) {
+                console.log(result);
+            }
+        })
+    });
+
     setTimeout(function () {
         $(".sitewide-message").fadeOut()
     }, 5000);

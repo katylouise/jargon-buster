@@ -35,6 +35,22 @@ namespace AdminApp.Services
             _definitionsService.DeleteDefinitionItem(definitionItemToDelete);
         }
 
+        public bool ValidateDefinition(string phrase)
+        {
+            var isValid = true;
+            var definitions = _definitionsService.GetDefinitions();
+            var alternates = _definitionsService.GetAlternates();
+            if (definitions.Any(x => x.Phrase.ToLower() == phrase.Trim().ToLower()))
+            {
+                isValid = false;
+            }
+
+            if (alternates.Any(x => x.AlternateDefinition != null && x.AlternateDefinition.ToLower() == phrase.Trim().ToLower()))
+            {
+                isValid = false;
+            }
+            return isValid;
+        }
         private DefinitionItem BuildDefinitionItemFromViewModel(DefinitionViewModel definitionViewModel)
         {
             HouseType houseType = (HouseType)Enum.Parse(typeof(HouseType), definitionViewModel.House);

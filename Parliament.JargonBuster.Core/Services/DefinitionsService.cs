@@ -21,6 +21,15 @@ namespace Parliament.JargonBuster.Core.Services
             }
         }
 
+        public IList<AlternateDefinitionItem> GetAlternates()
+        {
+            using (var context = new JargonBusterDbContext())
+            {
+                _logger.Debug("Service Layer - Getting Alternates");
+                return context.AlternateDefinitionItems.ToList();
+            }
+        }
+
         public DefinitionItem GetDefinitionById(int id)
         {
             using (var context = new JargonBusterDbContext())
