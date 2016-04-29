@@ -20,7 +20,8 @@ $(document).ready(function () {
         $(this).removeData("bs.modal");
     });
 
-    $("body").on("click", ".btnSave", function () {
+    $("body").on("click", ".btnSave", function (e) {
+        e.preventDefault();
         var phrase = $(".formInput").val();
         $.ajax({
             url: "/Home/ValidateDefinition",
@@ -28,7 +29,12 @@ $(document).ready(function () {
             dataType: "json",
             data: "phrase=" + phrase,
             success: function (result) {
-                console.log(result);
+                if (result) {
+                    $(".modalForm").submit();
+                }
+                else {
+                    $(".errorMessage").text("This is a duplicate term.");
+                }
             }
         })
     });

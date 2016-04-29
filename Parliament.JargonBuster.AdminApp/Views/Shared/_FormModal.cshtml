@@ -12,7 +12,7 @@
 }
 
         <div id="#formModal">
-            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
+            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "modalForm edit-form" }))
             {
                 @Html.HiddenFor(m => m.Id)
 
@@ -59,6 +59,8 @@
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
 
                 </div>
+
+                <div class="errorMessage"></div>
                 <div class="modal-footer edit-submit cf">
                     <button class="btnSave edit-submit__save">Save</button>
                     <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
