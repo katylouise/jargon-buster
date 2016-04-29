@@ -78,5 +78,11 @@ namespace AdminApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult ValidateDefinition(string phrase)
+        {
+            var isValid = _adminDefinitionsService.ValidateDefinition(phrase);
+            return Json(isValid, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -12,5 +12,7 @@ namespace AdminApp.Services
         void UpdateDefinitionItem(DefinitionViewModel definitionViewModel);
         void AddDefinitionItem(DefinitionViewModel definitionViewModel);
         void DeleteDefinitionItem(DefinitionViewModel definitionViewModel);
+
+        bool ValidateDefinition(string phrase);
     }
 }
