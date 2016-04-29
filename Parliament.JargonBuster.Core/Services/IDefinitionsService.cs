@@ -12,5 +12,8 @@ namespace Parliament.JargonBuster.Core.Services
         void UpdateDefinitionItem(DefinitionItem definitionItem);
         void AddDefinitionItem(DefinitionItem definitionItem);
         void DeleteDefinitionItem(DefinitionItem definitionItem);
+
+        IList<AlternateDefinitionItem> GetAlternates();
+
     }
 }

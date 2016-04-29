@@ -12,7 +12,7 @@
 }
 
         <div id="#formModal">
-            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "edit-form" }))
+            @using (Html.BeginForm(actionName, "Home", FormMethod.Post, new { @class = "modalForm edit-form" }))
             {
                 @Html.HiddenFor(m => m.Id)
 
@@ -58,8 +58,10 @@
 
                     @Html.DropDownListFor(m => m.House, new SelectList(houseItems, "Value", "Text"), new { @class = "edit-group" })
 
+                    <div class="errorMessage form-error"></div>
                     <p class="publish-disclaimer">By clicking "Publish", your definition will be visible on the website</p>
                 </div>
+
                 <div class="modal-footer edit-submit cf">
                     <button class="btnSave edit-submit__save">Publish</button>
                     <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>

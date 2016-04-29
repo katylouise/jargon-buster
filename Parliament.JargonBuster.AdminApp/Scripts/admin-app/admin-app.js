@@ -20,6 +20,25 @@ $(document).ready(function () {
         $(this).removeData("bs.modal");
     });
 
+    $("body").on("click", ".btnSave", function (e) {
+        e.preventDefault();
+        var phrase = $(".formInput").val();
+        $.ajax({
+            url: "/Home/ValidateDefinition",
+            type: "POST",
+            dataType: "json",
+            data: "phrase=" + phrase,
+            success: function (result) {
+                if (result) {
+                    $(".modalForm").submit();
+                }
+                else {
+                    $(".errorMessage").text("This is a duplicate term.");
+                }
+            }
+        })
+    });
+
     setTimeout(function () {
         $(".sitewide-message").fadeOut()
     }, 5000);
