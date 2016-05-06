@@ -216,7 +216,6 @@ a:hover, a:focus {
 }
 
 .edit-submit {
-  width: calc(100%-2em);
   padding: 1em;
   background-color: #eee;
 }
