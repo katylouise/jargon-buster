@@ -277,6 +277,7 @@
     <Content Include="Views\Shared\_FormModal.cshtml" />
     <Content Include="Views\Shared\_DeleteModal.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LogOut.cshtml" />
     <None Include="Web.DevCi.config">
       <DependentUpon>Web.config</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

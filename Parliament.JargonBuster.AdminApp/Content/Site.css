@@ -256,8 +256,13 @@ a:hover, a:focus {
 }
 
 .add-definition {
-  display: inline-block;
   margin-bottom: 1em;
+}
+
+.add-definition li {
+    list-style-type: none;
+    display: inline;
+    padding-left: 1em;
 }
 
 .edit-title {
@@ -309,7 +314,7 @@ a:hover, a:focus {
 
 @media only screen and (min-width: 25em) { 
   
-  .add-definition {
+  .add-definition, .logout-link {
     float: right;
     margin-top: 15px;
   }

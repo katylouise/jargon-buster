@@ -28,8 +28,12 @@ namespace AdminApp.Controllers
 
         [HttpGet]
         public ActionResult Add()
-        {
-            return PartialView("_FormModal");
+        { 
+            if (User.Identity.Name != null)
+            {
+                return PartialView("_FormModal");
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -47,8 +51,12 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
-            return PartialView("_FormModal", model);
+            if (User.Identity.Name != null)
+            {
+                var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
+                return PartialView("_FormModal", model);
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
@@ -66,8 +74,12 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
-            return PartialView("_DeleteModal", model);
+            if (User.Identity.Name != null)
+            {
+                var model = _definitionsViewModelBuilder.BuildDefinitionViewModelFromId(id);
+                return PartialView("_DeleteModal", model);
+            }
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]

@@ -16,6 +16,7 @@ namespace AdminApp.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [ValidateAntiForgeryToken()]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -31,12 +32,19 @@ namespace AdminApp.Controllers
             return View("Login");
         }
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpGet]
         public ActionResult LogOut()
         {
+            return PartialView("_LogOut");
+        }
+
+        [HttpPost]
+        [ActionName("LogOut")]
+        [AllowAnonymous]
+        public ActionResult LogOutPost()
+        {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login", "Account", null);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -12,6 +12,7 @@
 
             @using (Html.BeginForm(null, null, FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
                 @Html.LabelFor(m => m.UserName, new { @class = "login__label" })
                 @Html.TextBoxFor(m => m.UserName, new { @class = "login__input", @id = "edit-name", placeholder = "Username" })
                 @Html.ValidationMessageFor(m => m.UserName)

@@ -18,9 +18,13 @@
 
 <div class="wrapper">
     <div class="content">
+
         <div class="header cf">
             <h2 class="header__subtitle">Definitions Admin</h2>
-            <p class="add-definition"><img src="~/Content/img/add--blue.png" /> @Html.ActionLink("Add a definition", "Add", null, new { @class = "open-modal" })</p>
+            <ul class="add-definition">
+                <li><img src="~/Content/img/add--blue.png" /> @Html.ActionLink("Add a definition", "Add", null, new { @class = "open-modal" })</li>
+                <li>@Html.ActionLink("Logout", "LogOut", "Account", null, new { @class = "open-modal" })</li>
+            </ul>
         </div>
 
     </div>
