@@ -1,0 +1,13 @@
+﻿@using (Html.BeginForm("LogOut", "Account", FormMethod.Post))
+{
+    <div class="edit-wrapper">
+        <h3 class="edit-title">Logout </h3>
+
+        <div class="delete-message">Are you sure you want to logout?</div>
+
+    </div>
+        <div class="modal-footer edit-submit cf">
+            <button class="edit-submit__save">OK</button>
+            <a data-dismiss="modal" class="edit-submit__cancel">Cancel</a>
+        </div>
+}

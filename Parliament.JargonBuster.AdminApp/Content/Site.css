@@ -254,8 +254,8 @@ a:hover, a:focus {
   font-size: 1em;
 }
 
-.add-definition {
-  display: inline-block;
+.add-definition, .logout-link {
+  /*display: inline-block;*/
   margin-bottom: 1em;
 }
 
@@ -308,7 +308,7 @@ a:hover, a:focus {
 
 @media only screen and (min-width: 25em) { 
   
-  .add-definition {
+  .add-definition, .logout-link {
     float: right;
     margin-top: 15px;
   }
