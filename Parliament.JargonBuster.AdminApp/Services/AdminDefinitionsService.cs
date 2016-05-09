@@ -20,6 +20,7 @@ namespace AdminApp.Services
         {
             var definitionItemToAdd = BuildDefinitionItemFromViewModel(definitionViewModel);
             definitionItemToAdd.CreatedAt = DateTime.Now;
+            definitionItemToAdd.CreatedBy = HttpContext.Current.User.Identity.Name;
             _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
@@ -60,6 +61,7 @@ namespace AdminApp.Services
                 Definition = definitionViewModel.Definition.Trim(),
                 Alternates = BuildAlternateItemsList(definitionViewModel),
                 UpdatedAt = DateTime.Now,
+                UpdatedBy = HttpContext.Current.User.Identity.Name,
                 HouseType = houseType
             };
             if(definitionViewModel.Id != 0)
