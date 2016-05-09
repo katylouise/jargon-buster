@@ -20,11 +20,11 @@
                     <h3 class="edit-title">@actionName Definition </h3>
 
                     @Html.LabelFor(m => m.Phrase)
-                    @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", required = "required" })
+                    @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", @required = "required" })
                     @Html.ValidationMessageFor(m => m.Phrase)
 
                     @Html.LabelFor(m => m.Definition)
-                    @Html.TextAreaFor(m => m.Definition, new { @class = "formInput edit-definition", @rows = "10", required = "required" })
+                    @Html.TextAreaFor(m => m.Definition, new { @class = "formInput edit-definition", @rows = "10", @required = "required" })
                     @Html.ValidationMessageFor(m => m.Definition)
 
                     <div class="edit-alternatives">

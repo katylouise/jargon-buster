@@ -29,11 +29,7 @@ namespace AdminApp.Controllers
         [HttpGet]
         public ActionResult Add()
         { 
-            if (User.Identity.Name != null)
-            {
-                return PartialView("_FormModal");
-            }
-            return RedirectToAction("Login", "Account");
+            return PartialView("_FormModal");
         }
 
         [HttpPost]
