@@ -1,4 +1,5 @@
 ﻿using Parliament.JargonBuster.Core.Domain.Context;
+using Parliament.JargonBuster.Core.Security;
 using System;
 using System.Linq;
 using System.Web.Security;
@@ -25,8 +26,12 @@ namespace AdminApp.Security
             {
                 var user = (from u in context.Users
                             where String.Compare(u.Username, username, StringComparison.OrdinalIgnoreCase) == 0
-                                  && String.Compare(u.Password, password, StringComparison.OrdinalIgnoreCase) == 0
                             select u).FirstOrDefault();
+
+                if (user != null)
+                {
+                    return Hashing.ValidatePassword(password, user.Password);
+                }
 
                 return user != null;
             }
