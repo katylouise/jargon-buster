@@ -144,6 +144,7 @@ a:hover, a:focus {
 }
 
 .sitewide-message__text {
+  margin-left: 0.5em;
   margin-top: 0.5em;
   padding: 0.5em 0;
 }
