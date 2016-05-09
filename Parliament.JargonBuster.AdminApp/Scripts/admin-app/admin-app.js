@@ -20,6 +20,16 @@ $(document).ready(function () {
         $(this).removeData("bs.modal");
     });
 
+    $("body").on("keyup", "#phraseTextBox", function () {
+        var $this = this;
+        charactersLeftCalculator("#phraseCharLeft", $this);
+    });
+
+    $("body").on("keyup", "#definitionTextBox", function () {
+        var $this = this;
+        charactersLeftCalculator("#definitionCharLeft", $this);
+    });
+
     $("body").on("click", ".btnSave", function (e) {
         e.preventDefault();
         var phrase = $(".formInput").val();
@@ -49,5 +59,14 @@ $(document).ready(function () {
     setTimeout(function () {
         $(".sitewide-message").fadeOut()
     }, 5000);
+
+    function charactersLeftCalculator(charactersLeftId, localThis) {
+        var len = localThis.value.length;
+        var max = localThis.maxLength;
+        if (len >= max) {
+            localThis.value = localThis.value.substring(0, max);
+        }
+        $(charactersLeftId).text(len);
+    }
 });
 
