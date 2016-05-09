@@ -19,13 +19,20 @@
                 <div class="edit-wrapper">
                     <h3 class="edit-title">@actionName Definition </h3>
 
+                    <div class="phrase-edit-form">
                     @Html.LabelFor(m => m.Phrase)
-                    @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", required = "required" })
+                    @Html.TextBoxFor(m => m.Phrase, new { @class = "formInput edit-term", @id = "phraseTextBox", required = "required", maxLength = 100})
                     @Html.ValidationMessageFor(m => m.Phrase)
+                    @if (actionName == "Edit") { <span id="phraseCharLeft">@Model.Phrase.Length</span>}
+                    else { <span id="phraseCharLeft">0</span>}/100</div>
 
+                    <div class="definition-edit-form">
                     @Html.LabelFor(m => m.Definition)
-                    @Html.TextAreaFor(m => m.Definition, new { @class = "formInput edit-definition", @rows = "10", required = "required" })
+                    @Html.TextAreaFor(m => m.Definition, new { @class = "formInput edit-definition", @id = "definitionTextBox", @rows = "10", required = "required" , maxLength = 500})
                     @Html.ValidationMessageFor(m => m.Definition)
+                    @if (actionName == "Edit"){ <span id="definitionCharLeft">@Model.Definition.Length</span>}
+                    else { <span id="definitionCharLeft">0</span>}/500</div>
+
 
                     <div class="edit-alternatives">
                         @if (Model != null && Model.Alternates.Any())

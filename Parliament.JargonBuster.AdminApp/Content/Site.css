@@ -187,7 +187,17 @@ a:hover, a:focus {
 }
 
 .edit-term,
-.edit-definition,
+.edit-definition {
+    display: block;
+}
+
+.phrase-edit-form,
+.definition-edit-form {
+    margin-bottom: 1em;
+}
+
+.definition-edit-form 
+
 .edit-alternatives__term,
 .edit-group {
   display: block;
