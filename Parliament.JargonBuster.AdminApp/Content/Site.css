@@ -254,9 +254,14 @@ a:hover, a:focus {
   font-size: 1em;
 }
 
-.add-definition, .logout-link {
-  /*display: inline-block;*/
+.add-definition {
   margin-bottom: 1em;
+}
+
+.add-definition li {
+    list-style-type: none;
+    display: inline;
+    padding-left: 1em;
 }
 
 .edit-title {
