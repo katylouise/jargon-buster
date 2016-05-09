@@ -20,6 +20,7 @@ namespace AdminApp.Services
         {
             var definitionItemToAdd = BuildDefinitionItemFromViewModel(definitionViewModel);
             definitionItemToAdd.CreatedAt = DateTime.Now;
+            definitionItemToAdd.CreatedBy = HttpContext.Current.User.Identity.Name;
             _definitionsService.AddDefinitionItem(definitionItemToAdd);
         }
 
@@ -66,10 +67,6 @@ namespace AdminApp.Services
             if(definitionViewModel.Id != 0)
             {
                 definitionItem.Id = definitionViewModel.Id;
-            }
-            else
-            {
-                definitionItem.CreatedBy = HttpContext.Current.User.Identity.Name;
             }
             return definitionItem;
         }
