@@ -60,11 +60,16 @@ namespace AdminApp.Services
                 Definition = definitionViewModel.Definition.Trim(),
                 Alternates = BuildAlternateItemsList(definitionViewModel),
                 UpdatedAt = DateTime.Now,
+                UpdatedBy = HttpContext.Current.User.Identity.Name,
                 HouseType = houseType
             };
             if(definitionViewModel.Id != 0)
             {
                 definitionItem.Id = definitionViewModel.Id;
+            }
+            else
+            {
+                definitionItem.CreatedBy = HttpContext.Current.User.Identity.Name;
             }
             return definitionItem;
         }

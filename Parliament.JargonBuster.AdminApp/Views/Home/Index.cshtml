@@ -53,8 +53,8 @@
                     {
                         <td class="item-category"><img src="~/Content/img/dot--red.png" class="house-icon" />@def.House</td>
                     }
-                    <td class="item-created">@def.CreatedAt.ToString("dd/MM/yyyy")</td>
-                    <td class="item-edited">@def.UpdatedAt.ToString("dd/MM/yyyy")</td>
+                    <td class="item-created">@def.CreatedAt.ToString("dd/MM/yyyy") @if(def.CreatedBy != null) {<div>by @def.CreatedBy</div>}</td>
+                    <td class="item-edited">@def.UpdatedAt.ToString("dd/MM/yyyy") @if (def.UpdatedBy != null) {<div>by @def.UpdatedBy</div>}</td>
                 </tr>
             }
         </tbody>
