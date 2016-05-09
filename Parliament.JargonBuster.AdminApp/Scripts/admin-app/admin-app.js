@@ -42,7 +42,7 @@ $(document).ready(function () {
                 data: "phrase=" + phrase,
                 success: function (result) {
                     if (result) {
-                        $(".modalForm").submit();
+                        $(".hiddenSubmit").click();
                     }
                     else {
                         $(".errorMessage").text("This is a duplicate term.");
@@ -51,7 +51,7 @@ $(document).ready(function () {
             })
         }
         else {
-            $(".modalForm").submit();
+            $(".hiddenSubmit").click();
         }
 
     });

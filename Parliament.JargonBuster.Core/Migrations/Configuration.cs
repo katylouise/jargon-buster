@@ -24,7 +24,7 @@ namespace Parliament.JargonBuster.Core.Migrations
             context.Definitions.RemoveRange(context.Definitions);
 
 
-            context.Users.AddOrUpdate(new User { Username = "", Password = Hashing.HashPassword("")});
+            context.Users.AddOrUpdate(new User { Username = "Admin", Password = Hashing.HashPassword("1234")});
 
             context.Definitions.AddOrUpdate(new DefinitionItem { HouseType = HouseType.Bicameral, UpdatedAt = DateTime.Now, CreatedAt = DateTime.Now, Definition = "A Government document setting out plans for a policy or future change in the law.", Phrase = "White Paper", Alternates = new List<AlternateDefinitionItem> { new AlternateDefinitionItem { AlternateDefinition = "Proposal" }, new AlternateDefinitionItem { AlternateDefinition = "White Papers" } } });
             context.Definitions.AddOrUpdate(new DefinitionItem { HouseType = HouseType.Bicameral, UpdatedAt = DateTime.Now, CreatedAt = DateTime.Now, Definition = "A policy document that is issued for early consultation and discussion.", Phrase = "Green Paper", Alternates = new List<AlternateDefinitionItem> { new AlternateDefinitionItem { AlternateDefinition = "Consultation document" }, new AlternateDefinitionItem { AlternateDefinition = "feedback document" }, new AlternateDefinitionItem { AlternateDefinition = "Green Papers" } } });
