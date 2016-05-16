@@ -174,8 +174,9 @@ function ParlJargonBuster(options) {
         }
 
         var content = "<div class='definition-content'><b class='definition-content-titles'>Definition: </b><p class='definition-actual-content'>" + jargonItem.Definition + "</p></div>" + alternativeTitle + alternates;
+        var phrase = jargonItem.Phrase.replace("'", "&apos;");
         
-        return "<a class='definition' href='#' data-toggle='popover' aria-describedby='" + uniqueId + "' data-url='div[data-phrase=&apos;" + jargonItem.Phrase + "&apos;]:first'>" + textToReplace.replace("'", "&apos;") + "</a><div class='definition-content-container' id='" + uniqueId + "' data-phrase='" + jargonItem.Phrase + "'>" + content + "</div>";
+        return "<a class='definition' href='#' data-toggle='popover' aria-describedby='" + uniqueId + "' data-url='div[data-phrase=&quot;" + phrase + "&quot;]:first'>" + textToReplace.replace("'", "&apos;") + "</a><div class='definition-content-container' id='" + uniqueId + "' data-phrase='" + phrase + "'>" + content + "</div>";
     }
     
     function disablePopovers() {
